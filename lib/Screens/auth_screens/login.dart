@@ -65,7 +65,7 @@ class LoginScreenState extends State<LoginScreen>
   final storage = new FlutterSecureStorage();
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   int attempt = 1;
-  String? verificationId;
+  String? verificationId ="";
   bool isShowCompletedLoading = false;
   bool isVerifyingCode = false;
   bool isCodeSent = false;

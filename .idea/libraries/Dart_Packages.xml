@@ -534,6 +534,13 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_automation">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_automation-2.0.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_blurhash">
           <value>
             <list>
@@ -1985,6 +1992,7 @@
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_storage_platform_interface-4.1.14/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_storage_web-3.3.4/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/fixnum-1.0.1/lib" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_automation-2.0.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_blurhash-0.7.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_cache_manager-3.3.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_cached_pdfview-0.4.1/lib" />
