@@ -1,7 +1,7 @@
 name: chat360
 description: Chats & Calling app
 
-version: 1.0.0+0
+version: 1.0.0+2
 publish_to: none
 
 environment:
