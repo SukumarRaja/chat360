@@ -1,8 +1,8 @@
 
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/MyElevatedButton/MyElevatedButton.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/MyElevatedButton/MyElevatedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -19,8 +19,8 @@ class _OpenSettingsState extends State<OpenSettings> {
 
   @override
   Widget build(BuildContext context) {
-    return mec.getNTPWrappedWidget(Material(
-        color: mecDeepGreen,
+    return chat360.getNTPWrappedWidget(Material(
+        color: chat360DeepGreen,
         child: Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -44,7 +44,7 @@ class _OpenSettingsState extends State<OpenSettings> {
             Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30.0),
                 child: myElevatedButton(
-                    color: mecLightGreen,
+                    color: chat360LightGreen,
                     onPressed: () {
                       openAppSettings();
                     },
@@ -52,7 +52,7 @@ class _OpenSettingsState extends State<OpenSettings> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         getTranslated(this.context, "openappsettings"),
-                        style: TextStyle(color: mecWhite),
+                        style: TextStyle(color: chat360White),
                       ),
                     ))),
             SizedBox(height: 20),
@@ -62,13 +62,13 @@ class _OpenSettingsState extends State<OpenSettings> {
             //     child: MaterialButton(
             //         elevation: 0.5,
             //         color: Colors.green,
-            //         textColor: mecWhite,
+            //         textColor: chat360White,
             //         onPressed: () {
             //           Navigator.of(context).pop();
             //         },
             //         child: Text(
             //           'Go Back',
-            //           style: TextStyle(color: mecWhite),
+            //           style: TextStyle(color: chat360White),
             //         ))),
           ],
         ))));

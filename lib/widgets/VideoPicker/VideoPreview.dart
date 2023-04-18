@@ -1,8 +1,8 @@
 
 import 'dart:io';
 import 'package:chewie/chewie.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/widgets/DownloadManager/save_image_videos_in_gallery.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/widgets/DownloadManager/save_image_videos_in_gallery.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -46,12 +46,12 @@ class _PreviewVideoState extends State<PreviewVideo> {
     //     );
     _chewieController = ChewieController(
       cupertinoProgressColors:
-          ChewieProgressColors(bufferedColor: mecgreen),
+          ChewieProgressColors(bufferedColor: chat360green),
       videoPlayerController: _videoPlayerController1,
       allowFullScreen: true,
       showControlsOnInitialize: false,
       materialProgressColors:
-          ChewieProgressColors(bufferedColor: mecgreen),
+          ChewieProgressColors(bufferedColor: chat360green),
       aspectRatio: thisaspectratio,
       autoPlay: true,
       looping: true,
@@ -108,7 +108,7 @@ class _PreviewVideoState extends State<PreviewVideo> {
           children: [
             Center(
               child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(mecBlue),
+                valueColor: AlwaysStoppedAnimation<Color>(chat360Blue),
               ),
             ),
             Chewie(

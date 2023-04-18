@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "563561838862",
-    "project_id": "mecc-ee00b",
-    "storage_bucket": "mecc-ee00b.appspot.com"
+    "project_number": "313221500770",
+    "project_id": "chat-360-7f0b6",
+    "storage_bucket": "chat-360-7f0b6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:563561838862:android:2e150b0acdcede09c67f5f",
+        "mobilesdk_app_id": "1:313221500770:android:fd568a7c3c562bba76263b",
         "android_client_info": {
-          "package_name": "com.mec"
+          "package_name": "limitless.chat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "563561838862-eoocrasicb7elgt8n97q2s37rvle4skt.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mec",
-            "certificate_hash": "2428e84dcb643bce2ff645f844fda50c880072a3"
-          }
-        },
-        {
-          "client_id": "563561838862-tq90k1sel3p9j2mnsc722fu1nvi284hu.apps.googleusercontent.com",
+          "client_id": "313221500770-2ai55h66fgi3r49lbnjk7nvngbl16g40.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC78-MtGgIVYHRa8_dihpNacJTd0rKZQjE"
+          "current_key": "AIzaSyCJQqRWJb56SF4K22T8CvD_MTZw6NSj8Lw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "563561838862-tq90k1sel3p9j2mnsc722fu1nvi284hu.apps.googleusercontent.com",
+              "client_id": "313221500770-2ai55h66fgi3r49lbnjk7nvngbl16g40.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

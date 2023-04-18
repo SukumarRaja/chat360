@@ -1,15 +1,15 @@
 
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Services/Providers/StatusProvider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Services/Providers/StatusProvider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
 import 'package:contacts_service/contacts_service.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:localstorage/localstorage.dart';
@@ -83,7 +83,7 @@ class AvailableContactsProvider with ChangeNotifier {
       this.contactsBookContactList = c;
     });
 
-    mec.checkAndRequestPermission(Permission.contacts).then((res) {
+    chat360.checkAndRequestPermission(Permission.contacts).then((res) {
       if (res) {
         storage.ready.then((ready) async {
           if (ready) {
@@ -118,12 +118,12 @@ class AvailableContactsProvider with ChangeNotifier {
           // }
         });
       } else {
-        mec.showRationale(getTranslated(context, 'perm_contact'));
+        chat360.showRationale(getTranslated(context, 'perm_contact'));
         Navigator.pushReplacement(context,
             new MaterialPageRoute(builder: (context) => OpenSettings()));
       }
     }).catchError((onError) {
-      mec.showRationale('Error occured: $onError');
+      chat360.showRationale('Error occured: $onError');
     });
     notifyListeners();
     return completer.future;
@@ -242,7 +242,7 @@ class AvailableContactsProvider with ChangeNotifier {
                     '97. SEARCH COMPLETED - NO NEED TO SEARCH _ LAST KEY COMPLETED  , ${alreadyJoinedUsersPhoneNameAsInServer.length} CONTACTS EXISTS IN DATABASE');
               } else if (contactsBookContactList!.length == 0) {
                 searchingcontactsindatabase = false;
-                mec.toast('Contact Book Empty');
+                chat360.toast('Contact Book Empty');
                 notifyListeners();
                 final StatusProvider statusProvider =
                     Provider.of<StatusProvider>(context, listen: false);
@@ -255,7 +255,7 @@ class AvailableContactsProvider with ChangeNotifier {
           //   if (key == contactsBookContactList!.entries.last.key) {
           //     searchingcontactsindatabase = false;
           //     notifyListeners();
-          //     mec.toast(
+          //     chat360.toast(
           //         '2. SEARCH COMPLETED , ${alreadyJoinedUsersPhoneNameAsInServer.length} CONTACTS EXISTS IN DATABASE');
           //     final StatusProvider statusProvider =
           //         Provider.of<StatusProvider>(context, listen: false);

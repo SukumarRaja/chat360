@@ -2,25 +2,25 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/status/StatusView.dart';
-import 'package:mec/Screens/status/components/ImagePicker/image_picker.dart';
-import 'package:mec/Screens/status/components/TextStatus/textStatus.dart';
-import 'package:mec/Screens/status/components/VideoPicker/VideoPicker.dart';
-import 'package:mec/Screens/status/components/circleBorder.dart';
-import 'package:mec/Screens/status/components/formatStatusTime.dart';
-import 'package:mec/Screens/status/components/showViewers.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/Providers/StatusProvider.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/status/StatusView.dart';
+import 'package:chat360/Screens/status/components/ImagePicker/image_picker.dart';
+import 'package:chat360/Screens/status/components/TextStatus/textStatus.dart';
+import 'package:chat360/Screens/status/components/VideoPicker/VideoPicker.dart';
+import 'package:chat360/Screens/status/components/circleBorder.dart';
+import 'package:chat360/Screens/status/components/formatStatusTime.dart';
+import 'package:chat360/Screens/status/components/showViewers.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/Providers/StatusProvider.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
@@ -30,7 +30,7 @@ import 'dart:async';
 import 'package:provider/provider.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mec/Configs/Enum.dart';
+import 'package:chat360/Configs/Enum.dart';
 import 'package:video_compress/video_compress.dart' as compress;
 
 class Status extends StatefulWidget {
@@ -66,7 +66,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
       Container(
         child: Center(
             child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(mecBlue),
+          valueColor: AlwaysStoppedAnimation<Color>(chat360Blue),
         )),
       )
     ]);
@@ -303,12 +303,12 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
     final observer = Provider.of<Observer>(context, listen: true);
     final contactsProvider =
         Provider.of<AvailableContactsProvider>(context, listen: true);
-    return mec.getNTPWrappedWidget(ScopedModel<DataModel>(
+    return chat360.getNTPWrappedWidget(ScopedModel<DataModel>(
         model: widget.model!,
         child:
             ScopedModelDescendant<DataModel>(builder: (context, child, model) {
           return Scaffold(
-            backgroundColor: mecWhite,
+            backgroundColor: chat360White,
             floatingActionButton: Padding(
               padding: EdgeInsets.only(
                   bottom: IsBannerAdShow == true && observer.isadmobshow == true
@@ -328,7 +328,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                             size: 23.0, color: Colors.blueGrey[700]),
                         onPressed: observer.isAllowCreatingStatus == false
                             ? () {
-                                mec.showRationale(
+                                chat360.showRationale(
                                     getTranslated(this.context, 'disabled'));
                               }
                             : () {
@@ -344,14 +344,14 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                   ),
                   FloatingActionButton(
                     heroTag: "frewrwr",
-                    backgroundColor: mecLightGreen,
+                    backgroundColor: chat360LightGreen,
                     child: Icon(
                       Icons.camera_alt_rounded,
                       size: 25,
                     ),
                     onPressed: observer.isAllowCreatingStatus == false
                         ? () {
-                            mec.showRationale(
+                            chat360.showRationale(
                                 getTranslated(this.context, 'disabled'));
                           }
                         : () async {
@@ -677,7 +677,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                                             observer.isAllowCreatingStatus ==
                                                                     false
                                                                 ? () {
-                                                                    mec.showRationale(getTranslated(
+                                                                    chat360.showRationale(getTranslated(
                                                                         this.context,
                                                                         'disabled'));
                                                                   }
@@ -880,7 +880,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                                       observer.isAllowCreatingStatus ==
                                                               false
                                                           ? () {
-                                                              mec.showRationale(
+                                                              chat360.showRationale(
                                                                   getTranslated(
                                                                       this.context,
                                                                       'disabled'));
@@ -1049,7 +1049,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                                         valueColor:
                                                             AlwaysStoppedAnimation<
                                                                     Color>(
-                                                                mecBlue)),
+                                                                chat360Blue)),
                                                   ),
                                                 ),
                                                 color: Colors.transparent)
@@ -1080,7 +1080,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                                               TextAlign.center,
                                                           style: TextStyle(
                                                               fontSize: 15.0,
-                                                              color: mecGrey
+                                                              color: chat360Grey
                                                                   .withOpacity(
                                                                       0.8),
                                                               fontWeight:
@@ -1392,11 +1392,11 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                         child: CircularProgressIndicator(
                                             valueColor:
                                                 AlwaysStoppedAnimation<Color>(
-                                                    mecBlue)),
+                                                    chat360Blue)),
                                       ),
                                       color: DESIGN_TYPE == Themetype.whatsapp
-                                          ? mecBlack.withOpacity(0.2)
-                                          : mecWhite.withOpacity(0.2))
+                                          ? chat360Black.withOpacity(0.2)
+                                          : chat360White.withOpacity(0.2))
                                   : Container(),
                             )
                           ],
@@ -1443,7 +1443,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                       Icon(
                                         Icons.image,
                                         size: 39,
-                                        color: mecLightGreen,
+                                        color: chat360LightGreen,
                                       ),
                                       SizedBox(height: 3),
                                       Text(
@@ -1452,7 +1452,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                         style: TextStyle(
                                             fontWeight: FontWeight.normal,
                                             fontSize: 15,
-                                            color: mecBlack),
+                                            color: chat360Black),
                                       ),
                                     ],
                                   ),
@@ -1473,7 +1473,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                         Icon(
                                           Icons.video_camera_back,
                                           size: 39,
-                                          color: mecLightGreen,
+                                          color: chat360LightGreen,
                                         ),
                                         SizedBox(height: 3),
                                         Text(
@@ -1482,7 +1482,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                           style: TextStyle(
                                               fontWeight: FontWeight.normal,
                                               fontSize: 15,
-                                              color: mecBlack),
+                                              color: chat360Black),
                                         ),
                                       ],
                                     ),
@@ -1514,7 +1514,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                       Icon(
                                         Icons.text_fields,
                                         size: 39,
-                                        color: mecLightGreen,
+                                        color: chat360LightGreen,
                                       ),
                                       SizedBox(height: 3),
                                       Text(
@@ -1523,7 +1523,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                         style: TextStyle(
                                             fontWeight: FontWeight.normal,
                                             fontSize: 15,
-                                            color: mecBlack),
+                                            color: chat360Black),
                                       ),
                                     ],
                                   ),
@@ -1543,7 +1543,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                       Icon(
                                         Icons.image,
                                         size: 39,
-                                        color: mecLightGreen,
+                                        color: chat360LightGreen,
                                       ),
                                       SizedBox(height: 3),
                                       Text(
@@ -1552,7 +1552,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                         style: TextStyle(
                                             fontWeight: FontWeight.normal,
                                             fontSize: 15,
-                                            color: mecBlack),
+                                            color: chat360Black),
                                       ),
                                     ],
                                   ),
@@ -1573,7 +1573,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                         Icon(
                                           Icons.video_camera_back,
                                           size: 39,
-                                          color: mecLightGreen,
+                                          color: chat360LightGreen,
                                         ),
                                         SizedBox(height: 3),
                                         Text(
@@ -1582,7 +1582,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                           style: TextStyle(
                                               fontWeight: FontWeight.normal,
                                               fontSize: 15,
-                                              color: mecBlack),
+                                              color: chat360Black),
                                         ),
                                       ],
                                     ),
@@ -1715,7 +1715,7 @@ class _StatusState extends State<Status> with AutomaticKeepAliveClientMixin {
                                                       getTranslated(
                                                           context, 'cancel'),
                                                       style: TextStyle(
-                                                          color: mecgreen,
+                                                          color: chat360green,
                                                           fontSize: 18),
                                                     ),
                                                     onPressed: () {

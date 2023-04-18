@@ -1,6 +1,6 @@
 // 
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Services/localization/language_constants.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
 import 'package:flutter/material.dart';
 
 // //---DON'T EDIT THESE LINES UNLESS YOU ARE SURE ABOUT THE CHANGES:

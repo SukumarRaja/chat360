@@ -1,7 +1,7 @@
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Screens/recent_chats/RecentsChats.dart';
-import 'package:mec/Services/localization/language_constants.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Screens/recent_chats/RecentsChats.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
 import 'package:flutter/material.dart';
 
 Widget getMediaMessage(BuildContext context, bool isBold, var lastMessage) {

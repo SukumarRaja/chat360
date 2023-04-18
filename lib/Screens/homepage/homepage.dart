@@ -5,41 +5,41 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info/device_info.dart';
 import 'package:gallery_saver/files.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/Broadcast/AddContactsToBroadcast.dart';
-import 'package:mec/Screens/Groups/AddContactsToGroup.dart';
-import 'package:mec/Screens/SettingsOption/settingsOption.dart';
-import 'package:mec/Screens/homepage/Setupdata.dart';
-import 'package:mec/Screens/notifications/AllNotifications.dart';
-import 'package:mec/Screens/recent_chats/RecentChatsWithoutLastMessage.dart';
-import 'package:mec/Screens/sharing_intent/SelectContactToShare.dart';
-import 'package:mec/Screens/splash_screen/splash_screen.dart';
-import 'package:mec/Screens/status/status.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/Providers/StatusProvider.dart';
-import 'package:mec/Services/Providers/call_history_provider.dart';
-import 'package:mec/Services/localization/language.dart';
-import 'package:mec/Utils/custom_url_launcher.dart';
-import 'package:mec/Utils/error_codes.dart';
-import 'package:mec/Utils/phonenumberVariantsGenerator.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/Broadcast/AddContactsToBroadcast.dart';
+import 'package:chat360/Screens/Groups/AddContactsToGroup.dart';
+import 'package:chat360/Screens/SettingsOption/settingsOption.dart';
+import 'package:chat360/Screens/homepage/Setupdata.dart';
+import 'package:chat360/Screens/notifications/AllNotifications.dart';
+import 'package:chat360/Screens/recent_chats/RecentChatsWithoutLastMessage.dart';
+import 'package:chat360/Screens/sharing_intent/SelectContactToShare.dart';
+import 'package:chat360/Screens/splash_screen/splash_screen.dart';
+import 'package:chat360/Screens/status/status.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/Providers/StatusProvider.dart';
+import 'package:chat360/Services/Providers/call_history_provider.dart';
+import 'package:chat360/Services/localization/language.dart';
+import 'package:chat360/Utils/custom_url_launcher.dart';
+import 'package:chat360/Utils/error_codes.dart';
+import 'package:chat360/Utils/phonenumberVariantsGenerator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart'
     as local;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/auth_screens/login.dart';
-import 'package:mec/Services/Providers/currentchat_peer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Screens/profile_settings/profileSettings.dart';
-import 'package:mec/main.dart';
-import 'package:mec/Screens/recent_chats/RecentsChats.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Services/Providers/user_provider.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/auth_screens/login.dart';
+import 'package:chat360/Services/Providers/currentchat_peer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Screens/profile_settings/profileSettings.dart';
+import 'package:chat360/main.dart';
+import 'package:chat360/Screens/recent_chats/RecentsChats.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Services/Providers/user_provider.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -50,8 +50,8 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Utils/unawaited.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Utils/unawaited.dart';
 import 'package:http/http.dart' as http;
 
 class Homepage extends StatefulWidget {
@@ -241,7 +241,7 @@ class HomepageState extends State<Homepage>
     controllerIfcallNotallowed = TabController(length: 2, vsync: this);
     controllerIfcallNotallowed!.index = 0;
 
-    mec.internetLookUp();
+    chat360.internetLookUp();
     WidgetsBinding.instance.addObserver(this);
 
     LocalAuthentication().canCheckBiometrics.then((res) {
@@ -344,7 +344,7 @@ class HomepageState extends State<Homepage>
                   sharedText: _sharedText)));
     } else if (_sharedFiles != null) {
       if (_sharedFiles!.length > observer.maxNoOfFilesInMultiSharing) {
-        mec.toast(getTranslated(context, 'maxnooffiles') +
+        chat360.toast(getTranslated(context, 'maxnooffiles') +
             ' ' +
             '${observer.maxNoOfFilesInMultiSharing}');
       } else {
@@ -489,7 +489,7 @@ class HomepageState extends State<Homepage>
     await widget.prefs.setBool(Dbkeys.isTokenGenerated, false);
     Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(
-        builder: (BuildContext context) => mecWrapper(),
+        builder: (BuildContext context) => chat360Wrapper(),
       ),
       (Route route) => false,
     );
@@ -548,7 +548,7 @@ class HomepageState extends State<Homepage>
             ),
           );
         }, duration: Duration(seconds: 5));
-        // mec.toast("kjhljkhjkhjkk");
+        // chat360.toast("kjhljkhjkhjkk");
       }
       if (message.data['title'] != 'Call Ended' &&
           message.data['title'] != 'Missed Call' &&
@@ -791,14 +791,14 @@ class HomepageState extends State<Homepage>
                     child: AlertDialog(
                       title: Text(
                         title,
-                        style: TextStyle(color: mecgreen),
+                        style: TextStyle(color: chat360green),
                       ),
                       content: Text(message),
                       actions: <Widget>[
                         TextButton(
                             child: Text(
                               btnLabel,
-                              style: TextStyle(color: mecLightGreen),
+                              style: TextStyle(color: chat360LightGreen),
                             ),
                             onPressed: () => custom_url_launcher(
                                 widget.doc[Platform.isAndroid
@@ -935,7 +935,7 @@ class HomepageState extends State<Homepage>
 
   void _changeLanguage(Language language) async {
     Locale _locale = await setLocale(language.languageCode);
-    mecWrapper.setLocale(context, _locale);
+    chat360Wrapper.setLocale(context, _locale);
     if (widget.currentUserNo != null) {
       Future.delayed(const Duration(milliseconds: 800), () {
         FirebaseFirestore.instance
@@ -960,7 +960,7 @@ class HomepageState extends State<Homepage>
     DateTime now = DateTime.now();
     if (now.difference(currentBackPressTime!) > Duration(seconds: 3)) {
       currentBackPressTime = now;
-      mec.toast('Double Tap To Go Back');
+      chat360.toast('Double Tap To Go Back');
       return Future.value(false);
     } else {
       if (!isAuthenticating) setLastSeen();
@@ -986,7 +986,7 @@ class HomepageState extends State<Homepage>
                       )
                     : PickupLayout(
                         prefs: widget.prefs,
-                        scaffold: mec.getNTPWrappedWidget(WillPopScope(
+                        scaffold: chat360.getNTPWrappedWidget(WillPopScope(
                           onWillPop: onWillPop,
                           child: Scaffold(
                               backgroundColor: Colors.white,
@@ -996,14 +996,14 @@ class HomepageState extends State<Homepage>
                                       : 1,
                                   backgroundColor:
                                       DESIGN_TYPE == Themetype.whatsapp
-                                          ? mecDeepGreen
-                                          : mecWhite,
+                                          ? chat360DeepGreen
+                                          : chat360White,
                                   title: Text(
                                     Appname,
                                     style: TextStyle(
                                       color: DESIGN_TYPE == Themetype.whatsapp
-                                          ? mecWhite
-                                          : mecBlack,
+                                          ? chat360White
+                                          : chat360Black,
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -1041,8 +1041,8 @@ class HomepageState extends State<Homepage>
                                                       Icons.language_outlined,
                                                       color: DESIGN_TYPE ==
                                                               Themetype.whatsapp
-                                                          ? mecWhite
-                                                          : mecBlack
+                                                          ? chat360White
+                                                          : chat360Black
                                                               .withOpacity(0.7),
                                                       size: 22,
                                                     ),
@@ -1053,8 +1053,8 @@ class HomepageState extends State<Homepage>
                                                       Icons.keyboard_arrow_down,
                                                       color: DESIGN_TYPE ==
                                                               Themetype.whatsapp
-                                                          ? mecLightGreen
-                                                          : mecLightGreen,
+                                                          ? chat360LightGreen
+                                                          : chat360LightGreen,
                                                       size: 27,
                                                     )
                                                   ],
@@ -1108,11 +1108,11 @@ class HomepageState extends State<Homepage>
                                             Icons.more_vert_outlined,
                                             color: DESIGN_TYPE ==
                                                     Themetype.whatsapp
-                                                ? mecWhite
-                                                : mecBlack,
+                                                ? chat360White
+                                                : chat360Black,
                                           ),
                                         ),
-                                        color: mecWhite,
+                                        color: chat360White,
                                         onSelected: (dynamic val) async {
                                           switch (val) {
                                             case 'rate':
@@ -1194,7 +1194,7 @@ class HomepageState extends State<Homepage>
                                                                           builder: (context) => ProfileSetting(
                                                                                 prefs: widget.prefs,
                                                                                 biometricEnabled: biometricEnabled,
-                                                                                type: mec.getAuthenticationType(biometricEnabled, _cachedModel),
+                                                                                type: chat360.getAuthenticationType(biometricEnabled, _cachedModel),
                                                                               )));
                                                                 },
                                                                 currentUserNo:
@@ -1202,7 +1202,7 @@ class HomepageState extends State<Homepage>
                                                                         .currentUserNo!,
                                                                 biometricEnabled:
                                                                     biometricEnabled,
-                                                                type: mec.getAuthenticationType(
+                                                                type: chat360.getAuthenticationType(
                                                                     biometricEnabled,
                                                                     _cachedModel),
                                                               )));
@@ -1212,7 +1212,7 @@ class HomepageState extends State<Homepage>
                                               if (observer
                                                       .isAllowCreatingGroups ==
                                                   false) {
-                                                mec.showRationale(getTranslated(
+                                                chat360.showRationale(getTranslated(
                                                     this.context, 'disabled'));
                                               } else {
                                                 final AvailableContactsProvider
@@ -1250,7 +1250,7 @@ class HomepageState extends State<Homepage>
                                               if (observer
                                                       .isAllowCreatingBroadcasts ==
                                                   false) {
-                                                mec.showRationale(getTranslated(
+                                                chat360.showRationale(getTranslated(
                                                     this.context, 'disabled'));
                                               } else {
                                                 final AvailableContactsProvider
@@ -1377,17 +1377,17 @@ class HomepageState extends State<Homepage>
                                     ),
                                     labelColor:
                                         DESIGN_TYPE == Themetype.whatsapp
-                                            ? mecWhite
-                                            : mecBlack,
+                                            ? chat360White
+                                            : chat360Black,
                                     unselectedLabelColor:
                                         DESIGN_TYPE == Themetype.whatsapp
-                                            ? mecWhite.withOpacity(0.6)
-                                            : mecBlack.withOpacity(0.6),
+                                            ? chat360White.withOpacity(0.6)
+                                            : chat360Black.withOpacity(0.6),
                                     indicatorWeight: 3,
                                     indicatorColor:
                                         DESIGN_TYPE == Themetype.whatsapp
-                                            ? mecWhite
-                                            : mecgreen,
+                                            ? chat360White
+                                            : chat360green,
                                     controller:
                                         observer.isCallFeatureTotallyHide ==
                                                 false
@@ -1598,7 +1598,7 @@ Future _showNotificationWithDefaultSound(String? title, String? message,
 
 Widget errorScreen(String? title, String? subtitle) {
   return Scaffold(
-    backgroundColor: mecDeepGreen,
+    backgroundColor: chat360DeepGreen,
     body: Center(
       child: Padding(
         padding: const EdgeInsets.all(30.0),
@@ -1618,7 +1618,7 @@ Widget errorScreen(String? title, String? subtitle) {
               '$title',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 20, color: mecWhite, fontWeight: FontWeight.w700),
+                  fontSize: 20, color: chat360White, fontWeight: FontWeight.w700),
             ),
             SizedBox(
               height: 20,
@@ -1628,7 +1628,7 @@ Widget errorScreen(String? title, String? subtitle) {
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 17,
-                  color: mecWhite.withOpacity(0.7),
+                  color: chat360White.withOpacity(0.7),
                   fontWeight: FontWeight.w400),
             )
           ],

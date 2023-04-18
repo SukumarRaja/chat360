@@ -1,8 +1,8 @@
 
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,21 +34,21 @@ class PDFViewerCachedFromUrl extends StatelessWidget {
                   Icons.keyboard_arrow_left,
                   size: 30,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                 ),
               ),
               title: Text(
                 title,
                 style: TextStyle(
                     color: DESIGN_TYPE == Themetype.whatsapp
-                        ? mecWhite
-                        : mecBlack,
+                        ? chat360White
+                        : chat360Black,
                     fontSize: 18),
               ),
               backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecDeepGreen
-                  : mecWhite,
+                  ? chat360DeepGreen
+                  : chat360White,
             ),
             body: const PDF().cachedFromUrl(
               url!,
@@ -60,7 +60,7 @@ class PDFViewerCachedFromUrl extends StatelessWidget {
           )
         : PickupLayout(
             prefs: prefs,
-            scaffold: mec.getNTPWrappedWidget(Scaffold(
+            scaffold: chat360.getNTPWrappedWidget(Scaffold(
               appBar: AppBar(
                 elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
                 leading: IconButton(
@@ -71,21 +71,21 @@ class PDFViewerCachedFromUrl extends StatelessWidget {
                     Icons.keyboard_arrow_left,
                     size: 30,
                     color: DESIGN_TYPE == Themetype.whatsapp
-                        ? mecWhite
-                        : mecBlack,
+                        ? chat360White
+                        : chat360Black,
                   ),
                 ),
                 title: Text(
                   title,
                   style: TextStyle(
                       color: DESIGN_TYPE == Themetype.whatsapp
-                          ? mecWhite
-                          : mecBlack,
+                          ? chat360White
+                          : chat360Black,
                       fontSize: 18),
                 ),
                 backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecDeepGreen
-                    : mecWhite,
+                    ? chat360DeepGreen
+                    : chat360White,
               ),
               body: const PDF().cachedFromUrl(
                 url!,

@@ -1,17 +1,17 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/Providers/GroupChatProvider.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/Providers/GroupChatProvider.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -94,7 +94,7 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
       Container(
         child: Center(
             child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(mecBlue),
+          valueColor: AlwaysStoppedAnimation<Color>(chat360Blue),
         )),
       )
     ]);
@@ -105,10 +105,10 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    // mec.toast(widget.contentPeerNo.toString());
+    // chat360.toast(widget.contentPeerNo.toString());
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(ScopedModel<DataModel>(
+        scaffold: chat360.getNTPWrappedWidget(ScopedModel<DataModel>(
             model: widget.model!,
             child: ScopedModelDescendant<DataModel>(
                 builder: (context, child, model) {
@@ -310,7 +310,7 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                 )
                               : SizedBox(),
                           key: _scaffold,
-                          backgroundColor: mecWhite,
+                          backgroundColor: chat360White,
                           appBar: AppBar(
                             elevation:
                                 DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
@@ -321,8 +321,8 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                       icon: Icon(
                                         Icons.check,
                                         color: DESIGN_TYPE == Themetype.whatsapp
-                                            ? mecWhite
-                                            : mecBlack,
+                                            ? chat360White
+                                            : chat360Black,
                                       ),
                                       onPressed: () {
                                         List<dynamic> finalList = [];
@@ -350,13 +350,13 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                 Icons.arrow_back,
                                 size: 24,
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite
-                                    : mecBlack,
+                                    ? chat360White
+                                    : chat360Black,
                               ),
                             ),
                             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                                ? mecDeepGreen
-                                : mecWhite,
+                                ? chat360DeepGreen
+                                : chat360White,
                             centerTitle: false,
                             // leadingWidth: 40,
                             title: Text(
@@ -365,8 +365,8 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                               style: TextStyle(
                                 fontSize: 18,
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite
-                                    : mecBlack,
+                                    ? chat360White
+                                    : chat360Black,
                               ),
                             ),
                           ),
@@ -398,7 +398,7 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       fontSize: 18,
-                                                      color: mecGrey)),
+                                                      color: chat360Grey)),
                                             ))
                                       ])
                                     : ListView(
@@ -422,7 +422,7 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                                       decoration: BoxDecoration(
                                                         border: Border.all(
                                                             color:
-                                                                mecGrey,
+                                                                chat360Grey,
                                                             width: 1),
                                                         borderRadius:
                                                             BorderRadius
@@ -440,7 +440,7 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                                               Icons.check,
                                                               size: 19.0,
                                                               color:
-                                                                  mecLightGreen,
+                                                                  chat360LightGreen,
                                                             )
                                                           : Icon(
                                                               null,
@@ -464,14 +464,14 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       style: TextStyle(
-                                                        color: mecBlack,
+                                                        color: chat360Black,
                                                         fontSize: 16,
                                                       ),
                                                     ),
                                                     subtitle: Text(
                                                       '${joinedGroupsList[i][Dbkeys.groupMEMBERSLIST].length} ${getTranslated(context, 'participants')}',
                                                       style: TextStyle(
-                                                        color: mecGrey,
+                                                        color: chat360Grey,
                                                         fontSize: 14,
                                                       ),
                                                     ),
@@ -503,7 +503,7 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                                                       .length >
                                                               observer.maxNoOfContactsSelectForForward -
                                                                   1) {
-                                                            mec.toast(
+                                                            chat360.toast(
                                                                 getTranslated(
                                                                         context,
                                                                         'maxallowed') +
@@ -586,7 +586,7 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                                                           BoxDecoration(
                                                                         border: Border.all(
                                                                             color:
-                                                                                mecGrey,
+                                                                                chat360Grey,
                                                                             width:
                                                                                 1),
                                                                         borderRadius:
@@ -597,7 +597,7 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                                                           ? Icon(
                                                                               Icons.check,
                                                                               size: 19.0,
-                                                                              color: mecLightGreen,
+                                                                              color: chat360LightGreen,
                                                                             )
                                                                           : Icon(
                                                                               null,
@@ -617,12 +617,12 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                                                             '',
                                                                         style: TextStyle(
                                                                             color:
-                                                                                mecBlack)),
+                                                                                chat360Black)),
                                                                     subtitle: Text(
                                                                         phone,
                                                                         style: TextStyle(
                                                                             color:
-                                                                                mecGrey)),
+                                                                                chat360Grey)),
                                                                     // contentPadding: EdgeInsets.symmetric(
                                                                     //     horizontal:
                                                                     //         10.0,
@@ -651,7 +651,7 @@ class _SelectContactsToForwardState extends State<SelectContactsToForward>
                                                                           } else {
                                                                             if (selectedDynamicListFORUSERS.length + selectedDynamicListFORGROUPS.length >
                                                                                 observer.maxNoOfContactsSelectForForward - 1) {
-                                                                              mec.toast(getTranslated(context, 'maxallowed') + ' : ${observer.maxNoOfContactsSelectForForward}');
+                                                                              chat360.toast(getTranslated(context, 'maxallowed') + ' : ${observer.maxNoOfContactsSelectForForward}');
                                                                             } else {
                                                                               selectedDynamicListFORUSERS.add(snapshot.data!);
                                                                               setStateIfMounted(() {});

@@ -1,12 +1,12 @@
 
 import 'dart:io';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/status/components/VideoPicker/VideoPicker.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/status/components/VideoPicker/VideoPicker.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
@@ -62,7 +62,7 @@ class _HybridDocumentPickerState extends State<HybridDocumentPicker> {
         } else {}
       }
     } catch (e) {
-      mec.toast('Cannot Send this Document type');
+      chat360.toast('Cannot Send this Document type');
       Navigator.of(this.context).pop();
     }
   }
@@ -83,8 +83,8 @@ class _HybridDocumentPickerState extends State<HybridDocumentPicker> {
                 style: new TextStyle(
                   fontSize: 18.0,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                 )),
           ),
         ],
@@ -94,18 +94,18 @@ class _HybridDocumentPickerState extends State<HybridDocumentPicker> {
           style: new TextStyle(
             fontSize: 18.0,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
           ));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return mec.getNTPWrappedWidget(WillPopScope(
+    return chat360.getNTPWrappedWidget(WillPopScope(
       child: Scaffold(
         backgroundColor:
-            DESIGN_TYPE == Themetype.whatsapp ? mecBlack : mecWhite,
+            DESIGN_TYPE == Themetype.whatsapp ? chat360Black : chat360White,
         appBar: new AppBar(
             elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
             leading: IconButton(
@@ -116,8 +116,8 @@ class _HybridDocumentPickerState extends State<HybridDocumentPicker> {
                 Icons.keyboard_arrow_left,
                 size: 30,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
             title: new Text(
@@ -125,21 +125,21 @@ class _HybridDocumentPickerState extends State<HybridDocumentPicker> {
               style: TextStyle(
                 fontSize: 18,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                ? mecBlack
-                : mecWhite,
+                ? chat360Black
+                : chat360White,
             actions: _docFile != null
                 ? <Widget>[
                     IconButton(
                         icon: Icon(
                           Icons.check,
                           color: DESIGN_TYPE == Themetype.whatsapp
-                              ? mecWhite
-                              : mecBlack,
+                              ? chat360White
+                              : chat360Black,
                         ),
                         onPressed: () {
                           setState(() {
@@ -169,11 +169,11 @@ class _HybridDocumentPickerState extends State<HybridDocumentPicker> {
                     child: Center(
                       child: CircularProgressIndicator(
                           valueColor:
-                              AlwaysStoppedAnimation<Color>(mecBlue)),
+                              AlwaysStoppedAnimation<Color>(chat360Blue)),
                     ),
                     color: DESIGN_TYPE == Themetype.whatsapp
-                        ? mecBlack.withOpacity(0.8)
-                        : mecWhite.withOpacity(0.8))
+                        ? chat360Black.withOpacity(0.8)
+                        : chat360White.withOpacity(0.8))
                 : Container(),
           )
         ]),
@@ -190,14 +190,14 @@ class _HybridDocumentPickerState extends State<HybridDocumentPicker> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               _buildActionButton(new Key('retake'), Icons.add, () {
-                mec.checkAndRequestPermission(Platform.isIOS
+                chat360.checkAndRequestPermission(Platform.isIOS
                         ? Permission.mediaLibrary
                         : Permission.storage)
                     .then((res) {
                   if (res) {
                     captureFile();
                   } else {
-                    mec.showRationale(
+                    chat360.showRationale(
                       getTranslated(this.context, 'psac'),
                     );
                     Navigator.pushReplacement(
@@ -218,9 +218,9 @@ class _HybridDocumentPickerState extends State<HybridDocumentPicker> {
           child: Icon(icon, size: 30.0),
           shape: new RoundedRectangleBorder(),
           color: DESIGN_TYPE == Themetype.whatsapp
-              ? mecDeepGreen
-              : mecgreen,
-          textColor: mecWhite,
+              ? chat360DeepGreen
+              : chat360green,
+          textColor: chat360White,
           onPressed: onPressed as void Function()?),
     );
   }

@@ -1,12 +1,12 @@
 
 import 'dart:io';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/status/components/VideoPicker/VideoPicker.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/status/components/VideoPicker/VideoPicker.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -71,18 +71,18 @@ class _SingleImagePickerState extends State<SingleImagePicker> {
           style: new TextStyle(
             fontSize: 18.0,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
           ));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return mec.getNTPWrappedWidget(WillPopScope(
+    return chat360.getNTPWrappedWidget(WillPopScope(
       child: Scaffold(
         backgroundColor:
-            DESIGN_TYPE == Themetype.whatsapp ? mecBlack : mecWhite,
+            DESIGN_TYPE == Themetype.whatsapp ? chat360Black : chat360White,
         appBar: new AppBar(
             elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
             leading: IconButton(
@@ -93,8 +93,8 @@ class _SingleImagePickerState extends State<SingleImagePicker> {
                 Icons.keyboard_arrow_left,
                 size: 30,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
             title: new Text(
@@ -102,21 +102,21 @@ class _SingleImagePickerState extends State<SingleImagePicker> {
               style: TextStyle(
                 fontSize: 18,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                ? mecBlack
-                : mecWhite,
+                ? chat360Black
+                : chat360White,
             actions: _imageFile != null
                 ? <Widget>[
                     IconButton(
                         icon: Icon(
                           Icons.check,
                           color: DESIGN_TYPE == Themetype.whatsapp
-                              ? mecWhite
-                              : mecBlack,
+                              ? chat360White
+                              : chat360Black,
                         ),
                         onPressed: () {
                           setState(() {
@@ -146,11 +146,11 @@ class _SingleImagePickerState extends State<SingleImagePicker> {
                     child: Center(
                       child: CircularProgressIndicator(
                           valueColor:
-                              AlwaysStoppedAnimation<Color>(mecBlue)),
+                              AlwaysStoppedAnimation<Color>(chat360Blue)),
                     ),
                     color: DESIGN_TYPE == Themetype.whatsapp
-                        ? mecBlack.withOpacity(0.8)
-                        : mecWhite.withOpacity(0.8),
+                        ? chat360Black.withOpacity(0.8)
+                        : chat360White.withOpacity(0.8),
                   )
                 : Container(),
           )
@@ -168,12 +168,12 @@ class _SingleImagePickerState extends State<SingleImagePicker> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               _buildActionButton(new Key('retake'), Icons.photo_library, () {
-                mec.checkAndRequestPermission(Permission.photos)
+                chat360.checkAndRequestPermission(Permission.photos)
                     .then((res) {
                   if (res) {
                     captureImage(ImageSource.gallery);
                   } else {
-                    mec.showRationale(getTranslated(context, 'pgi'));
+                    chat360.showRationale(getTranslated(context, 'pgi'));
                     Navigator.pushReplacement(
                         context,
                         new MaterialPageRoute(
@@ -182,7 +182,7 @@ class _SingleImagePickerState extends State<SingleImagePicker> {
                 });
               }),
               _buildActionButton(new Key('upload'), Icons.photo_camera, () {
-                mec.checkAndRequestPermission(Permission.camera)
+                chat360.checkAndRequestPermission(Permission.camera)
                     .then((res) {
                   if (res) {
                     captureImage(ImageSource.camera);
@@ -206,9 +206,9 @@ class _SingleImagePickerState extends State<SingleImagePicker> {
           child: Icon(icon, size: 30.0),
           shape: new RoundedRectangleBorder(),
           color: DESIGN_TYPE == Themetype.whatsapp
-              ? mecDeepGreen
-              : mecgreen,
-          textColor: mecWhite,
+              ? chat360DeepGreen
+              : chat360green,
+          textColor: chat360White,
           onPressed: onPressed as void Function()?),
     );
   }

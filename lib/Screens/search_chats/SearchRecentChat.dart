@@ -3,24 +3,24 @@ import 'dart:async';
 import 'dart:core';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/chat_screen/lazyLoadingChat.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Screens/chat_screen/utils/messagedata.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/chat_screen/chat.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Services/Providers/user_provider.dart';
-import 'package:mec/Utils/alias.dart';
-import 'package:mec/Utils/chat_controller.dart';
-import 'package:mec/Utils/unawaited.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/chat_screen/lazyLoadingChat.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Screens/chat_screen/utils/messagedata.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/chat_screen/chat.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Services/Providers/user_provider.dart';
+import 'package:chat360/Utils/alias.dart';
+import 'package:chat360/Utils/chat_controller.dart';
+import 'package:chat360/Utils/unawaited.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
@@ -66,7 +66,7 @@ class SearchChatsState extends State<SearchChats> {
   @override
   void initState() {
     super.initState();
-    mec.internetLookUp();
+    chat360.internetLookUp();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final observer = Provider.of<Observer>(this.context, listen: false);
       if (IsBannerAdShow == true && observer.isadmobshow == true) {
@@ -112,7 +112,7 @@ class SearchChatsState extends State<SearchChats> {
           return Theme(
               data: ThemeData(
                   fontFamily: FONTFAMILY_NAME,
-                  splashColor: mecBlue,
+                  splashColor: chat360Blue,
                   highlightColor: Colors.transparent),
               child: Column(
                 children: [
@@ -128,11 +128,11 @@ class SearchChatsState extends State<SearchChats> {
                           customCircleAvatar(url: user['photoUrl'], radius: 22),
                       title: IsShowUserFullNameAsSavedInYourContacts == false
                           ? Text(
-                              mec.getNickname(user) ?? "",
+                              chat360.getNickname(user) ?? "",
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                color: mecBlack,
+                                color: chat360Black,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 16.4,
                               ),
@@ -153,18 +153,18 @@ class SearchChatsState extends State<SearchChats> {
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
-                                          color: mecBlack,
+                                          color: chat360Black,
                                           fontWeight: FontWeight.w600,
                                           fontSize: 16.4,
                                         ),
                                       );
                                     }
                                     return Text(
-                                      mec.getNickname(user) ?? "",
+                                      chat360.getNickname(user) ?? "",
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                        color: mecBlack,
+                                        color: chat360Black,
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16.4,
                                       ),
@@ -172,11 +172,11 @@ class SearchChatsState extends State<SearchChats> {
                                   });
                             }),
                       //  Text(
-                      //   mec.getNickname(user)!,
+                      //   chat360.getNickname(user)!,
                       //   maxLines: 1,
                       //   overflow: TextOverflow.ellipsis,
                       //   style: TextStyle(
-                      //     color: mecBlack,
+                      //     color: chat360Black,
                       //     fontSize: 16,
                       //   ),
                       // ),
@@ -189,7 +189,7 @@ class SearchChatsState extends State<SearchChats> {
                               getTranslated(context, 'auth_neededchat'),
                               state: state,
                               shouldPop: false,
-                              type: mec.getAuthenticationType(
+                              type: chat360.getAuthenticationType(
                                   biometricEnabled, _cachedModel),
                               prefs: widget.prefs, onSuccess: () {
                             state.pushReplacement(new MaterialPageRoute(
@@ -269,7 +269,7 @@ class SearchChatsState extends State<SearchChats> {
   }
 
   Stream<MessageData> getUnread(Map<String, dynamic> user) {
-    String chatId = mec.getChatId(currentUserNo, user[Dbkeys.phone]);
+    String chatId = chat360.getChatId(currentUserNo, user[Dbkeys.phone]);
     var controller = StreamController<MessageData>.broadcast();
     unreadSubscriptions.add(FirebaseFirestore.instance
         .collection(DbPaths.collectionmessages)
@@ -351,7 +351,7 @@ class SearchChatsState extends State<SearchChats> {
                                     // int i = this._users.indexWhere((element) =>
                                     //     element[Dbkeys.phone] ==
                                     //     user[Dbkeys.phone]);
-                                    // mec.toast(user[Dbkeys.nickname]);
+                                    // chat360.toast(user[Dbkeys.nickname]);
                                     return user[Dbkeys.nickname]
                                         .toLowerCase()
                                         .trim()
@@ -394,7 +394,7 @@ class SearchChatsState extends State<SearchChats> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: 18,
-                                                color: mecGrey,
+                                                color: chat360Grey,
                                               )),
                                         ))
                                   ]);
@@ -426,7 +426,7 @@ class SearchChatsState extends State<SearchChats> {
                                           style: TextStyle(
                                             fontSize: 16,
                                             height: 1.59,
-                                            color: mecGrey,
+                                            color: chat360Grey,
                                           ))),
                                 )),
                             // will implement Google ads here in next update
@@ -443,7 +443,7 @@ class SearchChatsState extends State<SearchChats> {
   @override
   Widget build(BuildContext context) {
     final observer = Provider.of<Observer>(this.context, listen: false);
-    return mec.getNTPWrappedWidget(ScopedModel<DataModel>(
+    return chat360.getNTPWrappedWidget(ScopedModel<DataModel>(
       model: getModel()!,
       child:
           ScopedModelDescendant<DataModel>(builder: (context, child, _model) {
@@ -451,7 +451,7 @@ class SearchChatsState extends State<SearchChats> {
         // will implement Google ads here in next update
         return Scaffold(
             key: scaffoldState,
-            backgroundColor: mecWhite,
+            backgroundColor: chat360White,
             bottomSheet: IsBannerAdShow == true &&
                     observer.isadmobshow == true &&
                     adWidget != null

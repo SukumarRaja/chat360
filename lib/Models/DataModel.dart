@@ -2,9 +2,9 @@
 import 'dart:core';
 import 'dart:io';
 import 'package:async/async.dart' show StreamGroup;
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -112,7 +112,7 @@ class DataModel extends Model {
   getChatOrder(List<String> chatsWith, String? currentUserNo) {
     List<Stream<QuerySnapshot>> messages = [];
     chatsWith.forEach((otherNo) {
-      String chatId = mec.getChatId(currentUserNo, otherNo);
+      String chatId = chat360.getChatId(currentUserNo, otherNo);
       messages.add(FirebaseFirestore.instance
           .collection(DbPaths.collectionmessages)
           .doc(chatId)

@@ -3,12 +3,12 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/main.dart';
-import 'package:mec/widgets/CameraGalleryImagePicker/multiMediaPicker.dart';
-import 'package:mec/widgets/PhotoEditor/photoeditor.dart';
-import 'package:mec/widgets/VideoEditor/video_editor.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/main.dart';
+import 'package:chat360/widgets/CameraGalleryImagePicker/multiMediaPicker.dart';
+import 'package:chat360/widgets/PhotoEditor/photoeditor.dart';
+import 'package:chat360/widgets/VideoEditor/video_editor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -363,7 +363,7 @@ class _AllinOneCameraGalleryImageVideoPickerState
                           onPressed: () async {
                             File? selectedMedia =
                                 await pickMultiMedia(context).catchError((err) {
-                              mec.toast(
+                              chat360.toast(
                                   getTranslated(context, "invalidfile"));
                             });
 
@@ -422,7 +422,7 @@ class _AllinOneCameraGalleryImageVideoPickerState
                                               videoQuality: 60,
                                             )));
                               } else {
-                                mec.toast(
+                                chat360.toast(
                                     "File type not supported. Please choose a valid .mp4, .mov, .jpg, .jpeg, .png file. \n\nSelected file was $fileExtension ");
                               }
                             }

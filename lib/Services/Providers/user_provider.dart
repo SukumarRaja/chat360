@@ -1,6 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
 import 'package:flutter/widgets.dart';
 
 class UserProvider with ChangeNotifier {

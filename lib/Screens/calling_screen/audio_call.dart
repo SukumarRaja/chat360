@@ -3,19 +3,19 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/homepage/homepage.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/Providers/call_history_provider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Models/call.dart';
-import 'package:mec/Utils/setStatusBarColor.dart';
-import 'package:mec/widgets/Common/cached_image.dart';
-import 'package:mec/Utils/call_utilities.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/homepage/homepage.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/Providers/call_history_provider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Models/call.dart';
+import 'package:chat360/Utils/setStatusBarColor.dart';
+import 'package:chat360/widgets/Common/cached_image.dart';
+import 'package:chat360/Utils/call_utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart' as audioPlayers;
 import 'package:pip_view/pip_view.dart';
@@ -434,8 +434,8 @@ class _AudioCallState extends State<AudioCall> {
             alignment: Alignment.center,
             margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
             color: DESIGN_TYPE == Themetype.messenger
-                ? mecDeepGreen
-                : mecDeepGreen,
+                ? chat360DeepGreen
+                : chat360DeepGreen,
             height: h / 4,
             width: w,
             child: Column(
@@ -479,8 +479,8 @@ class _AudioCallState extends State<AudioCall> {
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: DESIGN_TYPE == Themetype.whatsapp
-                                ? mecWhite
-                                : mecWhite,
+                                ? chat360White
+                                : chat360White,
                             fontSize: 27,
                           ),
                         ),
@@ -495,8 +495,8 @@ class _AudioCallState extends State<AudioCall> {
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           color: DESIGN_TYPE == Themetype.whatsapp
-                              ? mecWhite.withOpacity(0.34)
-                              : mecWhite.withOpacity(0.34),
+                              ? chat360White.withOpacity(0.34)
+                              : chat360White.withOpacity(0.34),
                           fontSize: 15,
                         ),
                       ),
@@ -541,10 +541,10 @@ class _AudioCallState extends State<AudioCall> {
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           color: status == 'pickedup'
-                              ? mecLightGreen
+                              ? chat360LightGreen
                               : DESIGN_TYPE == Themetype.whatsapp
-                                  ? mecWhite.withOpacity(0.5)
-                                  : mecWhite,
+                                  ? chat360White.withOpacity(0.5)
+                                  : chat360White,
                           fontSize: 18,
                         ),
                       ),
@@ -570,7 +570,7 @@ class _AudioCallState extends State<AudioCall> {
                                     ? Icons.call_end_rounded
                                     : Icons.person,
                             size: 140,
-                            color: mecDeepGreen,
+                            color: chat360DeepGreen,
                           ),
                         )
                       : Stack(
@@ -599,7 +599,7 @@ class _AudioCallState extends State<AudioCall> {
                                               ? Icons.call_end_rounded
                                               : Icons.person,
                                       size: 140,
-                                      color: mecDeepGreen,
+                                      color: chat360DeepGreen,
                                     ),
                                   )),
                                   errorWidget: (context, url, error) =>
@@ -614,7 +614,7 @@ class _AudioCallState extends State<AudioCall> {
                                               ? Icons.call_end_rounded
                                               : Icons.person,
                                       size: 140,
-                                      color: mecDeepGreen,
+                                      color: chat360DeepGreen,
                                     ),
                                   ),
                                 )),
@@ -640,7 +640,7 @@ class _AudioCallState extends State<AudioCall> {
                                     ? Icons.call_end_rounded
                                     : Icons.person,
                             size: 140,
-                            color: mecDeepGreen,
+                            color: chat360DeepGreen,
                           ),
                         )
                       : Stack(
@@ -649,7 +649,7 @@ class _AudioCallState extends State<AudioCall> {
                                 height: w + (w / 11),
                                 width: w,
                                 color: DESIGN_TYPE == Themetype.messenger
-                                    ? mecgreen.withOpacity(0.6)
+                                    ? chat360green.withOpacity(0.6)
                                     : Colors.white12,
                                 child: CachedNetworkImage(
                                   imageUrl: widget.call.callerId ==
@@ -671,7 +671,7 @@ class _AudioCallState extends State<AudioCall> {
                                               ? Icons.call_end_rounded
                                               : Icons.person,
                                       size: 140,
-                                      color: mecDeepGreen,
+                                      color: chat360DeepGreen,
                                     ),
                                   )),
                                   errorWidget: (context, url, error) =>
@@ -686,7 +686,7 @@ class _AudioCallState extends State<AudioCall> {
                                               ? Icons.call_end_rounded
                                               : Icons.person,
                                       size: 140,
-                                      color: mecDeepGreen,
+                                      color: chat360DeepGreen,
                                     ),
                                   ),
                                 )),
@@ -786,10 +786,10 @@ class _AudioCallState extends State<AudioCall> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: status == 'pickedup'
-                  ? mecLightGreen
+                  ? chat360LightGreen
                   : DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
               fontSize: 25,
             ),
           ),
@@ -803,11 +803,11 @@ class _AudioCallState extends State<AudioCall> {
                 fontWeight: FontWeight.normal,
                 color: status == 'pickedup'
                     ? DESIGN_TYPE == Themetype.whatsapp
-                        ? mecLightGreen
-                        : mecBlack
+                        ? chat360LightGreen
+                        : chat360Black
                     : DESIGN_TYPE == Themetype.whatsapp
-                        ? mecLightGreen
-                        : mecgreen,
+                        ? chat360LightGreen
+                        : chat360green,
                 fontSize: 16,
               ),
             ),
@@ -864,8 +864,8 @@ class _AudioCallState extends State<AudioCall> {
                         : Icons.call,
                     size: w > h ? 60 : 140,
                     color: DESIGN_TYPE == Themetype.whatsapp
-                        ? mecWhite.withOpacity(0.25)
-                        : mecBlack.withOpacity(0.25),
+                        ? chat360White.withOpacity(0.25)
+                        : chat360Black.withOpacity(0.25),
                   ),
                 ),
           SizedBox(height: 45),
@@ -875,7 +875,7 @@ class _AudioCallState extends State<AudioCall> {
                 : widget.call.callerName!,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: DESIGN_TYPE == Themetype.whatsapp ? mecWhite : mecBlack,
+              color: DESIGN_TYPE == Themetype.whatsapp ? chat360White : chat360Black,
               fontSize: 22,
             ),
           ),
@@ -891,8 +891,8 @@ class _AudioCallState extends State<AudioCall> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecWhite.withOpacity(0.54)
-                  : mecBlack.withOpacity(0.54),
+                  ? chat360White.withOpacity(0.54)
+                  : chat360Black.withOpacity(0.54),
               fontSize: 19,
             ),
           ),
@@ -1092,8 +1092,8 @@ class _AudioCallState extends State<AudioCall> {
             ? PIPView(builder: (context, isFloating) {
                 return Scaffold(
                     backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                        ? mecDeepGreen
-                        : mecDeepGreen,
+                        ? chat360DeepGreen
+                        : chat360DeepGreen,
                     body:
                         StreamBuilder<DocumentSnapshot<Map<String, dynamic>?>?>(
                       stream: stream
@@ -1187,8 +1187,8 @@ class _AudioCallState extends State<AudioCall> {
             : PIPView(builder: (context, isFloating) {
                 return Scaffold(
                     backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                        ? mecDeepGreen
-                        : mecWhite,
+                        ? chat360DeepGreen
+                        : chat360White,
                     body:
                         StreamBuilder<DocumentSnapshot<Map<String, dynamic>?>?>(
                       stream: stream

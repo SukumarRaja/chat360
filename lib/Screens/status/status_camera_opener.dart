@@ -1,13 +1,13 @@
 //
 // import 'dart:io';
 // import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:mec/Configs/Dbkeys.dart';
-// import 'package:mec/Configs/Dbpaths.dart';
-// import 'package:mec/Configs/optional_constants.dart';
-// import 'package:mec/Screens/status/components/VideoPicker/VideoPicker.dart';
-// import 'package:mec/Services/Providers/StatusProvider.dart';
-// import 'package:mec/Services/Providers/Observer.dart';
-// import 'package:mec/Services/localization/language_constants.dart';
+// import 'package:chat360/Configs/Dbkeys.dart';
+// import 'package:chat360/Configs/Dbpaths.dart';
+// import 'package:chat360/Configs/optional_constants.dart';
+// import 'package:chat360/Screens/status/components/VideoPicker/VideoPicker.dart';
+// import 'package:chat360/Services/Providers/StatusProvider.dart';
+// import 'package:chat360/Services/Providers/Observer.dart';
+// import 'package:chat360/Services/localization/language_constants.dart';
 // import 'package:firebase_storage/firebase_storage.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_image_compress/flutter_image_compress.dart';

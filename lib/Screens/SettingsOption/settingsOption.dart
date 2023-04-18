@@ -1,20 +1,20 @@
 
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Screens/notifications/AllNotifications.dart';
-import 'package:mec/Screens/privacypolicy&TnC/PdfViewFromCachedUrl.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/custom_url_launcher.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/MyElevatedButton/MyElevatedButton.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Screens/notifications/AllNotifications.dart';
+import 'package:chat360/Screens/privacypolicy&TnC/PdfViewFromCachedUrl.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/custom_url_launcher.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/MyElevatedButton/MyElevatedButton.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -59,7 +59,7 @@ class _SettingsOptionState extends State<SettingsOption> {
     final observer = Provider.of<Observer>(context, listen: false);
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(Scaffold(
+        scaffold: chat360.getNTPWrappedWidget(Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
             elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
@@ -68,22 +68,22 @@ class _SettingsOptionState extends State<SettingsOption> {
                 Icons.arrow_back,
                 size: 24,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                ? mecDeepGreen
-                : mecWhite,
+                ? chat360DeepGreen
+                : chat360White,
             title: Text(
               getTranslated(context, 'settingsoption'),
               style: TextStyle(
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                   fontSize: 18.5),
             ),
           ),
@@ -113,7 +113,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                          fontSize: 16, color: mecBlack),
+                                          fontSize: 16, color: chat360Black),
                                     ),
                                     subtitle: Padding(
                                       padding: const EdgeInsets.only(top: 7),
@@ -126,7 +126,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                             fontSize: 14,
-                                            color: mecBlack
+                                            color: chat360Black
                                                 .withOpacity(0.56)),
                                       ),
                                     ),
@@ -136,7 +136,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                         },
                                         icon: Icon(
                                           Icons.edit,
-                                          color: mecgreen,
+                                          color: chat360green,
                                         )))),
                             ListTile(
                               trailing: SizedBox(
@@ -146,15 +146,15 @@ class _SettingsOptionState extends State<SettingsOption> {
                                         child: Padding(
                                         padding: const EdgeInsets.all(3.0),
                                         child: LinearProgressIndicator(
-                                          backgroundColor: mecLightGreen
+                                          backgroundColor: chat360LightGreen
                                               .withOpacity(0.4),
                                           valueColor:
                                               AlwaysStoppedAnimation<Color>(
-                                                  mecLightGreen),
+                                                  chat360LightGreen),
                                         ),
                                       ))
                                     : Switch(
-                                        activeColor: mecgreen,
+                                        activeColor: chat360green,
                                         inactiveThumbColor: Colors.blueGrey,
                                         inactiveTrackColor: Colors.grey[300],
                                         onChanged: (b) async {
@@ -266,7 +266,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                 padding: const EdgeInsets.only(top: 6),
                                 child: Icon(
                                   Icons.notifications_on,
-                                  color: mecgreen.withOpacity(0.75),
+                                  color: chat360green.withOpacity(0.75),
                                   size: 26,
                                 ),
                               ),
@@ -275,7 +275,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                    fontSize: 16, color: mecBlack),
+                                    fontSize: 16, color: chat360Black),
                               ),
                               subtitle: Padding(
                                 padding: const EdgeInsets.only(top: 4),
@@ -286,7 +286,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontSize: 14,
-                                      color: mecBlack.withOpacity(0.56)),
+                                      color: chat360Black.withOpacity(0.56)),
                                 ),
                               ),
                             ),
@@ -305,7 +305,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                        fontSize: 16, color: mecBlack),
+                                        fontSize: 16, color: chat360Black),
                                   ),
                                   subtitle: Padding(
                                     padding: const EdgeInsets.only(top: 7),
@@ -316,7 +316,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                       style: TextStyle(
                                           fontSize: 14,
                                           color:
-                                              mecBlack.withOpacity(0.56)),
+                                              chat360Black.withOpacity(0.56)),
                                     ),
                                   ),
                                   trailing: IconButton(
@@ -325,7 +325,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                       },
                                       icon: Icon(
                                         Icons.edit,
-                                        color: mecgreen,
+                                        color: chat360green,
                                       )))),
                           ListTile(
                             trailing: SizedBox(
@@ -335,9 +335,9 @@ class _SettingsOptionState extends State<SettingsOption> {
                                   padding: const EdgeInsets.all(3.0),
                                   child: LinearProgressIndicator(
                                     backgroundColor:
-                                        mecLightGreen.withOpacity(0.4),
+                                        chat360LightGreen.withOpacity(0.4),
                                     valueColor: AlwaysStoppedAnimation<Color>(
-                                        mecLightGreen),
+                                        chat360LightGreen),
                                   ),
                                 ))),
                             onTap: () {
@@ -348,7 +348,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                               padding: const EdgeInsets.only(top: 6),
                               child: Icon(
                                 Icons.notifications_on,
-                                color: mecgreen.withOpacity(0.75),
+                                color: chat360green.withOpacity(0.75),
                                 size: 26,
                               ),
                             ),
@@ -357,7 +357,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                  fontSize: 16, color: mecBlack),
+                                  fontSize: 16, color: chat360Black),
                             ),
                             subtitle: Padding(
                               padding: const EdgeInsets.only(top: 4),
@@ -368,7 +368,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize: 14,
-                                    color: mecBlack.withOpacity(0.56)),
+                                    color: chat360Black.withOpacity(0.56)),
                               ),
                             ),
                           ),
@@ -388,7 +388,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   padding: const EdgeInsets.only(top: 6),
                   child: Icon(
                     Icons.account_circle_rounded,
-                    color: mecgreen.withOpacity(0.75),
+                    color: chat360green.withOpacity(0.75),
                     size: 26,
                   ),
                 ),
@@ -396,7 +396,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   getTranslated(context, 'editprofile'),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16, color: mecBlack),
+                  style: TextStyle(fontSize: 16, color: chat360Black),
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 4),
@@ -405,7 +405,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: 14, color: mecBlack.withOpacity(0.56)),
+                        fontSize: 14, color: chat360Black.withOpacity(0.56)),
                   ),
                 ),
               ),
@@ -418,7 +418,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   padding: const EdgeInsets.only(top: 6),
                   child: Icon(
                     Icons.rate_review_outlined,
-                    color: mecgreen.withOpacity(0.75),
+                    color: chat360green.withOpacity(0.75),
                     size: 26,
                   ),
                 ),
@@ -426,7 +426,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   getTranslated(context, 'feedback'),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16, color: mecBlack),
+                  style: TextStyle(fontSize: 16, color: chat360Black),
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 4),
@@ -435,7 +435,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: 14, color: mecBlack.withOpacity(0.56)),
+                        fontSize: 14, color: chat360Black.withOpacity(0.56)),
                   ),
                 ),
               ),
@@ -448,7 +448,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   padding: const EdgeInsets.only(top: 3),
                   child: Icon(
                     Icons.star_outline_rounded,
-                    color: mecgreen.withOpacity(0.75),
+                    color: chat360green.withOpacity(0.75),
                     size: 29,
                   ),
                 ),
@@ -456,7 +456,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   getTranslated(context, 'rate'),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16, color: mecBlack),
+                  style: TextStyle(fontSize: 16, color: chat360Black),
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 4),
@@ -465,7 +465,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: 14, color: mecBlack.withOpacity(0.56)),
+                        fontSize: 14, color: chat360Black.withOpacity(0.56)),
                   ),
                 ),
               ),
@@ -495,7 +495,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                   getTranslated(context, 'backupdesc'),
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      height: 1.3, color: mecGrey),
+                                      height: 1.3, color: chat360Grey),
                                 )
                               ],
                             ),
@@ -508,7 +508,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   padding: const EdgeInsets.only(top: 3),
                   child: Icon(
                     Icons.cloud_upload_outlined,
-                    color: mecgreen.withOpacity(0.75),
+                    color: chat360green.withOpacity(0.75),
                     size: 25,
                   ),
                 ),
@@ -516,7 +516,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   getTranslated(context, 'backup'),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16, color: mecBlack),
+                  style: TextStyle(fontSize: 16, color: chat360Black),
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 4),
@@ -525,7 +525,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: 14, color: mecBlack.withOpacity(0.56)),
+                        fontSize: 14, color: chat360Black.withOpacity(0.56)),
                   ),
                 ),
               ),
@@ -543,7 +543,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   padding: const EdgeInsets.only(top: 3),
                   child: Icon(
                     Icons.notifications_none,
-                    color: mecgreen.withOpacity(0.75),
+                    color: chat360green.withOpacity(0.75),
                     size: 29,
                   ),
                 ),
@@ -551,7 +551,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   getTranslated(context, 'pmtevents'),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16, color: mecBlack),
+                  style: TextStyle(fontSize: 16, color: chat360Black),
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 4),
@@ -560,7 +560,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: 14, color: mecBlack.withOpacity(0.56)),
+                        fontSize: 14, color: chat360Black.withOpacity(0.56)),
                   ),
                 ),
               ),
@@ -597,7 +597,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   padding: const EdgeInsets.only(top: 6),
                   child: Icon(
                     Icons.help_outline,
-                    color: mecgreen.withOpacity(0.75),
+                    color: chat360green.withOpacity(0.75),
                     size: 26,
                   ),
                 ),
@@ -605,7 +605,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   getTranslated(context, 'tnc'),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16, color: mecBlack),
+                  style: TextStyle(fontSize: 16, color: chat360Black),
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 4),
@@ -614,7 +614,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: 14, color: mecBlack.withOpacity(0.56)),
+                        fontSize: 14, color: chat360Black.withOpacity(0.56)),
                   ),
                 ),
               ),
@@ -651,7 +651,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   padding: const EdgeInsets.only(top: 6),
                   child: Icon(
                     Icons.lock_outline_rounded,
-                    color: mecgreen.withOpacity(0.75),
+                    color: chat360green.withOpacity(0.75),
                     size: 26,
                   ),
                 ),
@@ -659,7 +659,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   getTranslated(context, 'pp'),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16, color: mecBlack),
+                  style: TextStyle(fontSize: 16, color: chat360Black),
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 4),
@@ -668,7 +668,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: 14, color: mecBlack.withOpacity(0.56)),
+                        fontSize: 14, color: chat360Black.withOpacity(0.56)),
                   ),
                 ),
               ),
@@ -720,7 +720,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                                       height: w / 10,
                                     ),
                                     myElevatedButton(
-                                        color: mecLightGreen,
+                                        color: chat360LightGreen,
                                         child: Padding(
                                           padding: const EdgeInsets.fromLTRB(
                                               10, 15, 10, 15),
@@ -849,7 +849,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   padding: const EdgeInsets.only(top: 6),
                   child: Icon(
                     Icons.delete_outlined,
-                    color: mecgreen.withOpacity(0.75),
+                    color: chat360green.withOpacity(0.75),
                     size: 26,
                   ),
                 ),
@@ -857,7 +857,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                   getTranslated(context, 'deleteaccount'),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16, color: mecBlack),
+                  style: TextStyle(fontSize: 16, color: chat360Black),
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 4),
@@ -866,25 +866,25 @@ class _SettingsOptionState extends State<SettingsOption> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: 14, color: mecBlack.withOpacity(0.56)),
+                        fontSize: 14, color: chat360Black.withOpacity(0.56)),
                   ),
                 ),
               ),
               ListTile(
                 onTap: () {
-                  mec.invite(context);
+                  chat360.invite(context);
                 },
                 contentPadding: EdgeInsets.fromLTRB(30, 3, 10, 3),
                 leading: Icon(
                   Icons.people_rounded,
-                  color: mecgreen.withOpacity(0.75),
+                  color: chat360green.withOpacity(0.75),
                   size: 26,
                 ),
                 title: Text(
                   getTranslated(context, 'share'),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16, color: mecBlack),
+                  style: TextStyle(fontSize: 16, color: chat360Black),
                 ),
               ),
               observer.isLogoutButtonShowInSettingsPage == true
@@ -907,7 +907,7 @@ class _SettingsOptionState extends State<SettingsOption> {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                             fontSize: 16,
-                            color: mecBlack,
+                            color: chat360Black,
                             fontWeight: FontWeight.w600),
                       ),
                     )
@@ -936,27 +936,27 @@ class _SettingsOptionState extends State<SettingsOption> {
                         Icon(
                           Icons.star,
                           size: 40,
-                          color: mecBlack.withOpacity(0.56),
+                          color: chat360Black.withOpacity(0.56),
                         ),
                         Icon(
                           Icons.star,
                           size: 40,
-                          color: mecBlack.withOpacity(0.56),
+                          color: chat360Black.withOpacity(0.56),
                         ),
                         Icon(
                           Icons.star,
                           size: 40,
-                          color: mecBlack.withOpacity(0.56),
+                          color: chat360Black.withOpacity(0.56),
                         ),
                         Icon(
                           Icons.star,
                           size: 40,
-                          color: mecBlack.withOpacity(0.56),
+                          color: chat360Black.withOpacity(0.56),
                         ),
                         Icon(
                           Icons.star,
                           size: 40,
-                          color: mecBlack.withOpacity(0.56),
+                          color: chat360Black.withOpacity(0.56),
                         ),
                       ]),
                   onTap: () {
@@ -975,13 +975,13 @@ class _SettingsOptionState extends State<SettingsOption> {
               Padding(
                   child: Text(
                     getTranslated(context, 'loved'),
-                    style: TextStyle(fontSize: 14, color: mecBlack),
+                    style: TextStyle(fontSize: 14, color: chat360Black),
                     textAlign: TextAlign.center,
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
               Center(
                   child: myElevatedButton(
-                      color: mecgreen,
+                      color: chat360green,
                       child: Text(
                         getTranslated(context, 'rate'),
                         style: TextStyle(color: Colors.white),

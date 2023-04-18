@@ -3,10 +3,10 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/main.dart';
-import 'package:mec/widgets/CameraGalleryImagePicker/image_pick.dart';
-import 'package:mec/widgets/PhotoEditor/photoeditor.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/main.dart';
+import 'package:chat360/widgets/CameraGalleryImagePicker/image_pick.dart';
+import 'package:chat360/widgets/PhotoEditor/photoeditor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -293,7 +293,7 @@ class _CameraImageGalleryPickerState extends State<CameraImageGalleryPicker>
                             // Navigator.of(context).pop();
                             File? selectedMedia = await pickSingleImage(context)
                                 .catchError((err) {
-                              mec.toast(
+                              chat360.toast(
                                   "Invalid file. Cannot Select this file !");
                             });
 
@@ -329,7 +329,7 @@ class _CameraImageGalleryPickerState extends State<CameraImageGalleryPicker>
                                                   File(file.path),
                                             )));
                               } else {
-                                mec.toast(
+                                chat360.toast(
                                     "File type not supported. Please choose a .jpg, .jpeg, .png file. \n\nSelected file was $fileExtension ");
                               }
                             }

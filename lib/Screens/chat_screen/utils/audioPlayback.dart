@@ -1,8 +1,8 @@
 
 import 'dart:async';
-import 'package:mec/widgets/Audioplayer/audioplayer.dart';
+import 'package:chat360/widgets/Audioplayer/audioplayer.dart';
 import 'package:flutter/material.dart';
-import 'package:mec/Configs/app_constants.dart';
+import 'package:chat360/Configs/app_constants.dart';
 
 typedef void OnError(Exception exception);
 
@@ -165,7 +165,7 @@ class _AudioPlaybackState extends State<AudioPlayback> {
                         TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),
                   Slider(
-                      activeColor: mecDeepGreen,
+                      activeColor: chat360DeepGreen,
                       value: position?.inMilliseconds.toDouble() ?? 0.0,
                       onChanged: (double value) {
                         audioPlayer.seek((value / 1000).roundToDouble());

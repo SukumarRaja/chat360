@@ -1,13 +1,13 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Screens/splash_screen/splash_screen.dart';
-import 'package:mec/Services/Providers/Observer.dart';
+import 'package:chat360/Screens/splash_screen/splash_screen.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mec/Models/call.dart';
-import 'package:mec/Services/Providers/user_provider.dart';
-import 'package:mec/Models/call_methods.dart';
-import 'package:mec/Screens/calling_screen/pickup_screen.dart';
+import 'package:chat360/Models/call.dart';
+import 'package:chat360/Services/Providers/user_provider.dart';
+import 'package:chat360/Models/call_methods.dart';
+import 'package:chat360/Screens/calling_screen/pickup_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PickupLayout extends StatelessWidget {

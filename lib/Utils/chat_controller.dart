@@ -1,14 +1,14 @@
 
 import 'dart:core';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Screens/auth_screens/authentication.dart';
-import 'package:mec/Models/DataModel.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Screens/auth_screens/authentication.dart';
+import 'package:chat360/Models/DataModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mec/Configs/Enum.dart';
+import 'package:chat360/Configs/Enum.dart';
 
 class ChatController {
   static request(currentUserNo, peerNo, chatid) async {
@@ -69,10 +69,10 @@ class ChatController {
         .set({'$peerNo': ChatStatus.blocked.index}, SetOptions(merge: true));
     FirebaseFirestore.instance
         .collection(DbPaths.collectionmessages)
-        .doc(mec.getChatId(currentUserNo, peerNo))
+        .doc(chat360.getChatId(currentUserNo, peerNo))
         .set({'$currentUserNo': DateTime.now().millisecondsSinceEpoch},
             SetOptions(merge: true));
-    // mec.toast('Blocked.');
+    // chat360.toast('Blocked.');
   }
 
   static Future<ChatStatus> getStatus(currentUserNo, peerNo) async {
@@ -92,7 +92,7 @@ class ChatController {
         .set({
       Dbkeys.hidden: FieldValue.arrayUnion([peerNo])
     }, SetOptions(merge: true));
-    // mec.toast(  'Chat hidden.');
+    // chat360.toast(  'Chat hidden.');
   }
 
   static unhideChat(currentUserNo, peerNo) {
@@ -102,7 +102,7 @@ class ChatController {
         .set({
       Dbkeys.hidden: FieldValue.arrayRemove([peerNo])
     }, SetOptions(merge: true));
-    // mec.toast('Chat is visible.');
+    // chat360.toast('Chat is visible.');
   }
 
   static lockChat(currentUserNo, peerNo) {
@@ -112,7 +112,7 @@ class ChatController {
         .set({
       Dbkeys.locked: FieldValue.arrayUnion([peerNo])
     }, SetOptions(merge: true));
-    // mec.toast('Chat locked.');
+    // chat360.toast('Chat locked.');
   }
 
   static unlockChat(currentUserNo, peerNo) {
@@ -122,7 +122,7 @@ class ChatController {
         .set({
       Dbkeys.locked: FieldValue.arrayRemove([peerNo])
     }, SetOptions(merge: true));
-    // mec.toast('Chat unlocked.');
+    // chat360.toast('Chat unlocked.');
   }
 
   static void authenticate(DataModel model, String caption,

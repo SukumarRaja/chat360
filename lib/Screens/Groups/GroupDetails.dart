@@ -2,23 +2,23 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Screens/Groups/AddContactsToGroup.dart';
-import 'package:mec/Screens/Groups/EditGroupDetails.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Screens/profile_settings/profile_view.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/Providers/GroupChatProvider.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/ImagePicker/image_picker.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Screens/Groups/AddContactsToGroup.dart';
+import 'package:chat360/Screens/Groups/EditGroupDetails.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Screens/profile_settings/profile_view.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/Providers/GroupChatProvider.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/ImagePicker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
@@ -27,7 +27,7 @@ import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mec/Configs/Enum.dart';
+import 'package:chat360/Configs/Enum.dart';
 
 class GroupDetails extends StatefulWidget {
   final DataModel model;
@@ -132,7 +132,7 @@ class _GroupDetailsState extends State<GroupDetails> {
               ElevatedButton(
                   child: Text(
                     getTranslated(context, 'cancel'),
-                    style: TextStyle(color: mecgreen, fontSize: 18),
+                    style: TextStyle(color: chat360green, fontSize: 18),
                   ),
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -181,7 +181,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                     setStateIfMounted(() {
                       isloading = false;
                     });
-                    mec.toast(
+                    chat360.toast(
                         'Failed to set as Admin ! \nError occured -$onError');
                   });
                 },
@@ -203,7 +203,7 @@ class _GroupDetailsState extends State<GroupDetails> {
               ElevatedButton(
                   child: Text(
                     getTranslated(context, 'cancel'),
-                    style: TextStyle(color: mecgreen, fontSize: 18),
+                    style: TextStyle(color: chat360green, fontSize: 18),
                   ),
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -251,7 +251,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                     setStateIfMounted(() {
                       isloading = false;
                     });
-                    mec.toast(
+                    chat360.toast(
                         'Failed to set as Admin ! \nError occured -$onError');
                   });
                 },
@@ -273,7 +273,7 @@ class _GroupDetailsState extends State<GroupDetails> {
               ElevatedButton(
                   child: Text(
                     getTranslated(context, 'cancel'),
-                    style: TextStyle(color: mecgreen, fontSize: 18),
+                    style: TextStyle(color: chat360green, fontSize: 18),
                   ),
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -360,7 +360,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                     setStateIfMounted(() {
                       isloading = false;
                     });
-                    // mec.toast(
+                    // chat360.toast(
                     //     'Failed to remove ! \nError occured -$onError');
                   });
                 },
@@ -388,7 +388,7 @@ class _GroupDetailsState extends State<GroupDetails> {
     final observer = Provider.of<Observer>(context, listen: false);
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(
+        scaffold: chat360.getNTPWrappedWidget(
             Consumer<List<GroupModel>>(builder: (context, groupList, _child) {
           Map<dynamic, dynamic> groupDoc = groupList.indexWhere((element) =>
                       element.docmap[Dbkeys.groupID] == widget.groupID) <
@@ -425,8 +425,8 @@ class _GroupDetailsState extends State<GroupDetails> {
                             Icons.arrow_back,
                             size: 24,
                             color: DESIGN_TYPE == Themetype.whatsapp
-                                ? mecWhite
-                                : mecBlack,
+                                ? chat360White
+                                : chat360Black,
                           ),
                           onPressed: () {
                             Navigator.of(context).pop();
@@ -462,14 +462,14 @@ class _GroupDetailsState extends State<GroupDetails> {
                                   Icons.edit,
                                   size: 21,
                                   color: DESIGN_TYPE == Themetype.whatsapp
-                                      ? mecWhite
-                                      : mecBlack,
+                                      ? chat360White
+                                      : chat360Black,
                                 ))
                             : SizedBox()
                       ],
                       backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                          ? mecDeepGreen
-                          : mecWhite,
+                          ? chat360DeepGreen
+                          : chat360White,
                       title: InkWell(
                         onTap: () {
                           // Navigator.push(
@@ -487,8 +487,8 @@ class _GroupDetailsState extends State<GroupDetails> {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   color: DESIGN_TYPE == Themetype.whatsapp
-                                      ? mecWhite
-                                      : mecBlack,
+                                      ? chat360White
+                                      : chat360Black,
                                   fontSize: 17.0,
                                   fontWeight: FontWeight.w500),
                             ),
@@ -502,8 +502,8 @@ class _GroupDetailsState extends State<GroupDetails> {
                                   : '${getTranslated(context, 'createdby')} ${groupDoc[Dbkeys.groupCREATEDBY]}, ${formatDate(groupDoc[Dbkeys.groupCREATEDON].toDate())}',
                               style: TextStyle(
                                   color: DESIGN_TYPE == Themetype.whatsapp
-                                      ? mecWhite
-                                      : mecGrey,
+                                      ? chat360White
+                                      : chat360Grey,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400),
                             ),
@@ -545,7 +545,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                         shape: BoxShape.rectangle,
                                       ),
                                       child: Icon(Icons.people,
-                                          color: mecGrey.withOpacity(0.5),
+                                          color: chat360Grey.withOpacity(0.5),
                                           size: 75),
                                     ),
                                     errorWidget: (context, url, error) =>
@@ -557,7 +557,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                         shape: BoxShape.rectangle,
                                       ),
                                       child: Icon(Icons.people,
-                                          color: mecGrey.withOpacity(0.5),
+                                          color: chat360Grey.withOpacity(0.5),
                                           size: 75),
                                     ),
                                   ),
@@ -649,7 +649,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                   },
                                                   icon: Icon(
                                                       Icons.camera_alt_rounded,
-                                                      color: mecWhite,
+                                                      color: chat360White,
                                                       size: 35),
                                                 )
                                               : SizedBox(),
@@ -664,7 +664,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                           widget.currentUserno)
                                                   ? IconButton(
                                                       onPressed: () async {
-                                                        mec.toast(
+                                                        chat360.toast(
                                                             getTranslated(
                                                                 context,
                                                                 'plswait'));
@@ -755,7 +755,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                       icon: Icon(
                                                           Icons
                                                               .delete_outline_rounded,
-                                                          color: mecWhite,
+                                                          color: chat360White,
                                                           size: 35),
                                                     )
                                                   : SizedBox(),
@@ -782,7 +782,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              color: mecgreen,
+                                              color: chat360green,
                                               fontSize: 16),
                                         ),
                                         groupDoc[Dbkeys.groupADMINLIST]
@@ -819,7 +819,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                 },
                                                 icon: Icon(
                                                   Icons.edit,
-                                                  color: mecGrey,
+                                                  color: chat360Grey,
                                                 ))
                                             : SizedBox()
                                       ],
@@ -840,7 +840,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                           fontWeight: FontWeight.normal,
-                                          color: mecBlack,
+                                          color: chat360Black,
                                           fontSize: 15.3),
                                     ),
                                     SizedBox(
@@ -869,7 +869,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              color: mecgreen,
+                                              color: chat360green,
                                               fontSize: 16),
                                         ),
                                         groupDoc[Dbkeys.groupADMINLIST]
@@ -906,7 +906,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                 },
                                                 icon: Icon(
                                                   Icons.edit,
-                                                  color: mecGrey,
+                                                  color: chat360Grey,
                                                 ))
                                             : SizedBox()
                                       ],
@@ -925,7 +925,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                           fontWeight: FontWeight.normal,
-                                          color: mecBlack,
+                                          color: chat360Black,
                                           fontSize: 15.3),
                                     ),
                                     SizedBox(
@@ -964,7 +964,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                 textAlign: TextAlign.left,
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
-                                                    color: mecgreen,
+                                                    color: chat360green,
                                                     fontSize: 16),
                                               ),
                                             ],
@@ -1028,7 +1028,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                         child: Icon(Icons.add,
                                                             size: 19,
                                                             color:
-                                                                mecLightGreen),
+                                                                chat360LightGreen),
                                                       ),
                                                       // Text(
                                                       //   getTranslated(context, 'add'),
@@ -1036,7 +1036,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                       //       fontWeight:
                                                       //           FontWeight.bold,
                                                       //       color:
-                                                      //           mecLightGreen),
+                                                      //           chat360LightGreen),
                                                       // ),
                                                     ],
                                                   ),
@@ -1065,7 +1065,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                     getTranslated(
                                                         context, 'cancel'),
                                                     style: TextStyle(
-                                                        color: mecgreen,
+                                                        color: chat360green,
                                                         fontSize: 18),
                                                   ),
                                                   onPressed: () {
@@ -1152,7 +1152,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                     getTranslated(
                                                         context, 'cancel'),
                                                     style: TextStyle(
-                                                        color: mecgreen,
+                                                        color: chat360green,
                                                         fontSize: 18),
                                                   ),
                                                   onPressed: () {
@@ -1289,7 +1289,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                               .delete();
                                                         } catch (err) {}
                                                       }).catchError((err) {
-                                                        // mec.toast(
+                                                        // chat360.toast(
                                                         //     getTranslated(context,
                                                         //         'unabletoleavegrp'));
                                                       });
@@ -1332,11 +1332,11 @@ class _GroupDetailsState extends State<GroupDetails> {
                                       child: CircularProgressIndicator(
                                           valueColor:
                                               AlwaysStoppedAnimation<Color>(
-                                                  mecBlue)),
+                                                  chat360Blue)),
                                     ),
                                     color: DESIGN_TYPE == Themetype.whatsapp
-                                        ? mecBlack.withOpacity(0.6)
-                                        : mecWhite.withOpacity(0.6))
+                                        ? chat360Black.withOpacity(0.6)
+                                        : chat360White.withOpacity(0.6))
                                 : Container(),
                           )
                         ],
@@ -1567,7 +1567,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                                 child: Icon(
                                                   Icons.more_vert_outlined,
                                                   size: 20,
-                                                  color: mecBlack,
+                                                  color: chat360Black,
                                                 ))
                                         : null,
                                   ),
@@ -2052,7 +2052,7 @@ class _GroupDetailsState extends State<GroupDetails> {
                                               child: Icon(
                                                 Icons.more_vert_outlined,
                                                 size: 20,
-                                                color: mecBlack,
+                                                color: chat360Black,
                                               ))
                                       : null,
                                 ),

@@ -1,11 +1,11 @@
 // 
 // import 'dart:io';
 // import 'package:dio/dio.dart';
-// import 'package:mec/Configs/app_constants.dart';
-// import 'package:mec/Services/localization/language_constants.dart';
-// import 'package:mec/Services/Providers/DownloadInfoProvider.dart';
-// import 'package:mec/Utils/open_settings.dart';
-// import 'package:mec/Utils/utils.dart';
+// import 'package:chat360/Configs/app_constants.dart';
+// import 'package:chat360/Services/localization/language_constants.dart';
+// import 'package:chat360/Services/Providers/DownloadInfoProvider.dart';
+// import 'package:chat360/Utils/open_settings.dart';
+// import 'package:chat360/Utils/utils.dart';
 // import 'package:flutter/material.dart';
 // import 'package:path_provider/path_provider.dart';
 // import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -25,7 +25,7 @@
 //   try {
 //     final downloadinfo =
 //         Provider.of<DownloadInfoprovider>(context, listen: false);
-//     mec.checkAndRequestPermission(
+//     chat360.checkAndRequestPermission(
 //             Platform.isIOS ? Permission.storage : Permission.storage)
 //         .then((res) async {
 //       if (res) {
@@ -36,7 +36,7 @@
 //         File outputFile = File('${knockDir!.path}/$fileName');
 //         bool fileExists = await outputFile.exists();
 //         if (fileExists == true) {
-//           mec.toast(
+//           chat360.toast(
 //             getTranslated(context, 'fileexists') + ' $Appname',
 //           );
 //         } else {
@@ -118,24 +118,24 @@
 //             Navigator.of(keyloader!.currentContext!, rootNavigator: true)
 //                 .pop(); //
 //             downloadinfo.calculatedownloaded(0.00, 0);
-//             mec.toast(
+//             chat360.toast(
 //               getTranslated(context, 'fileexists') + ' $Appname',
 //             );
 //           }).onError((err, er) {
 //             print('ERROR OCCURED WHILE DOWNLOADING MEDIA: ' + err.toString());
 //             Navigator.of(keyloader!.currentContext!, rootNavigator: true)
 //                 .pop(); //
-//             mec.toast(getTranslated(context, 'eps'));
+//             chat360.toast(getTranslated(context, 'eps'));
 //           });
 //         }
 //       } else {
-//         mec.showRationale(getTranslated(context, 'ps'));
+//         chat360.showRationale(getTranslated(context, 'ps'));
 //         Navigator.pushReplacement(context,
 //             new MaterialPageRoute(builder: (context) => OpenSettings()));
 //       }
 //     });
 //   } catch (e) {
-//     mec.toast(
+//     chat360.toast(
 //       getTranslated(context, 'alreadydeleted'),
 //     );
 //   }

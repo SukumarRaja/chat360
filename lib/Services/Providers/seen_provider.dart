@@ -1,6 +1,6 @@
 
-import 'package:mec/Services/Providers/seen_state.dart';
-import 'package:mec/Screens/chat_screen/Widget/bubble.dart';
+import 'package:chat360/Services/Providers/seen_state.dart';
+import 'package:chat360/Screens/chat_screen/Widget/bubble.dart';
 import 'package:flutter/widgets.dart';
 
 class SeenProvider extends StatefulWidget {

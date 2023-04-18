@@ -1,9 +1,9 @@
 
 import 'dart:async';
 import 'dart:typed_data';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'package:flutter/material.dart';
@@ -77,7 +77,7 @@ class _MultiPlaybackState extends State<MultiPlayback> {
       setState(() {
         showPlayingLoader = false;
       });
-      mec.toast('This message is deleted by sender');
+      chat360.toast('This message is deleted by sender');
     }
   }
 
@@ -141,7 +141,7 @@ class _MultiPlaybackState extends State<MultiPlayback> {
       setState(() {
         showPlayingLoader = false;
       });
-      mec.toast('This message is deleted by sender');
+      chat360.toast('This message is deleted by sender');
     }
   }
 

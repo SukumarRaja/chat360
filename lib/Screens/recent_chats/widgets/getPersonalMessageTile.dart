@@ -1,22 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/chat_screen/chat.dart';
-import 'package:mec/Screens/recent_chats/RecentsChats.dart';
-import 'package:mec/Screens/recent_chats/widgets/getLastMessageTime.dart';
-import 'package:mec/Screens/recent_chats/widgets/getMediaMessage.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/alias.dart';
-import 'package:mec/Utils/chat_controller.dart';
-import 'package:mec/Utils/unawaited.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/Utils/late_load.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/chat_screen/chat.dart';
+import 'package:chat360/Screens/recent_chats/RecentsChats.dart';
+import 'package:chat360/Screens/recent_chats/widgets/getLastMessageTime.dart';
+import 'package:chat360/Screens/recent_chats/widgets/getMediaMessage.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/alias.dart';
+import 'package:chat360/Utils/chat_controller.dart';
+import 'package:chat360/Utils/unawaited.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/Utils/late_load.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -67,7 +67,7 @@ Widget getPersonalMessageTile(
 
           FirebaseFirestore.instance
               .collection(DbPaths.collectionmessages)
-              .doc(mec.getChatId(currentUserNo, peer[Dbkeys.phone]))
+              .doc(chat360.getChatId(currentUserNo, peer[Dbkeys.phone]))
               .update({
             "$currentUserNo-muted": !isMuted,
           });
@@ -92,7 +92,7 @@ Widget getPersonalMessageTile(
                     ElevatedButton(
                       child: Text(
                         getTranslated(context, 'cancel'),
-                        style: TextStyle(color: mecgreen, fontSize: 18),
+                        style: TextStyle(color: chat360green, fontSize: 18),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -105,11 +105,11 @@ Widget getPersonalMessageTile(
                         style: TextStyle(color: Colors.red, fontSize: 18),
                       ),
                       onPressed: () async {
-                        String chatId = mec.getChatId(
+                        String chatId = chat360.getChatId(
                             currentUserNo, targetUser[Dbkeys.phone]);
 
                         if (targetUser[Dbkeys.phone] != null) {
-                          mec.toast(getTranslated(context, 'plswait'));
+                          chat360.toast(getTranslated(context, 'plswait'));
                           await FirebaseFirestore.instance
                               .collection(DbPaths.collectionmessages)
                               .doc(chatId)
@@ -140,7 +140,7 @@ Widget getPersonalMessageTile(
                             //   // the new route
                             //   MaterialPageRoute(
                             //     builder: (BuildContext context) =>
-                            //         mecWrapper(),
+                            //         chat360Wrapper(),
                             //   ),
 
                             //   (Route route) => false,
@@ -157,7 +157,7 @@ Widget getPersonalMessageTile(
                             //             ))));
                           });
                         } else {
-                          mec.toast('Error Occured. Could not delete !');
+                          chat360.toast('Error Occured. Could not delete !');
                         }
                       },
                     )
@@ -178,7 +178,7 @@ Widget getPersonalMessageTile(
   return Theme(
       data: ThemeData(
           fontFamily: FONTFAMILY_NAME,
-          splashColor: mecGrey.withOpacity(0.2),
+          splashColor: chat360Grey.withOpacity(0.2),
           highlightColor: Colors.transparent),
       child: Column(
         children: [
@@ -329,11 +329,11 @@ Widget getPersonalMessageTile(
                   padding: const EdgeInsets.only(bottom: 4),
                   child: IsShowUserFullNameAsSavedInYourContacts == false
                       ? Text(
-                          mec.getNickname(peer) ?? "",
+                          chat360.getNickname(peer) ?? "",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            color: mecBlack,
+                            color: chat360Black,
                             fontWeight: FontWeight.w600,
                             fontSize: 16.4,
                           ),
@@ -354,18 +354,18 @@ Widget getPersonalMessageTile(
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                      color: mecBlack,
+                                      color: chat360Black,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16.4,
                                     ),
                                   );
                                 }
                                 return Text(
-                                  mec.getNickname(peer) ?? "",
+                                  chat360.getNickname(peer) ?? "",
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
-                                    color: mecBlack,
+                                    color: chat360Black,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 16.4,
                                   ),
@@ -397,7 +397,7 @@ Widget getPersonalMessageTile(
                         state: state,
                         shouldPop: false,
                         type:
-                            mec.getAuthenticationType(false, cachedModel),
+                            chat360.getAuthenticationType(false, cachedModel),
                         prefs: prefs, onSuccess: () {
                       state.pushReplacement(new MaterialPageRoute(
                           builder: (context) => new ChatScreen(

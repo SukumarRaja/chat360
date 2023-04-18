@@ -1,11 +1,11 @@
 
 import 'dart:math';
 import 'package:agora_rtc_engine/rtc_engine.dart';
-import 'package:mec/Screens/calling_screen/audio_call.dart';
-import 'package:mec/Screens/calling_screen/video_call.dart';
+import 'package:chat360/Screens/calling_screen/audio_call.dart';
+import 'package:chat360/Screens/calling_screen/video_call.dart';
 import 'package:flutter/material.dart';
-import 'package:mec/Models/call.dart';
-import 'package:mec/Models/call_methods.dart';
+import 'package:chat360/Models/call.dart';
+import 'package:chat360/Models/call_methods.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CallUtils {

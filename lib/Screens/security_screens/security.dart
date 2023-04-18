@@ -2,14 +2,14 @@
 import 'dart:async';
 import 'dart:core';
 import 'dart:io';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/MyElevatedButton/MyElevatedButton.dart';
-import 'package:mec/widgets/Passcode/passcode_screen.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/MyElevatedButton/MyElevatedButton.dart';
+import 'package:chat360/widgets/Passcode/passcode_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -44,7 +44,7 @@ class _SecurityState extends State<Security> {
 
   @override
   Widget build(BuildContext context) {
-    return mec.getNTPWrappedWidget(Stack(children: [
+    return chat360.getNTPWrappedWidget(Stack(children: [
       Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -54,19 +54,19 @@ class _SecurityState extends State<Security> {
                 icon: Icon(
                   Icons.arrow_back,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                 )),
             elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                ? mecDeepGreen
-                : mecWhite,
+                ? chat360DeepGreen
+                : chat360White,
             title: Text(
               widget.title!,
               style: TextStyle(
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack),
+                      ? chat360White
+                      : chat360Black),
             ),
           ),
           bottomSheet: Container(
@@ -76,7 +76,7 @@ class _SecurityState extends State<Security> {
             child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: myElevatedButton(
-                  color: mecLightGreen,
+                  color: chat360LightGreen,
                   child: Text(
                     getTranslated(this.context, 'done'),
                     style: TextStyle(color: Colors.white),
@@ -84,7 +84,7 @@ class _SecurityState extends State<Security> {
                   onPressed: () {
                     if (widget.setPasscode) {
                       if (_passCode == null)
-                        mec.toast(
+                        chat360.toast(
                             getTranslated(this.context, 'setpasscode'));
                       if (
                           // ignore: todo
@@ -97,8 +97,8 @@ class _SecurityState extends State<Security> {
                           //TODO://----REMOVE BELOW COMMENT TO ASK SECURITY QUESTION SET----
                           // QUESTION: _question.text,
                           // ANSWER:
-                          //     mec.getHashedAnswer(_answer.text),
-                          Dbkeys.passcode: mec.getHashedString(_passCode!)
+                          //     chat360.getHashedAnswer(_answer.text),
+                          Dbkeys.passcode: chat360.getHashedString(_passCode!)
                         };
                         setState(() {
                           isLoading = true;
@@ -110,7 +110,7 @@ class _SecurityState extends State<Security> {
                             .doc(widget.phoneNo)
                             .update(data)
                             .then((_) {
-                          // mec.toast(
+                          // chat360.toast(
                           //     getTranslated(this.context, 'welcometo') +
                           //         ' $Appname!');
                           widget.onSuccess(this.context);
@@ -125,7 +125,7 @@ class _SecurityState extends State<Security> {
                           //TODO://----REMOVE BELOW COMMENT TO ASK SECURITY QUESTION SET----
                           // QUESTION: _question.text,
                           // ANSWER:
-                          //     mec.getHashedAnswer(_answer.text),
+                          //     chat360.getHashedAnswer(_answer.text),
                         };
                         setState(() {
                           isLoading = true;
@@ -158,17 +158,17 @@ class _SecurityState extends State<Security> {
                       ? ListTile(
                           trailing: Icon(Icons.check_circle,
                               color: _passCode == null
-                                  ? mecGrey
-                                  : mecLightGreen,
+                                  ? chat360Grey
+                                  : chat360LightGreen,
                               size: 35),
                           title: myElevatedButton(
-                            color: mecgreen,
+                            color: chat360green,
                             child: Text(
                               getTranslated(this.context, 'setpass'),
                               style: TextStyle(
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite
-                                    : mecWhite,
+                                    ? chat360White
+                                    : chat360White,
                               ),
                             ),
                             onPressed: _showLockScreen,
@@ -208,7 +208,7 @@ class _SecurityState extends State<Security> {
                   //       if (v.trim().isEmpty)
                   //         return getTranslated(
                   //             this.context, 'ansempty');
-                  //       if (mec.getHashedAnswer(v) ==
+                  //       if (chat360.getHashedAnswer(v) ==
                   //           widget.answer)
                   //         return getTranslated(this.context, 'newans');
                   //       return null;
@@ -225,11 +225,11 @@ class _SecurityState extends State<Security> {
             ? Container(
                 child: Center(
                   child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(mecBlue)),
+                      valueColor: AlwaysStoppedAnimation<Color>(chat360Blue)),
                 ),
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecBlack.withOpacity(0.8)
-                    : mecWhite.withOpacity(0.8),
+                    ? chat360Black.withOpacity(0.8)
+                    : chat360White.withOpacity(0.8),
               )
             : Container(),
       )

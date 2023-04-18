@@ -1,12 +1,12 @@
 
 import 'dart:io';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/status/components/VideoPicker/VideoPicker.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/status/components/VideoPicker/VideoPicker.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -99,7 +99,7 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
         }
       }
     } catch (e) {
-      mec.toast('Cannot Send this Document type');
+      chat360.toast('Cannot Send this Document type');
       Navigator.of(this.context).pop();
     }
   }
@@ -126,8 +126,8 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
               style: TextStyle(
                 fontSize: 16,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
           )
@@ -138,8 +138,8 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
           style: new TextStyle(
             fontSize: 18.0,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
           ));
     }
   }
@@ -156,7 +156,7 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
             style: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 26,
-                color: mecLightGreen),
+                color: chat360LightGreen),
           ),
           SizedBox(
             height: 20,
@@ -167,14 +167,14 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
                 fontWeight: FontWeight.w500,
                 fontSize: 17,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack),
+                    ? chat360White
+                    : chat360Black),
           )
         ],
       )),
       color: DESIGN_TYPE == Themetype.whatsapp
-          ? mecBlack.withOpacity(0.8)
-          : mecWhite.withOpacity(0.8),
+          ? chat360Black.withOpacity(0.8)
+          : chat360White.withOpacity(0.8),
     );
   }
 
@@ -216,7 +216,7 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.ellipsis,
                             style:
-                                TextStyle(fontSize: 14, color: mecWhite),
+                                TextStyle(fontSize: 14, color: chat360White),
                           ),
                         )
                       ],
@@ -283,8 +283,8 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
           style: new TextStyle(
             fontSize: 18.0,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
           ));
     }
   }
@@ -292,10 +292,10 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
   @override
   Widget build(BuildContext context) {
     final observer = Provider.of<Observer>(this.context, listen: false);
-    return mec.getNTPWrappedWidget(WillPopScope(
+    return chat360.getNTPWrappedWidget(WillPopScope(
       child: Scaffold(
         backgroundColor:
-            DESIGN_TYPE == Themetype.whatsapp ? mecBlack : mecWhite,
+            DESIGN_TYPE == Themetype.whatsapp ? chat360Black : chat360White,
         appBar: new AppBar(
             elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
             leading: IconButton(
@@ -308,8 +308,8 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
                 Icons.keyboard_arrow_left,
                 size: 30,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
             title: new Text(
@@ -319,21 +319,21 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
               style: TextStyle(
                 fontSize: 18,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                ? mecBlack
-                : mecWhite,
+                ? chat360Black
+                : chat360White,
             actions: seletedFiles.length != 0 && !isLoading
                 ? <Widget>[
                     IconButton(
                         icon: Icon(
                           Icons.check,
                           color: DESIGN_TYPE == Themetype.whatsapp
-                              ? mecWhite
-                              : mecBlack,
+                              ? chat360White
+                              : chat360Black,
                         ),
                         onPressed: checkTotalNoOfFilesIfExceeded() == false
                             ? (checkIfAnyFileSizeExceeded() == false
@@ -348,12 +348,12 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
                                     final observer = Provider.of<Observer>(
                                         this.context,
                                         listen: false);
-                                    mec.toast(getTranslated(
+                                    chat360.toast(getTranslated(
                                             context, 'filesizeexceeded') +
                                         ': ${observer.maxFileSizeAllowedInMB}MB');
                                   })
                             : () {
-                                mec.toast(
+                                chat360.toast(
                                     '${getTranslated(this.context, 'maxnooffiles')}: ${observer.maxNoOfFilesInMultiSharing}');
                               }),
                     SizedBox(
@@ -383,11 +383,11 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
                         child: Center(
                           child: CircularProgressIndicator(
                               valueColor:
-                                  AlwaysStoppedAnimation<Color>(mecBlue)),
+                                  AlwaysStoppedAnimation<Color>(chat360Blue)),
                         ),
                         color: DESIGN_TYPE == Themetype.whatsapp
-                            ? mecBlack.withOpacity(0.8)
-                            : mecWhite.withOpacity(0.8),
+                            ? chat360Black.withOpacity(0.8)
+                            : chat360White.withOpacity(0.8),
                       )
                 : Container(),
           )
@@ -433,12 +433,12 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
                   Icons.add,
                   checkTotalNoOfFilesIfExceeded() == false
                       ? () {
-                          mec.checkAndRequestPermission(Permission.photos)
+                          chat360.checkAndRequestPermission(Permission.photos)
                               .then((res) {
                             if (res == true) {
                               captureMultiPageDoc(false);
                             } else if (res == false) {
-                              mec.showRationale(
+                              chat360.showRationale(
                                   getTranslated(this.context, 'pgi'));
                               Navigator.pushReplacement(
                                   this.context,
@@ -448,7 +448,7 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
                           });
                         }
                       : () {
-                          mec.toast(
+                          chat360.toast(
                               '${getTranslated(this.context, 'maxnooffiles')}: ${observer.maxNoOfFilesInMultiSharing}');
                         }),
             ]));
@@ -462,9 +462,9 @@ class _MultiDocumentPickerState extends State<MultiDocumentPicker> {
           child: Icon(icon, size: 30.0),
           shape: new RoundedRectangleBorder(),
           color: DESIGN_TYPE == Themetype.whatsapp
-              ? mecDeepGreen
-              : mecgreen,
-          textColor: mecWhite,
+              ? chat360DeepGreen
+              : chat360green,
+          textColor: chat360White,
           onPressed: onPressed as void Function()?),
     );
   }

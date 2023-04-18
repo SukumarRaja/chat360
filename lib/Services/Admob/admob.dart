@@ -1,6 +1,6 @@
 
 import 'dart:io';
-import 'package:mec/Configs/app_constants.dart';
+import 'package:chat360/Configs/app_constants.dart';
 
 String? getBannerAdUnitId() {
   if (Platform.isIOS) {

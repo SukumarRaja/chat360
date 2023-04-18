@@ -2,15 +2,15 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/MyElevatedButton/MyElevatedButton.dart';
-import 'package:mec/widgets/Passcode/circle.dart';
-import 'package:mec/widgets/Passcode/keyboard.dart';
-import 'package:mec/widgets/Passcode/shake_curve.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/MyElevatedButton/MyElevatedButton.dart';
+import 'package:chat360/widgets/Passcode/circle.dart';
+import 'package:chat360/widgets/Passcode/keyboard.dart';
+import 'package:chat360/widgets/Passcode/shake_curve.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -117,7 +117,7 @@ class _PasscodeScreenState extends State<PasscodeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return mec.getNTPWrappedWidget(Scaffold(
+    return chat360.getNTPWrappedWidget(Scaffold(
       appBar: widget.wait
           ? AppBar(
               leading: IconButton(
@@ -128,20 +128,20 @@ class _PasscodeScreenState extends State<PasscodeScreen>
                   Icons.keyboard_arrow_left,
                   size: 30,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                 ),
               ),
               elevation: 0,
               backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecDeepGreen
-                  : mecWhite,
+                  ? chat360DeepGreen
+                  : chat360White,
               title: Text(
                 widget.title!,
                 style: TextStyle(
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                 ),
               ),
               actions: <Widget>[
@@ -168,7 +168,7 @@ class _PasscodeScreenState extends State<PasscodeScreen>
                 //     child: Center(
                 //       child: Icon(
                 //         Icons.check,
-                //         color: mecWhite,
+                //         color: chat360White,
                 //       ),
                 //     ),
                 //   ),
@@ -177,7 +177,7 @@ class _PasscodeScreenState extends State<PasscodeScreen>
                 //   color: Colors.green,
                 //   icon: Icon(
                 //     Icons.check,
-                //     color: mecWhite,
+                //     color: chat360White,
                 //   ),
                 //   onPressed: _isValid
                 //       ? () {
@@ -191,8 +191,8 @@ class _PasscodeScreenState extends State<PasscodeScreen>
             )
           : null,
       backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-          ? mecDeepGreen
-          : mecWhite,
+          ? chat360DeepGreen
+          : chat360White,
       body: Center(
           child: SingleChildScrollView(
         child: Column(
@@ -204,8 +204,8 @@ class _PasscodeScreenState extends State<PasscodeScreen>
               style: TextStyle(
                 fontSize: 16,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
             Container(
@@ -229,13 +229,13 @@ class _PasscodeScreenState extends State<PasscodeScreen>
                       ? widget.keyboardUIConfig
                       : KeyboardUIConfig(
                           primaryColor: DESIGN_TYPE == Themetype.whatsapp
-                              ? mecWhite
-                              : mecBlack,
+                              ? chat360White
+                              : chat360Black,
                           digitTextStyle: TextStyle(
                               fontSize: 30,
                               color: DESIGN_TYPE == Themetype.whatsapp
-                                  ? mecWhite
-                                  : mecBlack)),
+                                  ? chat360White
+                                  : chat360Black)),
                 ),
               ),
             ),
@@ -286,11 +286,11 @@ class _PasscodeScreenState extends State<PasscodeScreen>
         ? widget.circleUIConfig!
         : CircleUIConfig(
             fillColor: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
             borderColor: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
           );
     config.extraSize = animation.value;
     for (int i = 0; i < widget.passwordDigits; i++) {

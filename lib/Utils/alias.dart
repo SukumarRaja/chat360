@@ -1,9 +1,9 @@
 
 import 'dart:io';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class AliasForm extends StatefulWidget {
@@ -24,7 +24,7 @@ class _AliasFormState extends State<AliasForm> {
   void initState() {
     super.initState();
     _alias =
-        new TextEditingController(text: mec.getNickname(widget.user));
+        new TextEditingController(text: chat360.getNickname(widget.user));
   }
 
   Future getImage(File image) {
@@ -36,7 +36,7 @@ class _AliasFormState extends State<AliasForm> {
 
   @override
   Widget build(BuildContext context) {
-    String? name = mec.getNickname(widget.user);
+    String? name = chat360.getNickname(widget.user);
     return AlertDialog(
       actions: <Widget>[
         // ignore: deprecated_member_use
@@ -76,7 +76,7 @@ class _AliasFormState extends State<AliasForm> {
               height: 120,
               child: Stack(children: [
                 Center(
-                    child: mec.avatar(widget.user,
+                    child: chat360.avatar(widget.user,
                         image: _imageFile, radius: 50)),
               ])),
           TextFormField(

@@ -1,11 +1,11 @@
 
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/Providers/seen_provider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/Providers/seen_provider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mec/Configs/Enum.dart';
+import 'package:chat360/Configs/Enum.dart';
 
 class Bubble extends StatelessWidget {
   const Bubble({
@@ -43,14 +43,14 @@ class Bubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool seen = getSeenStatus(SeenProvider.of(context).value);
-    final bg = isMe ? mecteagreen : mecWhite;
+    final bg = isMe ? chat360teagreen : chat360White;
     final align = isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start;
     dynamic icon = delivered is bool && delivered
         ? (seen ? Icons.done_all : Icons.done_all)
         : Icons.access_time;
     final color = isMe
-        ? mecBlack.withOpacity(0.5)
-        : mecBlack.withOpacity(0.5);
+        ? chat360Black.withOpacity(0.5)
+        : chat360Black.withOpacity(0.5);
     icon = Icon(icon, size: 14.0, color: seen ? Colors.lightBlue : color);
     if (delivered is Future) {
       icon = FutureBuilder(

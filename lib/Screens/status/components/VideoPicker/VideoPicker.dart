@@ -1,11 +1,11 @@
 
 import 'dart:io';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_video_info/flutter_video_info.dart';
 import 'package:image_picker/image_picker.dart';
@@ -103,8 +103,8 @@ class _StatusVideoEditorState extends State<StatusVideoEditor> {
           style: new TextStyle(
             fontSize: 18.0,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
           ));
     }
   }
@@ -118,14 +118,14 @@ class _StatusVideoEditorState extends State<StatusVideoEditor> {
             children: <Widget>[
               _buildActionButton(new Key('retake'), Icons.video_library_rounded,
                   () {
-                mec.checkAndRequestPermission(Platform.isIOS
+                chat360.checkAndRequestPermission(Platform.isIOS
                         ? Permission.mediaLibrary
                         : Permission.storage)
                     .then((res) {
                   if (res) {
                     _pickVideo();
                   } else {
-                    mec.showRationale(
+                    chat360.showRationale(
                       getTranslated(context, 'pgv'),
                     );
                     Navigator.pushReplacement(
@@ -136,12 +136,12 @@ class _StatusVideoEditorState extends State<StatusVideoEditor> {
                 });
               }),
               _buildActionButton(new Key('upload'), Icons.photo_camera, () {
-                mec.checkAndRequestPermission(Permission.camera)
+                chat360.checkAndRequestPermission(Permission.camera)
                     .then((res) {
                   if (res) {
                     _pickVideoFromCamera();
                   } else {
-                    mec.showRationale(
+                    chat360.showRationale(
                       getTranslated(context, 'pcv'),
                     );
                     Navigator.pushReplacement(
@@ -160,7 +160,7 @@ class _StatusVideoEditorState extends State<StatusVideoEditor> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:
-          DESIGN_TYPE == Themetype.whatsapp ? Colors.black : mecWhite,
+          DESIGN_TYPE == Themetype.whatsapp ? Colors.black : chat360White,
       appBar: AppBar(
         elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
         leading: IconButton(
@@ -171,19 +171,19 @@ class _StatusVideoEditorState extends State<StatusVideoEditor> {
             Icons.keyboard_arrow_left,
             size: 30,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
           ),
         ),
         backgroundColor:
-            DESIGN_TYPE == Themetype.whatsapp ? Colors.black : mecWhite,
+            DESIGN_TYPE == Themetype.whatsapp ? Colors.black : chat360White,
         title: Text(
           widget.title,
           style: TextStyle(
             fontSize: 18,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
           ),
         ),
         actions: _video != null
@@ -192,8 +192,8 @@ class _StatusVideoEditorState extends State<StatusVideoEditor> {
                     icon: Icon(
                       Icons.check,
                       color: DESIGN_TYPE == Themetype.whatsapp
-                          ? mecWhite
-                          : mecBlack,
+                          ? chat360White
+                          : chat360Black,
                     ),
                     onPressed: () {
                       _videoPlayerController.pause();
@@ -229,7 +229,7 @@ class _StatusVideoEditorState extends State<StatusVideoEditor> {
                         maxLength: 100,
                         maxLines: null,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 18.0, color: mecWhite),
+                        style: TextStyle(fontSize: 18.0, color: chat360White),
                         controller: textEditingController,
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
@@ -266,11 +266,11 @@ class _StatusVideoEditorState extends State<StatusVideoEditor> {
                   child: Center(
                     child: CircularProgressIndicator(
                         valueColor:
-                            AlwaysStoppedAnimation<Color>(mecBlue)),
+                            AlwaysStoppedAnimation<Color>(chat360Blue)),
                   ),
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecBlack.withOpacity(0.6)
-                      : mecWhite.withOpacity(0.6),
+                      ? chat360Black.withOpacity(0.6)
+                      : chat360White.withOpacity(0.6),
                 )
               : Container(),
         )
@@ -286,8 +286,8 @@ class _StatusVideoEditorState extends State<StatusVideoEditor> {
           child: Icon(icon, size: 30.0),
           shape: new RoundedRectangleBorder(),
           color:
-              DESIGN_TYPE == Themetype.whatsapp ? Colors.black : mecgreen,
-          textColor: mecWhite,
+              DESIGN_TYPE == Themetype.whatsapp ? Colors.black : chat360green,
+          textColor: chat360White,
           onPressed: onPressed as void Function()?),
     );
   }

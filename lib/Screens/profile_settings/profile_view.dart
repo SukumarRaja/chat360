@@ -4,23 +4,23 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Screens/chat_screen/chat.dart';
-import 'package:mec/Screens/chat_screen/lazyLoadingChat.dart';
-import 'package:mec/Screens/status/components/formatStatusTime.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/call_utilities.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/permissions.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Screens/chat_screen/chat.dart';
+import 'package:chat360/Screens/chat_screen/lazyLoadingChat.dart';
+import 'package:chat360/Screens/status/components/formatStatusTime.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/call_utilities.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/permissions.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
@@ -132,7 +132,7 @@ class _ProfileViewState extends State<ProfileView> {
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: mecgreen,
+                        color: chat360green,
                         fontSize: 16),
                   ),
                 ],
@@ -149,7 +149,7 @@ class _ProfileViewState extends State<ProfileView> {
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         fontWeight: FontWeight.normal,
-                        color: mecBlack,
+                        color: chat360Black,
                         fontSize: 15.3),
                   ),
                   Container(
@@ -161,12 +161,12 @@ class _ProfileViewState extends State<ProfileView> {
                             : IconButton(
                                 onPressed: observer.iscallsallowed == false
                                     ? () {
-                                        mec.showRationale(getTranslated(
+                                        chat360.showRationale(getTranslated(
                                             context, 'callnotallowed'));
                                       }
                                     : hasPeerBlockedMe == true
                                         ? () {
-                                            mec.toast(
+                                            chat360.toast(
                                               getTranslated(
                                                   context, 'userhasblocked'),
                                             );
@@ -178,7 +178,7 @@ class _ProfileViewState extends State<ProfileView> {
                                               if (isgranted == true) {
                                                 call(context, false);
                                               } else {
-                                                mec.showRationale(
+                                                chat360.showRationale(
                                                     getTranslated(
                                                         context, 'pmc'));
                                                 Navigator.push(
@@ -188,7 +188,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                             OpenSettings()));
                                               }
                                             }).catchError((onError) {
-                                              mec.showRationale(
+                                              chat360.showRationale(
                                                   getTranslated(
                                                       context, 'pmc'));
                                               Navigator.push(
@@ -200,7 +200,7 @@ class _ProfileViewState extends State<ProfileView> {
                                           },
                                 icon: Icon(
                                   Icons.phone,
-                                  color: mecgreen,
+                                  color: chat360green,
                                 )),
                         observer.isCallFeatureTotallyHide == true ||
                                 observer.isOngoingCall
@@ -208,12 +208,12 @@ class _ProfileViewState extends State<ProfileView> {
                             : IconButton(
                                 onPressed: observer.iscallsallowed == false
                                     ? () {
-                                        mec.showRationale(getTranslated(
+                                        chat360.showRationale(getTranslated(
                                             context, 'callnotallowed'));
                                       }
                                     : hasPeerBlockedMe == true
                                         ? () {
-                                            mec.toast(
+                                            chat360.toast(
                                               getTranslated(
                                                   context, 'userhasblocked'),
                                             );
@@ -225,7 +225,7 @@ class _ProfileViewState extends State<ProfileView> {
                                               if (isgranted == true) {
                                                 call(context, true);
                                               } else {
-                                                mec.showRationale(
+                                                chat360.showRationale(
                                                     getTranslated(
                                                         context, 'pmc'));
                                                 Navigator.push(
@@ -235,7 +235,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                             OpenSettings()));
                                               }
                                             }).catchError((onError) {
-                                              mec.showRationale(
+                                              chat360.showRationale(
                                                   getTranslated(
                                                       context, 'pmc'));
                                               Navigator.push(
@@ -248,7 +248,7 @@ class _ProfileViewState extends State<ProfileView> {
                                 icon: Icon(
                                   Icons.videocam_rounded,
                                   size: 26,
-                                  color: mecgreen,
+                                  color: chat360green,
                                 )),
                         IconButton(
                             onPressed: () {
@@ -281,7 +281,7 @@ class _ProfileViewState extends State<ProfileView> {
                             },
                             icon: Icon(
                               Icons.message,
-                              color: mecgreen,
+                              color: chat360green,
                             )),
                       ],
                     ),
@@ -312,13 +312,13 @@ class _ProfileViewState extends State<ProfileView> {
             dense: false,
             subtitle: Text(
               getTranslated(context, 'encryptionshort'),
-              style: TextStyle(color: mecGrey, height: 1.3, fontSize: 15),
+              style: TextStyle(color: chat360Grey, height: 1.3, fontSize: 15),
             ),
             trailing: Padding(
               padding: const EdgeInsets.only(top: 32),
               child: Icon(
                 Icons.lock,
-                color: mecgreen,
+                color: chat360green,
               ),
             ),
           ),
@@ -334,7 +334,7 @@ class _ProfileViewState extends State<ProfileView> {
     var w = MediaQuery.of(context).size.width;
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(Scaffold(
+        scaffold: chat360.getNTPWrappedWidget(Scaffold(
           bottomSheet: IsBannerAdShow == true &&
                   observer.isadmobshow == true &&
                   adWidget != null
@@ -349,7 +349,7 @@ class _ProfileViewState extends State<ProfileView> {
                 ),
           backgroundColor: DESIGN_TYPE == Themetype.whatsapp
               ? Color(0xfff2f2f2)
-              : mecWhite,
+              : chat360White,
           body: ListView(
             children: [
               Stack(
@@ -373,7 +373,7 @@ class _ProfileViewState extends State<ProfileView> {
                         shape: BoxShape.rectangle,
                       ),
                       child: Icon(Icons.person,
-                          color: mecGrey.withOpacity(0.5), size: 95),
+                          color: chat360Grey.withOpacity(0.5), size: 95),
                     ),
                     errorWidget: (context, url, error) => Container(
                       width: w,
@@ -383,7 +383,7 @@ class _ProfileViewState extends State<ProfileView> {
                         shape: BoxShape.rectangle,
                       ),
                       child: Icon(Icons.person,
-                          color: mecGrey.withOpacity(0.5), size: 95),
+                          color: chat360Grey.withOpacity(0.5), size: 95),
                     ),
                   ),
                   Container(
@@ -422,7 +422,7 @@ class _ProfileViewState extends State<ProfileView> {
                       icon: Icon(
                         Icons.arrow_back_sharp,
                         size: 25,
-                        color: mecWhite,
+                        color: chat360White,
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -446,7 +446,7 @@ class _ProfileViewState extends State<ProfileView> {
                           textAlign: TextAlign.left,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: mecgreen,
+                              color: chat360green,
                               fontSize: 16),
                         ),
                       ],
@@ -463,7 +463,7 @@ class _ProfileViewState extends State<ProfileView> {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontWeight: FontWeight.normal,
-                          color: mecBlack,
+                          color: chat360Black,
                           fontSize: 15.9),
                     ),
                     SizedBox(
@@ -474,7 +474,7 @@ class _ProfileViewState extends State<ProfileView> {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontWeight: FontWeight.normal,
-                          color: mecGrey,
+                          color: chat360Grey,
                           fontSize: 13.3),
                     ),
                     SizedBox(

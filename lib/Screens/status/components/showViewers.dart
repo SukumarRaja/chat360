@@ -1,13 +1,13 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Screens/profile_settings/profile_view.dart';
-import 'package:mec/Screens/status/components/formatStatusTime.dart';
-import 'package:mec/Services/localization/language_constants.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Screens/profile_settings/profile_view.dart';
+import 'package:chat360/Screens/status/components/formatStatusTime.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -45,7 +45,7 @@ showViewers(BuildContext context, DocumentSnapshot myStatusDoc, var filtered,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.visibility, color: mecGrey),
+                        Icon(Icons.visibility, color: chat360Grey),
                         SizedBox(
                           width: 2,
                         ),
@@ -54,7 +54,7 @@ showViewers(BuildContext context, DocumentSnapshot myStatusDoc, var filtered,
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.normal,
-                              color: mecBlack),
+                              color: chat360Black),
                         ),
                         SizedBox(
                           width: 7,

@@ -1,14 +1,14 @@
 
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Screens/chat_screen/chat.dart';
-import 'package:mec/Screens/profile_settings/profile_view.dart';
-import 'package:mec/Screens/status/components/formatStatusTime.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Screens/chat_screen/chat.dart';
+import 'package:chat360/Screens/profile_settings/profile_view.dart';
+import 'package:chat360/Screens/status/components/formatStatusTime.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mec/Configs/Enum.dart';
+import 'package:chat360/Configs/Enum.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -46,12 +46,12 @@ class GroupChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bg = isMe ? mecteagreen : mecWhite;
+    final bg = isMe ? chat360teagreen : chat360White;
     final align = isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start;
     dynamic icon = Icons.done_all;
     final color = isMe
-        ? mecBlack.withOpacity(0.5)
-        : mecBlack.withOpacity(0.5);
+        ? chat360Black.withOpacity(0.5)
+        : chat360Black.withOpacity(0.5);
     icon = Icon(icon, size: 14.0, color: color);
     if (delivered is Future) {
       icon = FutureBuilder(

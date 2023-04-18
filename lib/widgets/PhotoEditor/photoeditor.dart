@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:extended_image/extended_image.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/PhotoEditor/widgets/common_widget.dart';
-import 'package:mec/widgets/PhotoEditor/widgets/crop_editor_helper.dart';
-import 'package:mec/widgets/PhotoEditor/widgets/image_picker/image_picker.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/PhotoEditor/widgets/common_widget.dart';
+import 'package:chat360/widgets/PhotoEditor/widgets/crop_editor_helper.dart';
+import 'package:chat360/widgets/PhotoEditor/widgets/image_picker/image_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -414,7 +414,7 @@ class _PhotoEditorState extends State<PhotoEditor> {
       Navigator.of(context).pop();
       widget.onImageEdit(File(filePath!));
     } catch (e) {
-      mec.toast("Failed. ERROR: $e");
+      chat360.toast("Failed. ERROR: $e");
     }
 
     //Navigator.of(context).pop();

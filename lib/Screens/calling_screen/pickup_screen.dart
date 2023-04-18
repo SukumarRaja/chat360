@@ -3,21 +3,21 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/homepage/homepage.dart';
-import 'package:mec/Services/Providers/call_history_provider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Screens/calling_screen/audio_call.dart';
-import 'package:mec/Screens/calling_screen/video_call.dart';
-import 'package:mec/widgets/Common/cached_image.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/homepage/homepage.dart';
+import 'package:chat360/Services/Providers/call_history_provider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Screens/calling_screen/audio_call.dart';
+import 'package:chat360/Screens/calling_screen/video_call.dart';
+import 'package:chat360/widgets/Common/cached_image.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:mec/Models/call.dart';
-import 'package:mec/Models/call_methods.dart';
-import 'package:mec/Utils/permissions.dart';
+import 'package:chat360/Models/call.dart';
+import 'package:chat360/Models/call_methods.dart';
+import 'package:chat360/Utils/permissions.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:audioplayers/audioplayers.dart' as audioPlayers;
@@ -64,7 +64,7 @@ class _PickupScreenState extends State<PickupScreen> {
         builder: (context, firestoreDataProviderCALLHISTORY, _child) => h > w &&
                 ((h / w) > 1.5)
             ? Scaffold(
-                backgroundColor: mecDeepGreen,
+                backgroundColor: chat360DeepGreen,
                 body: Container(
                   alignment: Alignment.center,
                   child: Column(
@@ -76,8 +76,8 @@ class _PickupScreenState extends State<PickupScreen> {
                         margin: EdgeInsets.only(
                             top: MediaQuery.of(context).padding.top),
                         color: DESIGN_TYPE == Themetype.messenger
-                            ? mecDeepGreen
-                            : mecDeepGreen,
+                            ? chat360DeepGreen
+                            : chat360DeepGreen,
                         height: h / 4,
                         width: w,
                         child: Column(
@@ -96,7 +96,7 @@ class _PickupScreenState extends State<PickupScreen> {
                                       : Icons.mic_rounded,
                                   size: 40,
                                   color: DESIGN_TYPE == Themetype.whatsapp
-                                      ? mecLightGreen
+                                      ? chat360LightGreen
                                       : Colors.white.withOpacity(0.5),
                                 ),
                                 SizedBox(
@@ -109,7 +109,7 @@ class _PickupScreenState extends State<PickupScreen> {
                                   style: TextStyle(
                                       fontSize: 18.0,
                                       color: DESIGN_TYPE == Themetype.whatsapp
-                                          ? mecLightGreen
+                                          ? chat360LightGreen
                                           : Colors.white.withOpacity(0.5),
                                       fontWeight: FontWeight.w400),
                                 ),
@@ -132,8 +132,8 @@ class _PickupScreenState extends State<PickupScreen> {
                                       style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         color: DESIGN_TYPE == Themetype.whatsapp
-                                            ? mecWhite
-                                            : mecWhite,
+                                            ? chat360White
+                                            : chat360White,
                                         fontSize: 27,
                                       ),
                                     ),
@@ -144,8 +144,8 @@ class _PickupScreenState extends State<PickupScreen> {
                                     style: TextStyle(
                                       fontWeight: FontWeight.normal,
                                       color: DESIGN_TYPE == Themetype.whatsapp
-                                          ? mecWhite.withOpacity(0.34)
-                                          : mecWhite.withOpacity(0.34),
+                                          ? chat360White.withOpacity(0.34)
+                                          : chat360White.withOpacity(0.34),
                                       fontSize: 15,
                                     ),
                                   ),
@@ -168,7 +168,7 @@ class _PickupScreenState extends State<PickupScreen> {
                               child: Icon(
                                 Icons.person,
                                 size: 140,
-                                color: mecDeepGreen,
+                                color: chat360DeepGreen,
                               ),
                             )
                           : Stack(
@@ -190,7 +190,7 @@ class _PickupScreenState extends State<PickupScreen> {
                                         child: Icon(
                                           Icons.person,
                                           size: 140,
-                                          color: mecDeepGreen,
+                                          color: chat360DeepGreen,
                                         ),
                                       )),
                                       errorWidget: (context, url, error) =>
@@ -201,7 +201,7 @@ class _PickupScreenState extends State<PickupScreen> {
                                         child: Icon(
                                           Icons.person,
                                           size: 140,
-                                          color: mecDeepGreen,
+                                          color: chat360DeepGreen,
                                         ),
                                       ),
                                     )),
@@ -332,7 +332,7 @@ class _PickupScreenState extends State<PickupScreen> {
                                       ),
                                     );
                                   } else {
-                                    mec.showRationale(
+                                    chat360.showRationale(
                                         getTranslated(context, 'pmc'));
                                     Navigator.push(
                                         context,
@@ -341,7 +341,7 @@ class _PickupScreenState extends State<PickupScreen> {
                                                 OpenSettings()));
                                   }
                                 }).catchError((onError) {
-                                  mec.showRationale(
+                                  chat360.showRationale(
                                       getTranslated(context, 'pmc'));
                                   Navigator.push(
                                       context,
@@ -368,8 +368,8 @@ class _PickupScreenState extends State<PickupScreen> {
                 ))
             : Scaffold(
                 backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecgreen
-                    : mecWhite,
+                    ? chat360green
+                    : chat360White,
                 body: SingleChildScrollView(
                   child: Container(
                     alignment: Alignment.center,
@@ -387,8 +387,8 @@ class _PickupScreenState extends State<PickupScreen> {
                                     : Icons.mic,
                                 size: 80,
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite.withOpacity(0.3)
-                                    : mecBlack.withOpacity(0.3),
+                                    ? chat360White.withOpacity(0.3)
+                                    : chat360Black.withOpacity(0.3),
                               ),
                         w > h
                             ? SizedBox(
@@ -404,8 +404,8 @@ class _PickupScreenState extends State<PickupScreen> {
                           style: TextStyle(
                             fontSize: 19,
                             color: DESIGN_TYPE == Themetype.whatsapp
-                                ? mecWhite.withOpacity(0.54)
-                                : mecBlack.withOpacity(0.54),
+                                ? chat360White.withOpacity(0.54)
+                                : chat360Black.withOpacity(0.54),
                           ),
                         ),
                         SizedBox(height: w > h ? 16 : 50),
@@ -422,8 +422,8 @@ class _PickupScreenState extends State<PickupScreen> {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: DESIGN_TYPE == Themetype.whatsapp
-                                ? mecWhite
-                                : mecBlack,
+                                ? chat360White
+                                : chat360Black,
                             fontSize: 22,
                           ),
                         ),
@@ -530,7 +530,7 @@ class _PickupScreenState extends State<PickupScreen> {
                                       ),
                                     );
                                   } else {
-                                    mec.showRationale(
+                                    chat360.showRationale(
                                         getTranslated(context, 'pmc'));
                                     Navigator.push(
                                         context,
@@ -539,7 +539,7 @@ class _PickupScreenState extends State<PickupScreen> {
                                                 OpenSettings()));
                                   }
                                 }).catchError((onError) {
-                                  mec.showRationale(
+                                  chat360.showRationale(
                                       getTranslated(context, 'pmc'));
                                   Navigator.push(
                                       context,
@@ -555,7 +555,7 @@ class _PickupScreenState extends State<PickupScreen> {
                               ),
                               shape: CircleBorder(),
                               elevation: 2.0,
-                              fillColor: mecLightGreen,
+                              fillColor: chat360LightGreen,
                               padding: const EdgeInsets.all(15.0),
                             )
                           ],

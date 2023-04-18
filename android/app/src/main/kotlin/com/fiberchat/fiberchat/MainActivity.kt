@@ -1,4 +1,4 @@
-package com.mec
+package limitless.chat
 
 import io.flutter.embedding.android.FlutterActivity
 

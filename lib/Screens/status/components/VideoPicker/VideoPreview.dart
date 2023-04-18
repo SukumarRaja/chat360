@@ -1,7 +1,7 @@
 
 import 'dart:io';
 import 'package:chewie/chewie.dart';
-import 'package:mec/widgets/DownloadManager/save_image_videos_in_gallery.dart';
+import 'package:chat360/widgets/DownloadManager/save_image_videos_in_gallery.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 

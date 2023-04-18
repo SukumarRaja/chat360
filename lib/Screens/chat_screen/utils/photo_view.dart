@@ -1,8 +1,8 @@
 
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/DownloadManager/save_image_videos_in_gallery.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/DownloadManager/save_image_videos_in_gallery.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
@@ -32,7 +32,7 @@ class PhotoViewWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return mec.getNTPWrappedWidget(Scaffold(
+    return chat360.getNTPWrappedWidget(Scaffold(
         backgroundColor: Colors.black,
         key: _scaffoldd,
         appBar: AppBar(
@@ -44,14 +44,14 @@ class PhotoViewWrapper extends StatelessWidget {
             icon: Icon(
               Icons.arrow_back,
               size: 24,
-              color: mecWhite,
+              color: chat360White,
             ),
           ),
           backgroundColor: Colors.transparent,
         ),
         floatingActionButton: FloatingActionButton(
           heroTag: "dfs32231t834",
-          backgroundColor: mecLightGreen,
+          backgroundColor: chat360LightGreen,
           onPressed: () async {
             GalleryDownloader.saveNetworkImage(
                 context, imageUrl, false, "", keyloader);
@@ -73,7 +73,7 @@ class PhotoViewWrapper extends StatelessWidget {
                         alignment: Alignment.center,
                         child: CircularProgressIndicator(
                           valueColor:
-                              AlwaysStoppedAnimation<Color>(mecBlue),
+                              AlwaysStoppedAnimation<Color>(chat360Blue),
                         ),
                       ),
                     );

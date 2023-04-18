@@ -1,14 +1,14 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info/device_info.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/homepage/homepage.dart';
-import 'package:mec/Screens/splash_screen/splash_screen.dart';
-import 'package:mec/Utils/batch_write_component.dart';
-import 'package:mec/Utils/error_codes.dart';
-import 'package:mec/Utils/unawaited.dart';
-import 'package:mec/main.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/homepage/homepage.dart';
+import 'package:chat360/Screens/splash_screen/splash_screen.dart';
+import 'package:chat360/Utils/batch_write_component.dart';
+import 'package:chat360/Utils/error_codes.dart';
+import 'package:chat360/Utils/unawaited.dart';
+import 'package:chat360/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -46,7 +46,7 @@ class _InitializeState extends State<Initialize> {
   String? deviceid;
   bool isemulator = false;
   var doc;
-  Color mycolor = mecDeepGreen;
+  Color mycolor = chat360DeepGreen;
   String platform = "";
   bool isDocHave = false;
 

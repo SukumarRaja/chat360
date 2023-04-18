@@ -1,6 +1,6 @@
 
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Utils/custom_url_launcher.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Utils/custom_url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 
@@ -46,7 +46,7 @@ void notificationViwer(BuildContext context, String? desc, String? title,
                           },
                           icon: Icon(
                             Icons.close_rounded,
-                            color: mecGrey,
+                            color: chat360Grey,
                           ),
                           alignment: Alignment.centerRight,
                         ),
@@ -73,7 +73,7 @@ void notificationViwer(BuildContext context, String? desc, String? title,
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontSize: 19,
-                          color: mecBlack,
+                          color: chat360Black,
                           fontWeight: FontWeight.w800),
                     ),
 

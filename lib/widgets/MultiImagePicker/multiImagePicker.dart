@@ -1,12 +1,12 @@
 
 import 'dart:io';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/status/components/VideoPicker/VideoPicker.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/status/components/VideoPicker/VideoPicker.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -143,8 +143,8 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
           style: new TextStyle(
             fontSize: 18.0,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
           ));
     }
   }
@@ -161,7 +161,7 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
             style: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 26,
-                color: mecLightGreen),
+                color: chat360LightGreen),
           ),
           SizedBox(
             height: 20,
@@ -172,14 +172,14 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
                 fontWeight: FontWeight.w500,
                 fontSize: 17,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack),
+                    ? chat360White
+                    : chat360Black),
           )
         ],
       )),
       color: DESIGN_TYPE == Themetype.whatsapp
-          ? mecBlack.withOpacity(0.8)
-          : mecWhite.withOpacity(0.8),
+          ? chat360Black.withOpacity(0.8)
+          : chat360White.withOpacity(0.8),
     );
   }
 
@@ -201,7 +201,7 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
                   Container(
                     height: (MediaQuery.of(context).size.width / 2) - 20,
                     width: (MediaQuery.of(context).size.width / 2) - 20,
-                    color: mecGrey.withOpacity(0.4),
+                    color: chat360Grey.withOpacity(0.4),
                   ),
                   new Image.file(
                     File(selectedImages[i].path),
@@ -270,8 +270,8 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
           style: new TextStyle(
             fontSize: 18.0,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
           ));
     }
   }
@@ -279,10 +279,10 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
   @override
   Widget build(BuildContext context) {
     final observer = Provider.of<Observer>(this.context, listen: false);
-    return mec.getNTPWrappedWidget(WillPopScope(
+    return chat360.getNTPWrappedWidget(WillPopScope(
       child: Scaffold(
         backgroundColor:
-            DESIGN_TYPE == Themetype.whatsapp ? mecBlack : mecWhite,
+            DESIGN_TYPE == Themetype.whatsapp ? chat360Black : chat360White,
         appBar: new AppBar(
             elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
             leading: IconButton(
@@ -295,8 +295,8 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
                 Icons.keyboard_arrow_left,
                 size: 30,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
             title: new Text(
@@ -306,21 +306,21 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
               style: TextStyle(
                 fontSize: 18,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                ? mecBlack
-                : mecWhite,
+                ? chat360Black
+                : chat360White,
             actions: selectedImages.length != 0 && !isLoading
                 ? <Widget>[
                     IconButton(
                         icon: Icon(
                           Icons.check,
                           color: DESIGN_TYPE == Themetype.whatsapp
-                              ? mecWhite
-                              : mecBlack,
+                              ? chat360White
+                              : chat360Black,
                         ),
                         onPressed: checkTotalNoOfFilesIfExceeded() == false
                             ? (checkIfAnyFileSizeExceeded() == false
@@ -335,12 +335,12 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
                                     final observer = Provider.of<Observer>(
                                         this.context,
                                         listen: false);
-                                    mec.toast(getTranslated(
+                                    chat360.toast(getTranslated(
                                             context, 'filesizeexceeded') +
                                         ': ${observer.maxFileSizeAllowedInMB}MB');
                                   })
                             : () {
-                                mec.toast(
+                                chat360.toast(
                                     '${getTranslated(this.context, 'maxnooffiles')}: ${observer.maxNoOfFilesInMultiSharing}');
                               }),
                     SizedBox(
@@ -370,11 +370,11 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
                         child: Center(
                           child: CircularProgressIndicator(
                               valueColor:
-                                  AlwaysStoppedAnimation<Color>(mecBlue)),
+                                  AlwaysStoppedAnimation<Color>(chat360Blue)),
                         ),
                         color: DESIGN_TYPE == Themetype.whatsapp
-                            ? mecBlack.withOpacity(0.8)
-                            : mecWhite.withOpacity(0.8),
+                            ? chat360Black.withOpacity(0.8)
+                            : chat360White.withOpacity(0.8),
                       )
                 : Container(),
           )
@@ -420,12 +420,12 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
                   Icons.photo_library,
                   checkTotalNoOfFilesIfExceeded() == false
                       ? () {
-                          mec.checkAndRequestPermission(Permission.photos)
+                          chat360.checkAndRequestPermission(Permission.photos)
                               .then((res) {
                             if (res == true) {
                               captureMultiPageImage(false);
                             } else if (res == false) {
-                              mec.showRationale(
+                              chat360.showRationale(
                                   getTranslated(context, 'pgi'));
                               Navigator.pushReplacement(
                                   context,
@@ -435,7 +435,7 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
                           });
                         }
                       : () {
-                          mec.toast(
+                          chat360.toast(
                               '${getTranslated(this.context, 'maxnooffiles')}: ${observer.maxNoOfFilesInMultiSharing}');
                         }),
               selectedImages.length < 1
@@ -445,13 +445,13 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
                       Icons.add,
                       checkTotalNoOfFilesIfExceeded() == false
                           ? () {
-                              mec.checkAndRequestPermission(
+                              chat360.checkAndRequestPermission(
                                       Permission.photos)
                                   .then((res) {
                                 if (res == true) {
                                   captureMultiPageImage(true);
                                 } else if (res == false) {
-                                  mec.showRationale(
+                                  chat360.showRationale(
                                       getTranslated(context, 'pgi'));
                                   Navigator.pushReplacement(
                                       context,
@@ -462,7 +462,7 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
                               });
                             }
                           : () {
-                              mec.toast(
+                              chat360.toast(
                                   '${getTranslated(this.context, 'maxnooffiles')}: ${observer.maxNoOfFilesInMultiSharing}');
                             }),
               _buildActionButton(
@@ -470,7 +470,7 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
                   Icons.photo_camera,
                   checkTotalNoOfFilesIfExceeded() == false
                       ? () {
-                          mec.checkAndRequestPermission(Permission.camera)
+                          chat360.checkAndRequestPermission(Permission.camera)
                               .then((res) {
                             if (res == true) {
                               captureSingleImage(ImageSource.camera);
@@ -484,7 +484,7 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
                           });
                         }
                       : () {
-                          mec.toast(
+                          chat360.toast(
                               '${getTranslated(this.context, 'maxnooffiles')}: ${observer.maxNoOfFilesInMultiSharing}');
                         }),
             ]));
@@ -498,9 +498,9 @@ class _MultiImagePickerState extends State<MultiImagePicker> {
           child: Icon(icon, size: 30.0),
           shape: new RoundedRectangleBorder(),
           color: DESIGN_TYPE == Themetype.whatsapp
-              ? mecDeepGreen
-              : mecgreen,
-          textColor: mecWhite,
+              ? chat360DeepGreen
+              : chat360green,
+          textColor: chat360White,
           onPressed: onPressed as void Function()?),
     );
   }

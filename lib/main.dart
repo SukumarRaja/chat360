@@ -3,25 +3,25 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/homepage/initialize.dart';
-import 'package:mec/Screens/splash_screen/splash_screen.dart';
-import 'package:mec/Services/Providers/BroadcastProvider.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/Providers/GroupChatProvider.dart';
-import 'package:mec/Services/Providers/LazyLoadingChatProvider.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/Providers/StatusProvider.dart';
-import 'package:mec/Services/Providers/TimerProvider.dart';
-import 'package:mec/Services/Providers/currentchat_peer.dart';
-import 'package:mec/Services/Providers/seen_provider.dart';
-import 'package:mec/Services/localization/demo_localization.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Services/Providers/DownloadInfoProvider.dart';
-import 'package:mec/Services/Providers/call_history_provider.dart';
-import 'package:mec/Services/Providers/user_provider.dart';
-import 'package:mec/Utils/setStatusBarColor.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/homepage/initialize.dart';
+import 'package:chat360/Screens/splash_screen/splash_screen.dart';
+import 'package:chat360/Services/Providers/BroadcastProvider.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/Providers/GroupChatProvider.dart';
+import 'package:chat360/Services/Providers/LazyLoadingChatProvider.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/Providers/StatusProvider.dart';
+import 'package:chat360/Services/Providers/TimerProvider.dart';
+import 'package:chat360/Services/Providers/currentchat_peer.dart';
+import 'package:chat360/Services/Providers/seen_provider.dart';
+import 'package:chat360/Services/localization/demo_localization.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Services/Providers/DownloadInfoProvider.dart';
+import 'package:chat360/Services/Providers/call_history_provider.dart';
+import 'package:chat360/Services/Providers/user_provider.dart';
+import 'package:chat360/Utils/setStatusBarColor.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -59,24 +59,24 @@ void main() async {
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp(OverlaySupport(child: mecWrapper()));
+    runApp(OverlaySupport(child: chat360Wrapper()));
   });
 }
 
-class mecWrapper extends StatefulWidget {
-  const mecWrapper({Key? key}) : super(key: key);
+class chat360Wrapper extends StatefulWidget {
+  const chat360Wrapper({Key? key}) : super(key: key);
 
   static void setLocale(BuildContext context, Locale newLocale) {
-    _mecWrapperState state =
-        context.findAncestorStateOfType<_mecWrapperState>()!;
+    _chat360WrapperState state =
+        context.findAncestorStateOfType<_chat360WrapperState>()!;
     state.setLocale(newLocale);
   }
 
   @override
-  _mecWrapperState createState() => _mecWrapperState();
+  _chat360WrapperState createState() => _chat360WrapperState();
 }
 
-class _mecWrapperState extends State<mecWrapper> {
+class _chat360WrapperState extends State<chat360Wrapper> {
   Locale? _locale;
 
   setLocale(Locale locale) {
@@ -178,9 +178,9 @@ class _mecWrapperState extends State<mecWrapper> {
                               },
                               theme: ThemeData(
                                   fontFamily: FONTFAMILY_NAME,
-                                  primaryColor: mecgreen,
-                                  primaryColorLight: mecgreen,
-                                  indicatorColor: mecLightGreen),
+                                  primaryColor: chat360green,
+                                  primaryColorLight: chat360green,
+                                  indicatorColor: chat360LightGreen),
                               title: Appname,
                               debugShowCheckedModeBanner: false,
                               home: Initialize(
@@ -222,9 +222,9 @@ class _mecWrapperState extends State<mecWrapper> {
                       child: MaterialApp(
                           theme: ThemeData(
                               fontFamily: FONTFAMILY_NAME,
-                              primaryColor: mecgreen,
-                              primaryColorLight: mecgreen,
-                              indicatorColor: mecLightGreen),
+                              primaryColor: chat360green,
+                              primaryColorLight: chat360green,
+                              indicatorColor: chat360LightGreen),
                           debugShowCheckedModeBanner: false,
                           home: Splashscreen()),
                     );

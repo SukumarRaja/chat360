@@ -1,35 +1,35 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:device_info/device_info.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/homepage/homepage.dart';
-import 'package:mec/Screens/privacypolicy&TnC/PdfViewFromCachedUrl.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/Providers/TimerProvider.dart';
-import 'package:mec/Utils/custom_url_launcher.dart';
-import 'package:mec/Utils/phonenumberVariantsGenerator.dart';
-import 'package:mec/widgets/PhoneField/intl_phone_field.dart';
-import 'package:mec/widgets/PhoneField/phone_number.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/homepage/homepage.dart';
+import 'package:chat360/Screens/privacypolicy&TnC/PdfViewFromCachedUrl.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/Providers/TimerProvider.dart';
+import 'package:chat360/Utils/custom_url_launcher.dart';
+import 'package:chat360/Utils/phonenumberVariantsGenerator.dart';
+import 'package:chat360/widgets/PhoneField/intl_phone_field.dart';
+import 'package:chat360/widgets/PhoneField/phone_number.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/localization/language.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/main.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/localization/language.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mec/Models/E2EE/e2ee.dart' as e2ee;
+import 'package:chat360/Models/E2EE/e2ee.dart' as e2ee;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:mec/Configs/Enum.dart';
+import 'package:chat360/Configs/Enum.dart';
 import 'package:sms_autofill/sms_autofill.dart';
-import 'package:mec/Utils/unawaited.dart';
+import 'package:chat360/Utils/unawaited.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen(
@@ -146,7 +146,7 @@ class LoginScreenState extends State<LoginScreen>
       print(
           'Authentication failed -ERROR: ${authException.message}. Try again later.');
 
-      mec.toast('Authentication failed - ${authException.message}');
+      chat360.toast('Authentication failed - ${authException.message}');
     };
 
     final PhoneCodeSent codeSent =
@@ -177,7 +177,7 @@ class LoginScreenState extends State<LoginScreen>
         currentPinAttemps = 0;
       });
 
-      mec.toast('Authentication failed Timeout. please try again.');
+      chat360.toast('Authentication failed Timeout. please try again.');
     };
     print('Verify phone triggered');
     // try {
@@ -189,7 +189,7 @@ class LoginScreenState extends State<LoginScreen>
         codeSent: codeSent,
         codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
     // } catch (e) {
-    //   mec.toast('NEW CATCH' + e.toString());
+    //   chat360.toast('NEW CATCH' + e.toString());
     // }
   }
 
@@ -390,8 +390,8 @@ class LoginScreenState extends State<LoginScreen>
                         ))));
           } else {
             unawaited(Navigator.pushReplacement(this.context,
-                new MaterialPageRoute(builder: (context) => mecWrapper())));
-            mec.toast("Failed to Login ! Please try again. ");
+                new MaterialPageRoute(builder: (context) => chat360Wrapper())));
+            chat360.toast("Failed to Login ! Please try again. ");
           }
         } else {
           String? fcmToken = await FirebaseMessaging.instance.getToken();
@@ -465,16 +465,16 @@ class LoginScreenState extends State<LoginScreen>
 
             await subscribeToNotification(documents[0][Dbkeys.phone], false);
             unawaited(Navigator.pushReplacement(this.context,
-                new MaterialPageRoute(builder: (context) => mecWrapper())));
-            mec.toast(getTranslated(this.context, 'welcomeback'));
+                new MaterialPageRoute(builder: (context) => chat360Wrapper())));
+            chat360.toast(getTranslated(this.context, 'welcomeback'));
           } else {
             unawaited(Navigator.pushReplacement(this.context,
-                new MaterialPageRoute(builder: (context) => mecWrapper())));
-            mec.toast("Failed to Login ! Please try again. ");
+                new MaterialPageRoute(builder: (context) => chat360Wrapper())));
+            chat360.toast("Failed to Login ! Please try again. ");
           }
         }
       } else {
-        mec.toast(getTranslated(this.context, 'failedlogin'));
+        chat360.toast(getTranslated(this.context, 'failedlogin'));
       }
     } catch (e) {
       setState(() {
@@ -492,14 +492,14 @@ class LoginScreenState extends State<LoginScreen>
       if (e.toString().contains('invalid') ||
           e.toString().contains('code') ||
           e.toString().contains('verification')) {
-        mec.toast(getTranslated(this.context, 'makesureotp'));
+        chat360.toast(getTranslated(this.context, 'makesureotp'));
       }
     }
   }
 
   void _changeLanguage(Language language) async {
     Locale _locale = await setLocale(language.languageCode);
-    mecWrapper.setLocale(this.context, _locale);
+    chat360Wrapper.setLocale(this.context, _locale);
     setState(() {
       seletedlanguage = language;
     });
@@ -550,8 +550,8 @@ class LoginScreenState extends State<LoginScreen>
                                   Icon(
                                     Icons.language_outlined,
                                     color: DESIGN_TYPE == Themetype.whatsapp
-                                        ? mecWhite
-                                        : mecBlack.withOpacity(0.8),
+                                        ? chat360White
+                                        : chat360Black.withOpacity(0.8),
                                   ),
                                   SizedBox(
                                     width: 2,
@@ -560,7 +560,7 @@ class LoginScreenState extends State<LoginScreen>
                                     width: 15,
                                     child: Icon(
                                       Icons.keyboard_arrow_down,
-                                      color: mecLightGreen,
+                                      color: chat360LightGreen,
                                       size: 27,
                                     ),
                                   )
@@ -649,8 +649,8 @@ class LoginScreenState extends State<LoginScreen>
                       BoxShadow(
                         blurRadius: 3.0,
                         color: DESIGN_TYPE == Themetype.whatsapp
-                            ? mecDeepGreen.withOpacity(0.3)
-                            : mecBlack.withOpacity(0.1),
+                            ? chat360DeepGreen.withOpacity(0.3)
+                            : chat360Black.withOpacity(0.1),
                         spreadRadius: 1.0,
                       ),
                     ],
@@ -695,8 +695,8 @@ class LoginScreenState extends State<LoginScreen>
                         child: Form(
                           // key: _enterNumberFormKey,
                           child: MobileInputWithOutline(
-                            buttonhintTextColor: mecGrey,
-                            borderColor: mecGrey.withOpacity(0.2),
+                            buttonhintTextColor: chat360Grey,
+                            borderColor: chat360Grey.withOpacity(0.2),
                             controller: _phoneNo,
                             initialCountryCode: DEFAULT_COUNTTRYCODE_ISO,
                             onSaved: (phone) {
@@ -722,12 +722,12 @@ class LoginScreenState extends State<LoginScreen>
                           spacing: 0.3,
                           height: 57,
                           buttoncolor: DESIGN_TYPE == Themetype.whatsapp
-                              ? mecLightGreen
-                              : mecLightGreen,
+                              ? chat360LightGreen
+                              : chat360LightGreen,
                           buttontext: getTranslated(this.context, 'sendverf'),
                           onpressed: widget.isblocknewlogins == true
                               ? () {
-                                  mec.toast(
+                                  chat360.toast(
                                     getTranslated(
                                         this.context, 'logindisabled'),
                                   );
@@ -767,13 +767,13 @@ class LoginScreenState extends State<LoginScreen>
                                         verifyPhoneNumber();
                                       }
                                     } else {
-                                      mec.toast(
+                                      chat360.toast(
                                         getTranslated(
                                             this.context, 'entervalidmob'),
                                       );
                                     }
                                   } else {
-                                    mec.toast(
+                                    chat360.toast(
                                         getTranslated(this.context, 'nameem'));
                                   }
                                 },
@@ -798,8 +798,8 @@ class LoginScreenState extends State<LoginScreen>
                             text: '${getTranslated(this.context, 'agree')} \n',
                             style: TextStyle(
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite.withOpacity(0.8)
-                                    : mecBlack.withOpacity(0.8),
+                                    ? chat360White.withOpacity(0.8)
+                                    : chat360Black.withOpacity(0.8),
                                 fontWeight: FontWeight.w400,
                                 fontFamily: FONTFAMILY_NAME,
                                 fontSize: 14.0,
@@ -808,7 +808,7 @@ class LoginScreenState extends State<LoginScreen>
                             text: getTranslated(this.context, 'tnc'),
                             style: TextStyle(
                                 height: 1.7,
-                                color: mecLightGreen,
+                                color: chat360LightGreen,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: FONTFAMILY_NAME,
                                 fontSize: 14.8),
@@ -848,8 +848,8 @@ class LoginScreenState extends State<LoginScreen>
                                 height: 1.7,
                                 fontFamily: FONTFAMILY_NAME,
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite.withOpacity(0.79)
-                                    : mecBlack.withOpacity(0.79),
+                                    ? chat360White.withOpacity(0.79)
+                                    : chat360Black.withOpacity(0.79),
                                 fontWeight: FontWeight.w500,
                                 fontSize: 11.8)),
                         TextSpan(
@@ -857,7 +857,7 @@ class LoginScreenState extends State<LoginScreen>
                             style: TextStyle(
                                 height: 1.7,
                                 fontFamily: FONTFAMILY_NAME,
-                                color: mecLightGreen,
+                                color: chat360LightGreen,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 14.8),
                             recognizer: TapGestureRecognizer()
@@ -904,8 +904,8 @@ class LoginScreenState extends State<LoginScreen>
           BoxShadow(
             blurRadius: 3.0,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecgreen.withOpacity(0.3)
-                : mecBlack.withOpacity(0.1),
+                ? chat360green.withOpacity(0.3)
+                : chat360Black.withOpacity(0.1),
             spreadRadius: 1.0,
           ),
         ],
@@ -936,7 +936,7 @@ class LoginScreenState extends State<LoginScreen>
           ),
           Center(
             child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(mecLightGreen)),
+                valueColor: AlwaysStoppedAnimation<Color>(chat360LightGreen)),
           ),
           SizedBox(
             height: 48,
@@ -953,8 +953,8 @@ class LoginScreenState extends State<LoginScreen>
           BoxShadow(
             blurRadius: 3.0,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecgreen.withOpacity(0.3)
-                : mecBlack.withOpacity(0.1),
+                ? chat360green.withOpacity(0.3)
+                : chat360Black.withOpacity(0.1),
             spreadRadius: 1.0,
           ),
         ],
@@ -977,12 +977,12 @@ class LoginScreenState extends State<LoginScreen>
               child: PinFieldAutoFill(
                 codeLength: 6,
                 decoration: UnderlineDecoration(
-                  bgColorBuilder: FixedColorBuilder(mecGrey.withOpacity(0.1)),
+                  bgColorBuilder: FixedColorBuilder(chat360Grey.withOpacity(0.1)),
                   textStyle: TextStyle(
                       fontSize: 22,
-                      color: mecBlack,
+                      color: chat360Black,
                       fontWeight: FontWeight.bold),
-                  colorBuilder: FixedColorBuilder(mecGrey.withOpacity(0.1)),
+                  colorBuilder: FixedColorBuilder(chat360Grey.withOpacity(0.1)),
                 ),
                 currentCode: _code,
                 onCodeSubmitted: (code) {
@@ -995,7 +995,7 @@ class LoginScreenState extends State<LoginScreen>
                     });
                     handleSignIn();
                   } else {
-                    mec.toast(getTranslated(this.context, 'correctotp'));
+                    chat360.toast(getTranslated(this.context, 'correctotp'));
                   }
                 },
                 onCodeChanged: (code) {
@@ -1024,15 +1024,15 @@ class LoginScreenState extends State<LoginScreen>
           isShowCompletedLoading == true
               ? Center(
                   child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(mecLightGreen)),
+                      valueColor: AlwaysStoppedAnimation<Color>(chat360LightGreen)),
                 )
               : Padding(
                   padding: EdgeInsets.fromLTRB(17, 22, 17, 5),
                   child: MySimpleButton(
                     height: 57,
                     buttoncolor: DESIGN_TYPE == Themetype.whatsapp
-                        ? mecLightGreen
-                        : mecLightGreen,
+                        ? chat360LightGreen
+                        : chat360LightGreen,
                     buttontext: getTranslated(this.context, 'verify_otp'),
                     onpressed: () {
                       if (_code.length == 6) {
@@ -1041,7 +1041,7 @@ class LoginScreenState extends State<LoginScreen>
                         });
                         handleSignIn();
                       } else
-                        mec.toast(getTranslated(this.context, 'correctotp'));
+                        chat360.toast(getTranslated(this.context, 'correctotp'));
                     },
                   ),
                 ),
@@ -1063,18 +1063,18 @@ class LoginScreenState extends State<LoginScreen>
                             children: [
                               TextSpan(
                                 text: getTranslated(this.context, 'resendcode'),
-                                style: TextStyle(fontSize: 14, color: mecGrey),
+                                style: TextStyle(fontSize: 14, color: chat360Grey),
                               ),
                               TextSpan(
                                 text: " 00:${timeProvider.start} ",
                                 style: TextStyle(
                                     fontSize: 15,
-                                    color: mecLightGreen,
+                                    color: chat360LightGreen,
                                     fontWeight: FontWeight.w700),
                               ),
                               TextSpan(
                                 text: getTranslated(this.context, 'seconds'),
-                                style: TextStyle(fontSize: 14, color: mecGrey),
+                                style: TextStyle(fontSize: 14, color: chat360Grey),
                               ),
                             ],
                           )),
@@ -1111,14 +1111,14 @@ class LoginScreenState extends State<LoginScreen>
                                         children: [
                                           Icon(
                                             Icons.arrow_back_ios,
-                                            color: mecGrey,
+                                            color: chat360Grey,
                                             size: 16,
                                           ),
                                           Text(
                                             getTranslated(this.context, 'back'),
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
-                                                color: mecGrey,
+                                                color: chat360Grey,
                                                 fontSize: 13),
                                           ),
                                         ],
@@ -1149,14 +1149,14 @@ class LoginScreenState extends State<LoginScreen>
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
                                               Icon(Icons.restart_alt_outlined,
-                                                  color: mecLightGreen),
+                                                  color: chat360LightGreen),
                                               Text(
                                                 ' ' +
                                                     getTranslated(
                                                         this.context, 'resend'),
                                                 style: TextStyle(
                                                     fontSize: 13,
-                                                    color: mecLightGreen,
+                                                    color: chat360LightGreen,
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
@@ -1183,8 +1183,8 @@ class LoginScreenState extends State<LoginScreen>
           BoxShadow(
             blurRadius: 3.0,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecgreen.withOpacity(0.3)
-                : mecBlack.withOpacity(0.1),
+                ? chat360green.withOpacity(0.3)
+                : chat360Black.withOpacity(0.1),
             spreadRadius: 1.0,
           ),
         ],
@@ -1207,13 +1207,13 @@ class LoginScreenState extends State<LoginScreen>
           //       codeLength: 6,
           //       decoration: UnderlineDecoration(
           //         bgColorBuilder:
-          //             FixedColorBuilder(mecGrey.withOpacity(0.1)),
+          //             FixedColorBuilder(chat360Grey.withOpacity(0.1)),
           //         textStyle: TextStyle(
           //             fontSize: 22,
-          //             color: mecBlack,
+          //             color: chat360Black,
           //             fontWeight: FontWeight.bold),
           //         colorBuilder:
-          //             FixedColorBuilder(mecGrey.withOpacity(0.1)),
+          //             FixedColorBuilder(chat360Grey.withOpacity(0.1)),
           //       ),
           //       currentCode: _code,
           //       onCodeSubmitted: (code) {
@@ -1226,7 +1226,7 @@ class LoginScreenState extends State<LoginScreen>
           //           });
           //           handleSignIn();
           //         } else {
-          //           mec.toast(getTranslated(this.context, 'correctotp'));
+          //           chat360.toast(getTranslated(this.context, 'correctotp'));
           //         }
           //       },
           //       onCodeChanged: (code) {
@@ -1259,15 +1259,15 @@ class LoginScreenState extends State<LoginScreen>
           //     ?
           Center(
             child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(mecLightGreen)),
+                valueColor: AlwaysStoppedAnimation<Color>(chat360LightGreen)),
           ),
           // : Padding(
           //     padding: EdgeInsets.fromLTRB(17, 22, 17, 5),
           //     child: MySimpleButton(
           //       height: 57,
           //       buttoncolor: DESIGN_TYPE == Themetype.whatsapp
-          //           ? mecLightGreen
-          //           : mecLightGreen,
+          //           ? chat360LightGreen
+          //           : chat360LightGreen,
           //       buttontext: getTranslated(this.context, 'verify_otp'),
           //       onpressed: () {
           //         if (_code.length == 6) {
@@ -1276,7 +1276,7 @@ class LoginScreenState extends State<LoginScreen>
           //           });
           //           handleSignIn();
           //         } else
-          //           mec.toast(
+          //           chat360.toast(
           //               getTranslated(this.context, 'correctotp'));
           //       },
           //     ),
@@ -1320,9 +1320,9 @@ class LoginScreenState extends State<LoginScreen>
     var w = MediaQuery.of(this.context).size.width;
     var h = MediaQuery.of(this.context).size.height;
 
-    return mec.getNTPWrappedWidget(Scaffold(
+    return chat360.getNTPWrappedWidget(Scaffold(
       backgroundColor:
-          DESIGN_TYPE == Themetype.whatsapp ? mecDeepGreen : mecWhite,
+          DESIGN_TYPE == Themetype.whatsapp ? chat360DeepGreen : chat360White,
       body: SingleChildScrollView(
           child: Column(
         children: <Widget>[
@@ -1396,7 +1396,7 @@ class _MySimpleButtonState extends State<MySimpleButton> {
                     spreadRadius: 2)
               ],
               border: Border.all(
-                color: widget.buttoncolor ?? mecgreen,
+                color: widget.buttoncolor ?? chat360green,
               ),
               borderRadius:
                   BorderRadius.all(Radius.circular(widget.borderradius ?? 5))),
@@ -1442,7 +1442,7 @@ class _MobileInputWithOutlineState extends State<MobileInputWithOutline> {
     return BoxDecoration(
         color: bgColor,
         boxShadow: showShadow
-            ? [BoxShadow(color: mecgreen, blurRadius: 10, spreadRadius: 2)]
+            ? [BoxShadow(color: chat360green, blurRadius: 10, spreadRadius: 2)]
             : [BoxShadow(color: Colors.transparent)],
         border:
             Border.all(color: widget.borderColor ?? Colors.grey, width: 1.5),
@@ -1484,7 +1484,7 @@ class _MobileInputWithOutlineState extends State<MobileInputWithOutline> {
                           height: 0.0,
                           fontSize: 15.5,
                           fontWeight: FontWeight.w400,
-                          color: widget.buttonhintTextColor ?? mecGrey),
+                          color: widget.buttonhintTextColor ?? chat360Grey),
                   fillColor: Colors.white,
                   filled: true,
                   border: new OutlineInputBorder(
@@ -1723,7 +1723,7 @@ class _InpuTextBoxState extends State<InpuTextBox> {
                       // width: 0.0 produces a thin "hairline" border
                       borderRadius:
                           BorderRadius.circular(widget.boxcornerradius ?? 1),
-                      borderSide: BorderSide(color: mecgreen, width: 1.5),
+                      borderSide: BorderSide(color: chat360green, width: 1.5),
                     ),
                     border: OutlineInputBorder(
                         borderRadius:
@@ -1736,7 +1736,7 @@ class _InpuTextBoxState extends State<InpuTextBox> {
 
                     hintStyle: TextStyle(
                         letterSpacing: widget.letterspacing ?? 1.5,
-                        color: mecGrey,
+                        color: chat360Grey,
                         fontSize: 15.5,
                         fontWeight: FontWeight.w400)),
               ),

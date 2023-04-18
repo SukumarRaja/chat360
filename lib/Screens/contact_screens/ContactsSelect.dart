@@ -1,14 +1,14 @@
 
 import 'package:contacts_service/contacts_service.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:localstorage/localstorage.dart';
@@ -56,7 +56,7 @@ class _ContactsSelectState extends State<ContactsSelect>
       Container(
         child: Center(
             child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(mecBlue),
+          valueColor: AlwaysStoppedAnimation<Color>(chat360Blue),
         )),
       )
     ]);
@@ -72,8 +72,8 @@ class _ContactsSelectState extends State<ContactsSelect>
         style: TextStyle(
           fontSize: 18,
           color: DESIGN_TYPE == Themetype.whatsapp
-              ? mecWhite
-              : mecBlack,
+              ? chat360White
+              : chat360Black,
         ),
       );
     });
@@ -110,7 +110,7 @@ class _ContactsSelectState extends State<ContactsSelect>
       }
     });
 
-    mec.checkAndRequestPermission(Permission.contacts).then((res) {
+    chat360.checkAndRequestPermission(Permission.contacts).then((res) {
       if (res) {
         storage.ready.then((ready) async {
           if (ready) {
@@ -148,12 +148,12 @@ class _ContactsSelectState extends State<ContactsSelect>
           // }
         });
       } else {
-        mec.showRationale(getTranslated(context, 'perm_contact'));
+        chat360.showRationale(getTranslated(context, 'perm_contact'));
         Navigator.pushReplacement(context,
             new MaterialPageRoute(builder: (context) => OpenSettings()));
       }
     }).catchError((onError) {
-      mec.showRationale('Error occured: $onError');
+      chat360.showRationale('Error occured: $onError');
     });
 
     return completer.future;
@@ -167,13 +167,13 @@ class _ContactsSelectState extends State<ContactsSelect>
 
     return PickupLayout(
         prefs: widget.prefs!,
-        scaffold: mec.getNTPWrappedWidget(ScopedModel<DataModel>(
+        scaffold: chat360.getNTPWrappedWidget(ScopedModel<DataModel>(
             model: widget.model!,
             child: ScopedModelDescendant<DataModel>(
                 builder: (context, child, model) {
               return Consumer<AvailableContactsProvider>(
                   builder: (context, contactsProvider, _child) => Scaffold(
-                      backgroundColor: mecWhite,
+                      backgroundColor: chat360White,
                       appBar: AppBar(
                         elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
                         leading: IconButton(
@@ -184,13 +184,13 @@ class _ContactsSelectState extends State<ContactsSelect>
                             Icons.keyboard_arrow_left,
                             size: 30,
                             color: DESIGN_TYPE == Themetype.whatsapp
-                                ? mecWhite
-                                : mecBlack,
+                                ? chat360White
+                                : chat360Black,
                           ),
                         ),
                         backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                            ? mecDeepGreen
-                            : mecWhite,
+                            ? chat360DeepGreen
+                            : chat360White,
                         centerTitle: false,
                         title: _appBarTitle,
                         actions: <Widget>[
@@ -221,7 +221,7 @@ class _ContactsSelectState extends State<ContactsSelect>
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   fontSize: 18,
-                                                  color: mecBlack,
+                                                  color: chat360Black,
                                                 )),
                                           ))
                                     ])
@@ -246,25 +246,25 @@ class _ContactsSelectState extends State<ContactsSelect>
                                                 return ListTile(
                                                   leading: CircleAvatar(
                                                       backgroundColor:
-                                                          mecgreen,
+                                                          chat360green,
                                                       radius: 22.5,
                                                       child: Text(
-                                                        mec.getInitials(
+                                                        chat360.getInitials(
                                                             userDoc[Dbkeys
                                                                 .nickname]),
                                                         style: TextStyle(
                                                             color:
-                                                                mecWhite),
+                                                                chat360White),
                                                       )),
                                                   title: Text(
                                                       userDoc[Dbkeys.nickname],
                                                       style: TextStyle(
                                                           color:
-                                                              mecBlack)),
+                                                              chat360Black)),
                                                   subtitle: Text(phone,
                                                       style: TextStyle(
                                                           color:
-                                                              mecGrey)),
+                                                              chat360Grey)),
                                                   contentPadding:
                                                       EdgeInsets.symmetric(
                                                           horizontal: 10.0,
@@ -279,21 +279,21 @@ class _ContactsSelectState extends State<ContactsSelect>
                                               return ListTile(
                                                 leading: CircleAvatar(
                                                     backgroundColor:
-                                                        mecgreen,
+                                                        chat360green,
                                                     radius: 22.5,
                                                     child: Text(
-                                                      mec.getInitials(
+                                                      chat360.getInitials(
                                                           user.value),
                                                       style: TextStyle(
                                                           color:
-                                                              mecWhite),
+                                                              chat360White),
                                                     )),
                                                 title: Text(user.value,
                                                     style: TextStyle(
-                                                        color: mecBlack)),
+                                                        color: chat360Black)),
                                                 subtitle: Text(phone,
                                                     style: TextStyle(
-                                                        color: mecGrey)),
+                                                        color: chat360Grey)),
                                                 contentPadding:
                                                     EdgeInsets.symmetric(
                                                         horizontal: 10.0,

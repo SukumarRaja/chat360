@@ -2,34 +2,34 @@ import 'dart:async';
 import 'dart:core';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/Broadcast/AddContactsToBroadcast.dart';
-import 'package:mec/Screens/Groups/AddContactsToGroup.dart';
-import 'package:mec/Screens/chat_screen/utils/aes_encryption.dart';
-import 'package:mec/Screens/contact_screens/SmartContactsPage.dart';
-import 'package:mec/Screens/recent_chats/widgets/getBroadcastMessageTile.dart';
-import 'package:mec/Screens/recent_chats/widgets/getGroupMessageTile.dart';
-import 'package:mec/Screens/recent_chats/widgets/getPersonalMessageTile.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/BroadcastProvider.dart';
-import 'package:mec/Services/Providers/GroupChatProvider.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Services/Providers/user_provider.dart';
-import 'package:mec/Utils/crc.dart';
-import 'package:mec/Utils/setStatusBarColor.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/Utils/late_load.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/Broadcast/AddContactsToBroadcast.dart';
+import 'package:chat360/Screens/Groups/AddContactsToGroup.dart';
+import 'package:chat360/Screens/chat_screen/utils/aes_encryption.dart';
+import 'package:chat360/Screens/contact_screens/SmartContactsPage.dart';
+import 'package:chat360/Screens/recent_chats/widgets/getBroadcastMessageTile.dart';
+import 'package:chat360/Screens/recent_chats/widgets/getGroupMessageTile.dart';
+import 'package:chat360/Screens/recent_chats/widgets/getPersonalMessageTile.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/BroadcastProvider.dart';
+import 'package:chat360/Services/Providers/GroupChatProvider.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Services/Providers/user_provider.dart';
+import 'package:chat360/Utils/crc.dart';
+import 'package:chat360/Utils/setStatusBarColor.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/Utils/late_load.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:mec/Models/E2EE/e2ee.dart' as e2ee;
+import 'package:chat360/Models/E2EE/e2ee.dart' as e2ee;
 import 'package:encrypt/encrypt.dart' as encrypt;
 
 Color darkGrey = Colors.blueGrey[700]!;
@@ -112,14 +112,14 @@ class RecentChatsState extends State<RecentChats> {
     } on FormatException {
       return '';
     }
-    // mec.toast(getTranslated(this.context, 'msgnotload'));
+    // chat360.toast(getTranslated(this.context, 'msgnotload'));
     return '';
   }
 
   @override
   void initState() {
     super.initState();
-    mec.internetLookUp();
+    chat360.internetLookUp();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final observer = Provider.of<Observer>(this.context, listen: false);
       if (IsBannerAdShow == true && observer.isadmobshow == true) {
@@ -164,7 +164,7 @@ class RecentChatsState extends State<RecentChats> {
     Map<String, dynamic> realTimePeerData,
   ) {
     String chatId =
-        mec.getChatId(currentUserNo, realTimePeerData[Dbkeys.phone]);
+        chat360.getChatId(currentUserNo, realTimePeerData[Dbkeys.phone]);
     return streamLoad(
         stream: FirebaseFirestore.instance
             .collection(DbPaths.collectionmessages)
@@ -343,7 +343,7 @@ class RecentChatsState extends State<RecentChats> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontSize: 18,
-                                                      color: mecGrey,
+                                                      color: chat360Grey,
                                                     )),
                                               ))
                                         ]);
@@ -494,7 +494,7 @@ class RecentChatsState extends State<RecentChats> {
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   height: 1.59,
-                                                  color: mecGrey,
+                                                  color: chat360Grey,
                                                 ))),
                                       ))
                                 ])),
@@ -529,7 +529,7 @@ class RecentChatsState extends State<RecentChats> {
   Widget build(BuildContext context) {
     final observer = Provider.of<Observer>(this.context, listen: false);
     setStatusBarColor();
-    return mec.getNTPWrappedWidget(ScopedModel<DataModel>(
+    return chat360.getNTPWrappedWidget(ScopedModel<DataModel>(
       model: getModel()!,
       child:
           ScopedModelDescendant<DataModel>(builder: (context, child, _model) {
@@ -547,7 +547,7 @@ class RecentChatsState extends State<RecentChats> {
               : SizedBox(
                   height: 0,
                 ),
-          backgroundColor: mecWhite,
+          backgroundColor: chat360White,
           floatingActionButton: Padding(
             padding: EdgeInsets.only(
                 bottom: IsBannerAdShow == true && observer.isadmobshow == true
@@ -555,7 +555,7 @@ class RecentChatsState extends State<RecentChats> {
                     : 0),
             child: FloatingActionButton(
                 heroTag: "dfsf4e8t4yaddweqewt834",
-                backgroundColor: mecLightGreen,
+                backgroundColor: chat360LightGreen,
                 child: Icon(
                   Icons.chat,
                   size: 30.0,
@@ -567,7 +567,7 @@ class RecentChatsState extends State<RecentChats> {
                           builder: (context) => new SmartContactsPage(
                               onTapCreateGroup: () {
                                 if (observer.isAllowCreatingGroups == false) {
-                                  mec.showRationale(
+                                  chat360.showRationale(
                                       getTranslated(this.context, 'disabled'));
                                 } else {
                                   Navigator.pushReplacement(
@@ -588,7 +588,7 @@ class RecentChatsState extends State<RecentChats> {
                               onTapCreateBroadcast: () {
                                 if (observer.isAllowCreatingBroadcasts ==
                                     false) {
-                                  mec.showRationale(
+                                  chat360.showRationale(
                                       getTranslated(this.context, 'disabled'));
                                 } else {
                                   Navigator.pushReplacement(

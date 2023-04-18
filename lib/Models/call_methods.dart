@@ -1,7 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Models/call.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Models/call.dart';
 
 class CallMethods {
   Stream<DocumentSnapshot> callStream({String? phone}) =>

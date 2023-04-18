@@ -1,14 +1,14 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +53,7 @@ class EditBroadcastDetailsState extends State<EditBroadcastDetails> {
   @override
   void initState() {
     super.initState();
-    mec.internetLookUp();
+    chat360.internetLookUp();
     broadcastDesc = widget.broadcastDesc;
     broadcastTitle = widget.broadcastName;
     controllerName!.text = broadcastTitle!;
@@ -111,7 +111,7 @@ class EditBroadcastDetailsState extends State<EditBroadcastDetails> {
         isLoading = false;
       });
 
-      mec.toast(err.toString());
+      chat360.toast(err.toString());
     });
   }
 
@@ -128,8 +128,8 @@ class EditBroadcastDetailsState extends State<EditBroadcastDetails> {
     final observer = Provider.of<Observer>(this.context, listen: false);
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(Scaffold(
-            backgroundColor: mecWhite,
+        scaffold: chat360.getNTPWrappedWidget(Scaffold(
+            backgroundColor: chat360White,
             appBar: new AppBar(
               elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
               leading: IconButton(
@@ -140,21 +140,21 @@ class EditBroadcastDetailsState extends State<EditBroadcastDetails> {
                   Icons.arrow_back,
                   size: 24,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                 ),
               ),
               titleSpacing: 0,
               backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecDeepGreen
-                  : mecWhite,
+                  ? chat360DeepGreen
+                  : chat360White,
               title: new Text(
                 getTranslated(context, 'editbroadcast'),
                 style: TextStyle(
                   fontSize: 20.0,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -166,8 +166,8 @@ class EditBroadcastDetailsState extends State<EditBroadcastDetails> {
                     style: TextStyle(
                       fontSize: 16,
                       color: DESIGN_TYPE == Themetype.whatsapp
-                          ? mecWhite
-                          : mecgreen,
+                          ? chat360White
+                          : chat360green,
                     ),
                   ),
                 )
@@ -238,11 +238,11 @@ class EditBroadcastDetailsState extends State<EditBroadcastDetails> {
                           child: Center(
                             child: CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                    mecBlue)),
+                                    chat360Blue)),
                           ),
                           color: DESIGN_TYPE == Themetype.whatsapp
-                              ? mecBlack.withOpacity(0.8)
-                              : mecWhite.withOpacity(0.8))
+                              ? chat360Black.withOpacity(0.8)
+                              : chat360White.withOpacity(0.8))
                       : Container(),
                 ),
               ],

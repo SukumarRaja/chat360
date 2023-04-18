@@ -1,6 +1,6 @@
 
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Services/localization/demo_localization.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Services/localization/demo_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

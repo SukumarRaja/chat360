@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:path/path.dart' as p;
 import 'package:dio/dio.dart';
-import 'package:mec/Services/Providers/DownloadInfoProvider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Services/Providers/DownloadInfoProvider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
@@ -56,7 +56,7 @@ class MobileDownloadService implements DownloadService {
         : "${dir!.path}/$fileName");
     bool fileExists = await outputFile.exists();
     if (fileExists == true) {
-      mec.toast(getTranslated(context, "folder"));
+      chat360.toast(getTranslated(context, "folder"));
     } else {
       final downloadinfo =
           Provider.of<DownloadInfoprovider>(context, listen: false);
@@ -132,7 +132,7 @@ class MobileDownloadService implements DownloadService {
         Navigator.of(keyloader!.currentContext!, rootNavigator: true).pop(); //
         downloadinfo.calculatedownloaded(0.00, 0);
         if (isOpenAfterDownload == true) {
-          mec.toast(getTranslated(context, "folder"));
+          chat360.toast(getTranslated(context, "folder"));
           if (getDocumentType(fileName) != "") {
             Future.delayed(const Duration(milliseconds: 700), () {
               OpenFile.open(
@@ -143,13 +143,13 @@ class MobileDownloadService implements DownloadService {
             });
           }
         } else {
-          mec.toast(getTranslated(context, "folder"));
+          chat360.toast(getTranslated(context, "folder"));
         }
       }).onError((err, er) {
         downloadinfo.calculatedownloaded(0.00, 0);
         print('ERROR OCCURED WHILE DOWNLOADING MEDIA: ' + err.toString());
         Navigator.of(keyloader!.currentContext!, rootNavigator: true).pop(); //
-        mec.toast(getTranslated(context, 'eps'));
+        chat360.toast(getTranslated(context, 'eps'));
       });
     }
   }

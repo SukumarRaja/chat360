@@ -1,18 +1,18 @@
 
 import 'dart:core';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/auth_screens/login.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Screens/chat_screen/chat.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/MyElevatedButton/MyElevatedButton.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/auth_screens/login.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Screens/chat_screen/chat.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/MyElevatedButton/MyElevatedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -54,7 +54,7 @@ class _AddunsavedNumberState extends State<AddunsavedNumber> {
   }
 
   getUser(String searchphone) {
-    // mec.toast(searchphone);
+    // chat360.toast(searchphone);
     FirebaseFirestore.instance
         .collection(DbPaths.collectionusers)
         .where(Dbkeys.phonenumbervariants, arrayContains: searchphone)
@@ -110,8 +110,8 @@ class _AddunsavedNumberState extends State<AddunsavedNumber> {
             child: Form(
               // key: _enterNumberFormKey,
               child: MobileInputWithOutline(
-                buttonhintTextColor: mecGrey,
-                borderColor: mecGrey.withOpacity(0.2),
+                buttonhintTextColor: chat360Grey,
+                borderColor: chat360Grey.withOpacity(0.2),
                 controller: _phoneNo,
                 initialCountryCode: DEFAULT_COUNTTRYCODE_ISO,
                 onSaved: (phone) {
@@ -130,10 +130,10 @@ class _AddunsavedNumberState extends State<AddunsavedNumber> {
               ? Center(
                   child: CircularProgressIndicator(
                       valueColor:
-                          AlwaysStoppedAnimation<Color>(mecLightGreen)),
+                          AlwaysStoppedAnimation<Color>(chat360LightGreen)),
                 )
               : MySimpleButton(
-                  buttoncolor: mecLightGreen.withOpacity(0.99),
+                  buttoncolor: chat360LightGreen.withOpacity(0.99),
                   buttontext: getTranslated(context, 'searchuser'),
                   onpressed: () {
                     RegExp e164 = new RegExp(r'^\+[1-9]\d{1,14}$');
@@ -148,7 +148,7 @@ class _AddunsavedNumberState extends State<AddunsavedNumber> {
 
                       getUser(phoneCode! + _phone);
                     } else {
-                      mec.toast(
+                      chat360.toast(
                           widget.currentUserNo != phoneCode! + _phone
                               ? getTranslated(context, 'validnum')
                               : getTranslated(context, 'validnum'));
@@ -190,7 +190,7 @@ class _AddunsavedNumberState extends State<AddunsavedNumber> {
   Widget build(BuildContext context) {
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(Scaffold(
+        scaffold: chat360.getNTPWrappedWidget(Scaffold(
           appBar: AppBar(
               elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
               leading: IconButton(
@@ -201,13 +201,13 @@ class _AddunsavedNumberState extends State<AddunsavedNumber> {
                   Icons.arrow_back,
                   size: 24,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                 ),
               ),
               backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecDeepGreen
-                  : mecWhite,
+                  ? chat360DeepGreen
+                  : chat360White,
               title: Text(
                 getTranslated(
                   context,
@@ -216,8 +216,8 @@ class _AddunsavedNumberState extends State<AddunsavedNumber> {
                 style: TextStyle(
                   fontSize: 17,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                 ),
               )),
           body: Stack(children: <Widget>[
@@ -243,7 +243,7 @@ class _AddunsavedNumberState extends State<AddunsavedNumber> {
                                         Appname,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: mecBlack,
+                                        color: chat360Black,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 20.0)),
                               ),
@@ -251,13 +251,13 @@ class _AddunsavedNumberState extends State<AddunsavedNumber> {
                                 height: 10.0,
                               ),
                               myElevatedButton(
-                                color: mecBlue,
+                                color: chat360Blue,
                                 child: Text(
                                   getTranslated(context, 'invite'),
-                                  style: TextStyle(color: mecWhite),
+                                  style: TextStyle(color: chat360White),
                                 ),
                                 onPressed: () {
-                                  mec.invite(context);
+                                  chat360.invite(context);
                                 },
                               ),
                             ])
@@ -266,7 +266,7 @@ class _AddunsavedNumberState extends State<AddunsavedNumber> {
             // Loading
             buildWidget()
           ]),
-          backgroundColor: mecWhite,
+          backgroundColor: chat360White,
         )));
   }
 }

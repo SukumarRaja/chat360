@@ -1,7 +1,7 @@
 
 import 'dart:async';
 
-import 'package:mec/Configs/optional_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
 import 'package:flutter/foundation.dart';
 
 class TimerProvider with ChangeNotifier {

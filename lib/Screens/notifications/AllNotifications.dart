@@ -1,15 +1,15 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Screens/notifications/NotificationViewer.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Screens/notifications/NotificationViewer.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mec/Configs/Enum.dart';
+import 'package:chat360/Configs/Enum.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -60,7 +60,7 @@ class _AllNotificationsState extends State<AllNotifications> {
   Widget build(BuildContext context) {
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(Scaffold(
+        scaffold: chat360.getNTPWrappedWidget(Scaffold(
             appBar: AppBar(
               elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
               leading: IconButton(
@@ -68,23 +68,23 @@ class _AllNotificationsState extends State<AllNotifications> {
                   Icons.arrow_back,
                   size: 24,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                 ),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
               ),
               backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecDeepGreen
-                  : mecWhite,
+                  ? chat360DeepGreen
+                  : chat360White,
               title: Text(
                 getTranslated(context, 'allnotifications'),
                 style: TextStyle(
                   fontSize: 18,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                 ),
               ),
             ),
@@ -101,7 +101,7 @@ class _AllNotificationsState extends State<AllNotifications> {
                     ? Center(
                         child: CircularProgressIndicator(
                         valueColor:
-                            AlwaysStoppedAnimation<Color>(mecBlue),
+                            AlwaysStoppedAnimation<Color>(chat360Blue),
                       ))
                     : notificationList.length < 1
                         ? Center(
@@ -111,7 +111,7 @@ class _AllNotificationsState extends State<AllNotifications> {
                               getTranslated(context, 'nonotifications'),
                               textAlign: TextAlign.center,
                               style:
-                                  TextStyle(fontSize: 19, color: mecGrey),
+                                  TextStyle(fontSize: 19, color: chat360Grey),
                             ),
                           ))
                         : ListView.builder(
@@ -168,7 +168,7 @@ class _AllNotificationsState extends State<AllNotifications> {
                                   fontWeight: FontWeight.w700,
                                   height: 1.25,
                                   fontSize: 15.9,
-                                  color: mecBlack,
+                                  color: chat360Black,
                                 ),
                                 overflow: TextOverflow.ellipsis,
                               ),

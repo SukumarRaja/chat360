@@ -2,24 +2,24 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Screens/Broadcast/AddContactsToBroadcast.dart';
-import 'package:mec/Screens/Groups/AddContactsToGroup.dart';
-import 'package:mec/Screens/contact_screens/SmartContactsPage.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Screens/call_history/utils/InfiniteListView.dart';
-import 'package:mec/Services/Providers/call_history_provider.dart';
-import 'package:mec/Utils/call_utilities.dart';
-import 'package:mec/Utils/permissions.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Screens/Broadcast/AddContactsToBroadcast.dart';
+import 'package:chat360/Screens/Groups/AddContactsToGroup.dart';
+import 'package:chat360/Screens/contact_screens/SmartContactsPage.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Screens/call_history/utils/InfiniteListView.dart';
+import 'package:chat360/Services/Providers/call_history_provider.dart';
+import 'package:chat360/Utils/call_utilities.dart';
+import 'package:chat360/Utils/permissions.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:jiffy/jiffy.dart';
@@ -66,7 +66,7 @@ class _CallHistoryState extends State<CallHistory> {
   @override
   void initState() {
     super.initState();
-    mec.internetLookUp();
+    chat360.internetLookUp();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final observer = Provider.of<Observer>(this.context, listen: false);
       if (IsBannerAdShow == true && observer.isadmobshow == true) {
@@ -91,7 +91,7 @@ class _CallHistoryState extends State<CallHistory> {
     return Consumer<FirestoreDataProviderCALLHISTORY>(
       builder: (context, firestoreDataProvider, _) => Scaffold(
         key: _scaffold,
-        backgroundColor: mecWhite,
+        backgroundColor: chat360White,
         bottomSheet: IsBannerAdShow == true &&
                 observer.isadmobshow == true &&
                 adWidget != null
@@ -113,7 +113,7 @@ class _CallHistoryState extends State<CallHistory> {
                             : 0),
                 child: FloatingActionButton(
                     heroTag: "dfsf4e8t4yaddweqewt834",
-                    backgroundColor: mecLightGreen,
+                    backgroundColor: chat360LightGreen,
                     child: Icon(
                       Icons.add_call,
                       size: 30.0,
@@ -126,7 +126,7 @@ class _CallHistoryState extends State<CallHistory> {
                                   onTapCreateGroup: () {
                                     if (observer.isAllowCreatingGroups ==
                                         false) {
-                                      mec.showRationale(getTranslated(
+                                      chat360.showRationale(getTranslated(
                                           this.context, 'disabled'));
                                     } else {
                                       Navigator.pushReplacement(
@@ -147,7 +147,7 @@ class _CallHistoryState extends State<CallHistory> {
                                   onTapCreateBroadcast: () {
                                     if (observer.isAllowCreatingBroadcasts ==
                                         false) {
-                                      mec.showRationale(getTranslated(
+                                      chat360.showRationale(getTranslated(
                                           this.context, 'disabled'));
                                     } else {
                                       Navigator.pushReplacement(
@@ -179,7 +179,7 @@ class _CallHistoryState extends State<CallHistory> {
                             : 0),
                 child: FloatingActionButton(
                     heroTag: "dfsf4e8t4yt834",
-                    backgroundColor: mecWhite,
+                    backgroundColor: chat360White,
                     child: Icon(
                       Icons.delete,
                       size: 30.0,
@@ -198,7 +198,7 @@ class _CallHistoryState extends State<CallHistory> {
                                 child: Text(
                                   getTranslated(context, 'cancel'),
                                   style: TextStyle(
-                                      color: mecgreen, fontSize: 18),
+                                      color: chat360green, fontSize: 18),
                                 ),
                                 onPressed: () {
                                   Navigator.of(context).pop();
@@ -213,7 +213,7 @@ class _CallHistoryState extends State<CallHistory> {
                                 ),
                                 onPressed: () async {
                                   Navigator.of(context).pop();
-                                  mec.toast(
+                                  chat360.toast(
                                       getTranslated(context, 'plswait'));
                                   FirebaseFirestore.instance
                                       .collection(DbPaths.collectionusers)
@@ -292,7 +292,7 @@ class _CallHistoryState extends State<CallHistory> {
                                                   DbPaths.collectioncallhistory)
                                               .doc(dc['TIME'].toString())
                                               .delete();
-                                          mec.toast('Deleted!');
+                                          chat360.toast('Deleted!');
                                           firestoreDataProvider
                                               .deleteSingle(dc);
                                         }));
@@ -321,7 +321,7 @@ class _CallHistoryState extends State<CallHistory> {
                                                 padding: EdgeInsets.fromLTRB(
                                                     6, 2, 6, 2),
                                                 decoration: BoxDecoration(
-                                                    color: mecLightGreen,
+                                                    color: chat360LightGreen,
                                                     borderRadius:
                                                         BorderRadius.all(
                                                             Radius.circular(
@@ -381,10 +381,10 @@ class _CallHistoryState extends State<CallHistory> {
                                           color: dc['TYPE'] == 'INCOMING'
                                               ? (dc['STARTED'] == null
                                                   ? Colors.redAccent
-                                                  : mecLightGreen)
+                                                  : chat360LightGreen)
                                               : (dc['STARTED'] == null
                                                   ? Colors.redAccent
-                                                  : mecLightGreen),
+                                                  : chat360LightGreen),
                                         ),
                                         SizedBox(
                                           width: 7,
@@ -428,7 +428,7 @@ class _CallHistoryState extends State<CallHistory> {
                                               dc['ISVIDEOCALL'] == true
                                                   ? Icons.video_call
                                                   : Icons.call,
-                                              color: mecgreen,
+                                              color: chat360green,
                                               size: 24),
                                           onPressed:
                                               OnlyPeerWhoAreSavedInmyContactCanMessageOrCallMe ==
@@ -437,7 +437,7 @@ class _CallHistoryState extends State<CallHistory> {
                                                   : observer.iscallsallowed ==
                                                           false
                                                       ? () {
-                                                          mec.showRationale(
+                                                          chat360.showRationale(
                                                               getTranslated(
                                                                   this.context,
                                                                   'callnotallowed'));
@@ -455,7 +455,7 @@ class _CallHistoryState extends State<CallHistory> {
                                                                 call(context,
                                                                     true, user);
                                                               } else {
-                                                                mec
+                                                                chat360
                                                                     .showRationale(
                                                                   getTranslated(
                                                                       context,
@@ -470,7 +470,7 @@ class _CallHistoryState extends State<CallHistory> {
                                                               }
                                                             }).catchError(
                                                                     (onError) {
-                                                              mec
+                                                              chat360
                                                                   .showRationale(
                                                                 getTranslated(
                                                                     context,
@@ -498,7 +498,7 @@ class _CallHistoryState extends State<CallHistory> {
                                                                     false,
                                                                     user);
                                                               } else {
-                                                                mec
+                                                                chat360
                                                                     .showRationale(
                                                                   getTranslated(
                                                                       context,
@@ -513,7 +513,7 @@ class _CallHistoryState extends State<CallHistory> {
                                                               }
                                                             }).catchError(
                                                                     (onError) {
-                                                              mec
+                                                              chat360
                                                                   .showRationale(
                                                                 getTranslated(
                                                                     context,
@@ -545,7 +545,7 @@ class _CallHistoryState extends State<CallHistory> {
                                       ),
                                       onTap: () async {
                                         Navigator.of(context).pop();
-                                        mec.toast(
+                                        chat360.toast(
                                             getTranslated(context, 'plswait'));
                                         FirebaseFirestore.instance
                                             .collection(DbPaths.collectionusers)
@@ -554,7 +554,7 @@ class _CallHistoryState extends State<CallHistory> {
                                                 DbPaths.collectioncallhistory)
                                             .doc(dc['TIME'].toString())
                                             .delete();
-                                        mec.toast('Deleted!');
+                                        chat360.toast('Deleted!');
                                         firestoreDataProvider.deleteSingle(dc);
                                       }));
 
@@ -580,7 +580,7 @@ class _CallHistoryState extends State<CallHistory> {
                                               padding: EdgeInsets.fromLTRB(
                                                   6, 2, 6, 2),
                                               decoration: BoxDecoration(
-                                                  color: mecLightGreen,
+                                                  color: chat360LightGreen,
                                                   borderRadius:
                                                       BorderRadius.all(
                                                           Radius.circular(20))),
@@ -652,10 +652,10 @@ class _CallHistoryState extends State<CallHistory> {
                                         color: dc['TYPE'] == 'INCOMING'
                                             ? (dc['STARTED'] == null
                                                 ? Colors.redAccent
-                                                : mecLightGreen)
+                                                : chat360LightGreen)
                                             : (dc['STARTED'] == null
                                                 ? Colors.redAccent
-                                                : mecLightGreen),
+                                                : chat360LightGreen),
                                       ),
                                       SizedBox(
                                         width: 7,
@@ -699,7 +699,7 @@ class _CallHistoryState extends State<CallHistory> {
                                             dc['ISVIDEOCALL'] == true
                                                 ? Icons.video_call
                                                 : Icons.call,
-                                            color: mecgreen,
+                                            color: chat360green,
                                             size: 24),
                                         onPressed: null),
                               );

@@ -3,16 +3,16 @@ import 'dart:async';
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/ImagePicker/image_picker.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/ImagePicker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,7 +21,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mec/Configs/Enum.dart';
+import 'package:chat360/Configs/Enum.dart';
 
 class ProfileSetting extends StatefulWidget {
   final bool? biometricEnabled;
@@ -58,7 +58,7 @@ class ProfileSettingState extends State<ProfileSetting> {
   @override
   void initState() {
     super.initState();
-    mec.internetLookUp();
+    chat360.internetLookUp();
     readLocal();
     _type = widget.type;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -139,7 +139,7 @@ class ProfileSettingState extends State<ProfileSetting> {
       setState(() {
         isLoading = false;
       });
-      mec.toast(getTranslated(this.context, 'saved'));
+      chat360.toast(getTranslated(this.context, 'saved'));
       Navigator.of(this.context).pop();
       Navigator.of(this.context).pop();
     }).catchError((err) {
@@ -147,7 +147,7 @@ class ProfileSettingState extends State<ProfileSetting> {
         isLoading = false;
       });
 
-      mec.toast(err.toString());
+      chat360.toast(err.toString());
     });
   }
 
@@ -165,8 +165,8 @@ class ProfileSettingState extends State<ProfileSetting> {
     final observer = Provider.of<Observer>(context, listen: false);
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(Scaffold(
-            backgroundColor: mecWhite,
+        scaffold: chat360.getNTPWrappedWidget(Scaffold(
+            backgroundColor: chat360White,
             appBar: new AppBar(
               elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
               leading: IconButton(
@@ -177,21 +177,21 @@ class ProfileSettingState extends State<ProfileSetting> {
                   Icons.arrow_back,
                   size: 24,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                 ),
               ),
               titleSpacing: 0,
               backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecDeepGreen
-                  : mecWhite,
+                  ? chat360DeepGreen
+                  : chat360White,
               title: new Text(
                 getTranslated(this.context, 'editprofile'),
                 style: TextStyle(
                   fontSize: 20.0,
                   color: DESIGN_TYPE == Themetype.whatsapp
-                      ? mecWhite
-                      : mecBlack,
+                      ? chat360White
+                      : chat360Black,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -203,8 +203,8 @@ class ProfileSettingState extends State<ProfileSetting> {
                     style: TextStyle(
                       fontSize: 16,
                       color: DESIGN_TYPE == Themetype.whatsapp
-                          ? mecWhite
-                          : mecgreen,
+                          ? chat360White
+                          : chat360green,
                     ),
                   ),
                 )
@@ -234,7 +234,7 @@ class ProfileSettingState extends State<ProfileSetting> {
                                                           valueColor:
                                                               AlwaysStoppedAnimation<
                                                                       Color>(
-                                                                  mecLightGreen),
+                                                                  chat360LightGreen),
                                                         )),
                                                     width: 150.0,
                                                     height: 150.0),
@@ -268,9 +268,9 @@ class ProfileSettingState extends State<ProfileSetting> {
                                   right: 0,
                                   child: FloatingActionButton(
                                       heroTag: "112233e8t4yt834",
-                                      backgroundColor: mecLightGreen,
+                                      backgroundColor: chat360LightGreen,
                                       child: Icon(Icons.camera_alt,
-                                          color: mecWhite),
+                                          color: chat360White),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -297,14 +297,14 @@ class ProfileSettingState extends State<ProfileSetting> {
                                               setState(() {
                                                 isLoading = false;
                                               });
-                                              // mec.toast(
+                                              // chat360.toast(
                                               //     "Profile Picture Changed!");
                                             }).catchError((err) {
                                               setState(() {
                                                 isLoading = false;
                                               });
 
-                                              mec.toast(err.toString());
+                                              chat360.toast(err.toString());
                                             });
                                           }
                                         });
@@ -385,11 +385,11 @@ class ProfileSettingState extends State<ProfileSetting> {
                           child: Center(
                             child: CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                    mecBlue)),
+                                    chat360Blue)),
                           ),
                           color: DESIGN_TYPE == Themetype.whatsapp
-                              ? mecBlack.withOpacity(0.8)
-                              : mecWhite.withOpacity(0.8))
+                              ? chat360Black.withOpacity(0.8)
+                              : chat360White.withOpacity(0.8))
                       : Container(),
                 ),
               ],

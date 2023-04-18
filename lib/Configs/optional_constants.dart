@@ -1,5 +1,5 @@
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
 
 const IsCallFeatureTotallyHide =
     false; // This is just the initial default value.  Once the database is written, It can only be changed from Admin App OR directly inside Firestore database - appsettings/userapp document.
@@ -79,7 +79,7 @@ const IsShowGIFsenderButtonByGIPHY =
     true; //If true, GIF sending button will be shown to users in the text input area in chatrooms.
 
 final loginPageTopColor =
-    DESIGN_TYPE == Themetype.whatsapp ? mecgreen : mecWhite;
+    DESIGN_TYPE == Themetype.whatsapp ? chat360green : chat360White;
 
 final loginPageBottomColor =
-    DESIGN_TYPE == Themetype.whatsapp ? mecDeepGreen : mecWhite;
+    DESIGN_TYPE == Themetype.whatsapp ? chat360DeepGreen : chat360White;

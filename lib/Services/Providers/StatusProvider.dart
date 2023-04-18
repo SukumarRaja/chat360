@@ -1,9 +1,9 @@
 //
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -186,11 +186,11 @@ class StatusProvider with ChangeNotifier {
 }
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:mec/Configs/Dbkeys.dart';
-// import 'package:mec/Configs/Dbpaths.dart';
-// import 'package:mec/Configs/optional_constants.dart';
-// import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-// import 'package:mec/Utils/utils.dart';
+// import 'package:chat360/Configs/Dbkeys.dart';
+// import 'package:chat360/Configs/Dbpaths.dart';
+// import 'package:chat360/Configs/optional_constants.dart';
+// import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+// import 'package:chat360/Utils/utils.dart';
 // import 'package:flutter/foundation.dart';
 // import 'package:flutter/material.dart';
 

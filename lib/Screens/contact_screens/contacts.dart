@@ -1,18 +1,18 @@
 
 import 'package:contacts_service/contacts_service.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Screens/chat_screen/chat.dart';
-import 'package:mec/Screens/chat_screen/pre_chat.dart';
-import 'package:mec/Screens/contact_screens/AddunsavedContact.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/chat_controller.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Screens/chat_screen/chat.dart';
+import 'package:chat360/Screens/chat_screen/pre_chat.dart';
+import 'package:chat360/Screens/contact_screens/AddunsavedContact.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/chat_controller.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:localstorage/localstorage.dart';
@@ -81,7 +81,7 @@ class _ContactsState extends State<Contacts>
       Container(
         child: Center(
             child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(mecBlue),
+          valueColor: AlwaysStoppedAnimation<Color>(chat360Blue),
         )),
       )
     ]);
@@ -98,8 +98,8 @@ class _ContactsState extends State<Contacts>
           fontSize: 18.0,
           fontWeight: FontWeight.w600,
           color: DESIGN_TYPE == Themetype.whatsapp
-              ? mecWhite
-              : mecBlack,
+              ? chat360White
+              : chat360Black,
         ),
       );
       _searchPressed();
@@ -137,7 +137,7 @@ class _ContactsState extends State<Contacts>
       }
     });
 
-    mec.checkAndRequestPermission(Permission.contacts).then((res) {
+    chat360.checkAndRequestPermission(Permission.contacts).then((res) {
       if (res) {
         storage.ready.then((ready) async {
           if (ready) {
@@ -175,12 +175,12 @@ class _ContactsState extends State<Contacts>
           // }
         });
       } else {
-        mec.showRationale(getTranslated(context, 'perm_contact'));
+        chat360.showRationale(getTranslated(context, 'perm_contact'));
         Navigator.pushReplacement(context,
             new MaterialPageRoute(builder: (context) => OpenSettings()));
       }
     }).catchError((onError) {
-      mec.showRationale('Error occured: $onError');
+      chat360.showRationale('Error occured: $onError');
     });
 
     return completer.future;
@@ -188,7 +188,7 @@ class _ContactsState extends State<Contacts>
 
   Icon _searchIcon = new Icon(
     Icons.search,
-    color: DESIGN_TYPE == Themetype.whatsapp ? mecWhite : mecBlack,
+    color: DESIGN_TYPE == Themetype.whatsapp ? chat360White : chat360Black,
   );
   Widget _appBarTitle = Text('');
 
@@ -198,16 +198,16 @@ class _ContactsState extends State<Contacts>
         this._searchIcon = new Icon(
           Icons.close,
           color: DESIGN_TYPE == Themetype.whatsapp
-              ? mecWhite
-              : mecBlack,
+              ? chat360White
+              : chat360Black,
         );
         this._appBarTitle = new TextField(
           textCapitalization: TextCapitalization.sentences,
           autofocus: true,
           style: TextStyle(
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
             fontSize: 18.5,
             fontWeight: FontWeight.w600,
           ),
@@ -215,31 +215,31 @@ class _ContactsState extends State<Contacts>
           decoration: new InputDecoration(
               labelStyle: TextStyle(
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
               hintText: getTranslated(context, 'search'),
               hintStyle: TextStyle(
                 fontSize: 18.5,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite.withOpacity(0.7)
-                    : mecGrey,
+                    ? chat360White.withOpacity(0.7)
+                    : chat360Grey,
               )),
         );
       } else {
         this._searchIcon = new Icon(
           Icons.search,
           color: DESIGN_TYPE == Themetype.whatsapp
-              ? mecWhite
-              : mecBlack,
+              ? chat360White
+              : chat360Black,
         );
         this._appBarTitle = new Text(
           getTranslated(context, 'searchcontact'),
           style: TextStyle(
             fontSize: 18.5,
             color: DESIGN_TYPE == Themetype.whatsapp
-                ? mecWhite
-                : mecBlack,
+                ? chat360White
+                : chat360Black,
           ),
         );
 
@@ -255,13 +255,13 @@ class _ContactsState extends State<Contacts>
 
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(ScopedModel<DataModel>(
+        scaffold: chat360.getNTPWrappedWidget(ScopedModel<DataModel>(
             model: widget.model!,
             child: ScopedModelDescendant<DataModel>(
                 builder: (context, child, model) {
               return Consumer<AvailableContactsProvider>(
                   builder: (context, contactsProvider, _child) => Scaffold(
-                      backgroundColor: mecWhite,
+                      backgroundColor: chat360White,
                       appBar: AppBar(
                         elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
                         titleSpacing: 5,
@@ -273,13 +273,13 @@ class _ContactsState extends State<Contacts>
                             Icons.arrow_back,
                             size: 24,
                             color: DESIGN_TYPE == Themetype.whatsapp
-                                ? mecWhite
-                                : mecBlack,
+                                ? chat360White
+                                : chat360Black,
                           ),
                         ),
                         backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                            ? mecDeepGreen
-                            : mecWhite,
+                            ? chat360DeepGreen
+                            : chat360White,
                         centerTitle: false,
                         title: _appBarTitle,
                         actions: <Widget>[
@@ -287,8 +287,8 @@ class _ContactsState extends State<Contacts>
                             icon: Icon(
                               Icons.add_call,
                               color: DESIGN_TYPE == Themetype.whatsapp
-                                  ? mecWhite
-                                  : mecBlack,
+                                  ? chat360White
+                                  : chat360Black,
                             ),
                             onPressed: () {
                               Navigator.pushReplacement(context,
@@ -327,7 +327,7 @@ class _ContactsState extends State<Contacts>
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   fontSize: 18,
-                                                  color: mecBlack,
+                                                  color: chat360Black,
                                                 )),
                                           ))
                                     ])
@@ -361,28 +361,28 @@ class _ContactsState extends State<Contacts>
                                                             leading:
                                                                 CircleAvatar(
                                                                     backgroundColor:
-                                                                        mecgreen,
+                                                                        chat360green,
                                                                     radius:
                                                                         22.5,
                                                                     child: Text(
-                                                                      mec.getInitials(
+                                                                      chat360.getInitials(
                                                                           userDoc[
                                                                               Dbkeys.nickname]),
                                                                       style: TextStyle(
                                                                           color:
-                                                                              mecWhite),
+                                                                              chat360White),
                                                                     )),
                                                             title: Text(
                                                                 userDoc[Dbkeys
                                                                     .nickname],
                                                                 style: TextStyle(
                                                                     color:
-                                                                        mecBlack)),
+                                                                        chat360Black)),
                                                             subtitle: Text(
                                                                 phone,
                                                                 style: TextStyle(
                                                                     color:
-                                                                        mecGrey)),
+                                                                        chat360Grey)),
                                                             contentPadding:
                                                                 EdgeInsets.symmetric(
                                                                     horizontal:
@@ -419,7 +419,7 @@ class _ContactsState extends State<Contacts>
                                                                           false,
                                                                       state: Navigator.of(
                                                                           context),
-                                                                      type: mec.getAuthenticationType(
+                                                                      type: chat360.getAuthenticationType(
                                                                           widget
                                                                               .biometricEnabled,
                                                                           model),
@@ -475,25 +475,25 @@ class _ContactsState extends State<Contacts>
                                                         return ListTile(
                                                           leading: CircleAvatar(
                                                               backgroundColor:
-                                                                  mecgreen,
+                                                                  chat360green,
                                                               radius: 22.5,
                                                               child: Text(
-                                                                mec
+                                                                chat360
                                                                     .getInitials(
                                                                         user.value),
                                                                 style: TextStyle(
                                                                     color:
-                                                                        mecWhite),
+                                                                        chat360White),
                                                               )),
                                                           title: Text(
                                                               user.value,
                                                               style: TextStyle(
                                                                   color:
-                                                                      mecBlack)),
+                                                                      chat360Black)),
                                                           subtitle: Text(phone,
                                                               style: TextStyle(
                                                                   color:
-                                                                      mecGrey)),
+                                                                      chat360Grey)),
                                                           contentPadding:
                                                               EdgeInsets
                                                                   .symmetric(
@@ -532,7 +532,7 @@ class _ContactsState extends State<Contacts>
                                                                         false,
                                                                     state: Navigator.of(
                                                                         context),
-                                                                    type: mec.getAuthenticationType(
+                                                                    type: chat360.getAuthenticationType(
                                                                         widget
                                                                             .biometricEnabled,
                                                                         model),

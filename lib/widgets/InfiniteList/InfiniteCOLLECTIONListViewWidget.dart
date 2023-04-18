@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/Providers/BroadcastProvider.dart';
-import 'package:mec/Services/Providers/GroupChatProvider.dart';
-import 'package:mec/Services/Providers/LazyLoadingChatProvider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/Providers/BroadcastProvider.dart';
+import 'package:chat360/Services/Providers/GroupChatProvider.dart';
+import 'package:chat360/Services/Providers/LazyLoadingChatProvider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
 import 'package:flutter/material.dart';
 
 class InfiniteCOLLECTIONListViewWidget extends StatefulWidget {
@@ -128,7 +128,7 @@ class _InfiniteCOLLECTIONListViewWidgetState
                             child: CircularProgressIndicator(
                               strokeWidth: 1.8,
                               valueColor:
-                                  AlwaysStoppedAnimation<Color>(mecBlue),
+                                  AlwaysStoppedAnimation<Color>(chat360Blue),
                             ),
                           ),
                         ),
@@ -148,8 +148,8 @@ class _InfiniteCOLLECTIONListViewWidgetState
                                 Icons.message_rounded,
                                 size: 60,
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite
-                                    : mecGrey,
+                                    ? chat360White
+                                    : chat360Grey,
                               ),
                               SizedBox(
                                 height: 10,
@@ -158,8 +158,8 @@ class _InfiniteCOLLECTIONListViewWidgetState
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: DESIGN_TYPE == Themetype.whatsapp
-                                          ? mecWhite
-                                          : mecGrey,
+                                          ? chat360White
+                                          : chat360Grey,
                                       fontSize: 18))
                             ],
                           ),
@@ -198,7 +198,7 @@ class _InfiniteCOLLECTIONListViewWidgetState
                                 child: CircularProgressIndicator(
                                   strokeWidth: 1.8,
                                   valueColor: AlwaysStoppedAnimation<Color>(
-                                      mecBlue),
+                                      chat360Blue),
                                 ),
                               ),
                             ),
@@ -218,7 +218,7 @@ class _InfiniteCOLLECTIONListViewWidgetState
                                   Icon(
                                     Icons.message_rounded,
                                     size: 60,
-                                    color: mecLightGreen,
+                                    color: chat360LightGreen,
                                   ),
                                   SizedBox(
                                     height: 10,
@@ -227,7 +227,7 @@ class _InfiniteCOLLECTIONListViewWidgetState
                                     getTranslated(context, 'norecentchats'),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: mecGrey, fontSize: 16),
+                                        color: chat360Grey, fontSize: 16),
                                   )
                                 ],
                               ),
@@ -263,7 +263,7 @@ class _InfiniteCOLLECTIONListViewWidgetState
                                 child: CircularProgressIndicator(
                                   strokeWidth: 1.8,
                                   valueColor: AlwaysStoppedAnimation<Color>(
-                                      mecBlue),
+                                      chat360Blue),
                                 ),
                               ),
                             ),
@@ -283,7 +283,7 @@ class _InfiniteCOLLECTIONListViewWidgetState
                                   Icon(
                                     Icons.message_rounded,
                                     size: 60,
-                                    color: mecLightGreen,
+                                    color: chat360LightGreen,
                                   ),
                                   SizedBox(
                                     height: 10,
@@ -292,7 +292,7 @@ class _InfiniteCOLLECTIONListViewWidgetState
                                     getTranslated(context, 'norecentchats'),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: mecGrey, fontSize: 16),
+                                        color: chat360Grey, fontSize: 16),
                                   )
                                 ],
                               ),

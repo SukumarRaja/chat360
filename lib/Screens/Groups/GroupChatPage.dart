@@ -1,35 +1,35 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/Groups/GroupDetails.dart';
-import 'package:mec/Screens/Groups/widget/groupChatBubble.dart';
-import 'package:mec/Screens/auth_screens/login.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Screens/chat_screen/chat.dart';
-import 'package:mec/Screens/chat_screen/utils/aes_encryption.dart';
-import 'package:mec/Screens/chat_screen/utils/uploadMediaWithProgress.dart';
-import 'package:mec/Screens/contact_screens/SelectContactsToForward.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/Providers/GroupChatProvider.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/chat_controller.dart';
-import 'package:mec/Utils/custom_url_launcher.dart';
-import 'package:mec/Utils/emoji_detect.dart';
-import 'package:mec/Utils/mime_type.dart';
-import 'package:mec/Utils/setStatusBarColor.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/AllinOneCameraGalleryImageVideoPicker/AllinOneCameraGalleryImageVideoPicker.dart';
-import 'package:mec/widgets/CameraGalleryImagePicker/camera_image_gallery_picker.dart';
-import 'package:mec/widgets/CameraGalleryImagePicker/multiMediaPicker.dart';
-import 'package:mec/widgets/DownloadManager/download_all_file_type.dart';
-import 'package:mec/widgets/InfiniteList/InfiniteCOLLECTIONListViewWidget.dart';
-import 'package:mec/widgets/MultiDocumentPicker/multiDocumentPicker.dart';
-import 'package:mec/widgets/MyElevatedButton/MyElevatedButton.dart';
-import 'package:mec/widgets/VideoEditor/video_editor.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/Groups/GroupDetails.dart';
+import 'package:chat360/Screens/Groups/widget/groupChatBubble.dart';
+import 'package:chat360/Screens/auth_screens/login.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Screens/chat_screen/chat.dart';
+import 'package:chat360/Screens/chat_screen/utils/aes_encryption.dart';
+import 'package:chat360/Screens/chat_screen/utils/uploadMediaWithProgress.dart';
+import 'package:chat360/Screens/contact_screens/SelectContactsToForward.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/Providers/GroupChatProvider.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/chat_controller.dart';
+import 'package:chat360/Utils/custom_url_launcher.dart';
+import 'package:chat360/Utils/emoji_detect.dart';
+import 'package:chat360/Utils/mime_type.dart';
+import 'package:chat360/Utils/setStatusBarColor.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/AllinOneCameraGalleryImageVideoPicker/AllinOneCameraGalleryImageVideoPicker.dart';
+import 'package:chat360/widgets/CameraGalleryImagePicker/camera_image_gallery_picker.dart';
+import 'package:chat360/widgets/CameraGalleryImagePicker/multiMediaPicker.dart';
+import 'package:chat360/widgets/DownloadManager/download_all_file_type.dart';
+import 'package:chat360/widgets/InfiniteList/InfiniteCOLLECTIONListViewWidget.dart';
+import 'package:chat360/widgets/MultiDocumentPicker/multiDocumentPicker.dart';
+import 'package:chat360/widgets/MyElevatedButton/MyElevatedButton.dart';
+import 'package:chat360/widgets/VideoEditor/video_editor.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -47,18 +47,18 @@ import 'dart:async';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart' as emojipic;
 import 'dart:convert';
 import 'dart:io';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Screens/privacypolicy&TnC/PdfViewFromCachedUrl.dart';
-import 'package:mec/widgets/SoundPlayer/SoundPlayerPro.dart';
-import 'package:mec/Services/Providers/currentchat_peer.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/contact_screens/ContactsSelect.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Screens/chat_screen/utils/photo_view.dart';
-import 'package:mec/Utils/save.dart';
-import 'package:mec/widgets/AudioRecorder/Audiorecord.dart';
-import 'package:mec/widgets/VideoPicker/VideoPreview.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Screens/privacypolicy&TnC/PdfViewFromCachedUrl.dart';
+import 'package:chat360/widgets/SoundPlayer/SoundPlayerPro.dart';
+import 'package:chat360/Services/Providers/currentchat_peer.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/contact_screens/ContactsSelect.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Screens/chat_screen/utils/photo_view.dart';
+import 'package:chat360/Utils/save.dart';
+import 'package:chat360/widgets/AudioRecorder/Audiorecord.dart';
+import 'package:chat360/widgets/VideoPicker/VideoPreview.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:giphy_get/giphy_get.dart';
@@ -66,9 +66,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Utils/unawaited.dart';
-import 'package:mec/Models/E2EE/e2ee.dart' as e2ee;
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Utils/unawaited.dart';
+import 'package:chat360/Models/E2EE/e2ee.dart' as e2ee;
 import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:video_compress/video_compress.dart' as compress;
 import 'package:path/path.dart' as p;
@@ -433,7 +433,7 @@ class _GroupChatPageState extends State<GroupChatPage>
           }).toString();
         });
       }).catchError((onError) {
-        mec.toast('Sending failed !');
+        chat360.toast('Sending failed !');
         print('ERROR SENDING MEDIA: $onError');
       });
     } else {
@@ -580,7 +580,7 @@ class _GroupChatPageState extends State<GroupChatPage>
           }).toString();
         });
       }).catchError((onError) {
-        mec.toast('Sending failed !');
+        chat360.toast('Sending failed !');
         print('ERROR SENDING FILE: $onError');
       });
     } else {
@@ -691,7 +691,7 @@ class _GroupChatPageState extends State<GroupChatPage>
           }).toString();
         });
       }).catchError((onError) {
-        mec.toast('Sending failed !');
+        chat360.toast('Sending failed !');
         print('ERROR SENDING FILE: $onError');
       });
     } else {
@@ -950,7 +950,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                       left: 10,
                     ),
                     decoration: BoxDecoration(
-                        color: mecWhite,
+                        color: chat360White,
                         borderRadius: BorderRadius.all(Radius.circular(30))),
                     child: Row(
                       children: [
@@ -961,7 +961,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                               refreshThisInput();
                             },
                             icon: Icon(Icons.emoji_emotions,
-                                color: mecGrey, size: 23),
+                                color: chat360Grey, size: 23),
                           ),
                         ),
                         Flexible(
@@ -985,7 +985,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                             maxLines: null,
                             textCapitalization: TextCapitalization.sentences,
                             style: TextStyle(
-                                fontSize: 16.0, color: mecBlack),
+                                fontSize: 16.0, color: chat360Black),
                             controller: textEditingController,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
@@ -1029,14 +1029,14 @@ class _GroupChatPageState extends State<GroupChatPage>
                                         child: IconButton(
                                           icon: new Icon(
                                             Icons.attachment_outlined,
-                                            color: mecGrey,
+                                            color: chat360Grey,
                                           ),
                                           padding: EdgeInsets.all(0.0),
                                           onPressed:
                                               observer.ismediamessagingallowed ==
                                                       false
                                                   ? () {
-                                                      mec.showRationale(
+                                                      chat360.showRationale(
                                                           getTranslated(
                                                               this.context,
                                                               'mediamssgnotallowed'));
@@ -1045,7 +1045,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                                       hidekeyboard(context);
                                                       shareMedia(context);
                                                     },
-                                          color: mecWhite,
+                                          color: chat360White,
                                         ),
                                       ),
                                 textEditingController.text.isNotEmpty
@@ -1056,14 +1056,14 @@ class _GroupChatPageState extends State<GroupChatPage>
                                           icon: new Icon(
                                             Icons.camera_alt_rounded,
                                             size: 20,
-                                            color: mecGrey,
+                                            color: chat360Grey,
                                           ),
                                           padding: EdgeInsets.all(0.0),
                                           onPressed:
                                               observer.ismediamessagingallowed ==
                                                       false
                                                   ? () {
-                                                      mec.showRationale(
+                                                      chat360.showRationale(
                                                           getTranslated(
                                                               this.context,
                                                               'mediamssgnotallowed'));
@@ -1145,7 +1145,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                                                     },
                                                                   )));
                                                     },
-                                          color: mecWhite,
+                                          color: chat360White,
                                         ),
                                       ),
                                 textEditingController.text.length != 0 ||
@@ -1159,18 +1159,18 @@ class _GroupChatPageState extends State<GroupChatPage>
                                         alignment: Alignment.topLeft,
                                         width: 40,
                                         child: IconButton(
-                                            color: mecWhite,
+                                            color: chat360White,
                                             padding: EdgeInsets.all(0.0),
                                             icon: Icon(
                                               Icons.gif_rounded,
                                               size: 40,
-                                              color: mecGrey,
+                                              color: chat360Grey,
                                             ),
                                             onPressed: observer
                                                         .ismediamessagingallowed ==
                                                     false
                                                 ? () {
-                                                    mec.showRationale(
+                                                    chat360.showRationale(
                                                         getTranslated(
                                                             this.context,
                                                             'mediamssgnotallowed'));
@@ -1178,7 +1178,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                                 : () async {
                                                     GiphyGif? gif =
                                                         await GiphyGet.getGif(
-                                                      tabColor: mecgreen,
+                                                      tabColor: chat360green,
                                                       context: context,
                                                       apiKey:
                                                           GiphyAPIKey, //YOUR API KEY HERE
@@ -1211,8 +1211,8 @@ class _GroupChatPageState extends State<GroupChatPage>
                   margin: EdgeInsets.only(left: 6, right: 10),
                   decoration: BoxDecoration(
                       color: DESIGN_TYPE == Themetype.whatsapp
-                          ? mecgreen
-                          : mecLightGreen,
+                          ? chat360green
+                          : chat360LightGreen,
                       // border: Border.all(
                       //   color: Colors.red[500],
                       // ),
@@ -1224,7 +1224,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                         textEditingController.text.isNotEmpty == true
                             ? Icons.send
                             : Icons.mic,
-                        color: mecWhite.withOpacity(0.99),
+                        color: chat360White.withOpacity(0.99),
                       ),
                       onPressed: observer.ismediamessagingallowed == true
                           ? textEditingController.text.isNotEmpty == false
@@ -1252,7 +1252,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                 }
                               : observer.istextmessagingallowed == false
                                   ? () {
-                                      mec.showRationale(getTranslated(
+                                      chat360.showRationale(getTranslated(
                                           this.context, 'textmssgnotallowed'));
                                     }
                                   : () => onSendMessage(
@@ -1263,10 +1263,10 @@ class _GroupChatPageState extends State<GroupChatPage>
                                         type: MessageType.text,
                                       )
                           : () {
-                              mec.showRationale(getTranslated(
+                              chat360.showRationale(getTranslated(
                                   this.context, 'mediamssgnotallowed'));
                             },
-                      color: mecWhite,
+                      color: chat360White,
                     ),
                   ),
                 ),
@@ -1297,11 +1297,11 @@ class _GroupChatPageState extends State<GroupChatPage>
                             horizontalSpacing: 0,
                             initCategory: emojipic.Category.RECENT,
                             bgColor: Color(0xFFF2F2F2),
-                            indicatorColor: mecgreen,
+                            indicatorColor: chat360green,
                             iconColor: Colors.grey,
-                            iconColorSelected: mecgreen,
+                            iconColorSelected: chat360green,
                             progressIndicatorColor: Colors.blue,
-                            backspaceColor: mecgreen,
+                            backspaceColor: chat360green,
                             showRecentsTab: true,
                             recentsLimit: 28,
                           
@@ -1332,7 +1332,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                 left: 10,
   //               ),
   //               decoration: BoxDecoration(
-  //                   color: mecWhite,
+  //                   color: chat360White,
   //                   borderRadius: BorderRadius.all(Radius.circular(30))),
   //               child: Row(
   //                 children: [
@@ -1345,7 +1345,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                             },
   //                             icon: Icon(
   //                               Icons.keyboard,
-  //                               color: mecGrey,
+  //                               color: chat360Grey,
   //                             ),
   //                           ),
   //                         )
@@ -1364,7 +1364,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                                   },
   //                                   icon: Icon(
   //                                     Icons.emoji_emotions,
-  //                                     color: mecGrey,
+  //                                     color: chat360Grey,
   //                                   ),
   //                                 ),
   //                               ),
@@ -1375,18 +1375,18 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                                   : SizedBox(
   //                                       width: 50,
   //                                       child: IconButton(
-  //                                           color: mecWhite,
+  //                                           color: chat360White,
   //                                           padding: EdgeInsets.all(0.0),
   //                                           icon: Icon(
   //                                             Icons.gif,
   //                                             size: 40,
-  //                                             color: mecGrey,
+  //                                             color: chat360Grey,
   //                                           ),
   //                                           onPressed: observer
   //                                                       .ismediamessagingallowed ==
   //                                                   false
   //                                               ? () {
-  //                                                   mec.showRationale(
+  //                                                   chat360.showRationale(
   //                                                       getTranslated(
   //                                                           this.context,
   //                                                           'mediamssgnotallowed'));
@@ -1394,7 +1394,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                                               : () async {
   //                                                   GiphyGif? gif =
   //                                                       await GiphyGet.getGif(
-  //                                                     tabColor: mecgreen,
+  //                                                     tabColor: chat360green,
   //                                                     context: context,
   //                                                     apiKey:
   //                                                         GiphyAPIKey, //YOUR API KEY HERE
@@ -1421,14 +1421,14 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                                       child: IconButton(
   //                                         icon: new Icon(
   //                                           Icons.attachment_outlined,
-  //                                           color: mecGrey,
+  //                                           color: chat360Grey,
   //                                         ),
   //                                         padding: EdgeInsets.all(0.0),
   //                                         onPressed:
   //                                             observer.ismediamessagingallowed ==
   //                                                     false
   //                                                 ? () {
-  //                                                     mec.showRationale(
+  //                                                     chat360.showRationale(
   //                                                         getTranslated(
   //                                                             this.context,
   //                                                             'mediamssgnotallowed'));
@@ -1437,7 +1437,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                                                     hidekeyboard(context);
   //                                                     shareMedia(context);
   //                                                   },
-  //                                         color: mecWhite,
+  //                                         color: chat360White,
   //                                       ),
   //                                     )
   //                             ],
@@ -1464,7 +1464,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                       showCursor: true,
   //                       focusNode: keyboardFocusNode,
   //                       maxLines: null,
-  //                       style: TextStyle(fontSize: 16.0, color: mecBlack),
+  //                       style: TextStyle(fontSize: 16.0, color: chat360Black),
   //                       controller: textEditingController,
   //                       decoration: InputDecoration(
   //                         enabledBorder: OutlineInputBorder(
@@ -1502,8 +1502,8 @@ class _GroupChatPageState extends State<GroupChatPage>
   //             margin: EdgeInsets.only(left: 6, right: 10),
   //             decoration: BoxDecoration(
   //                 color: DESIGN_TYPE == Themetype.whatsapp
-  //                     ? mecgreen
-  //                     : mecLightGreen,
+  //                     ? chat360green
+  //                     : chat360LightGreen,
   //                 // border: Border.all(
   //                 //   color: Colors.red[500],
   //                 // ),
@@ -1515,7 +1515,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                   textEditingController.text.isNotEmpty == true
   //                       ? Icons.send
   //                       : Icons.mic,
-  //                   color: mecWhite.withOpacity(0.99),
+  //                   color: chat360White.withOpacity(0.99),
   //                 ),
   //                 onPressed: observer.ismediamessagingallowed == true
   //                     ? textEditingController.text.isNotEmpty == false
@@ -1543,7 +1543,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                           }
   //                         : observer.istextmessagingallowed == false
   //                             ? () {
-  //                                 mec.showRationale(getTranslated(
+  //                                 chat360.showRationale(getTranslated(
   //                                     this.context, 'textmssgnotallowed'));
   //                               }
   //                             : () => onSendMessage(
@@ -1553,10 +1553,10 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                                   type: MessageType.text,
   //                                 )
   //                     : () {
-  //                         mec.showRationale(getTranslated(
+  //                         chat360.showRationale(getTranslated(
   //                             this.context, 'mediamssgnotallowed'));
   //                       },
-  //                 color: mecWhite,
+  //                 color: chat360White,
   //               ),
   //             ),
   //           ),
@@ -1587,11 +1587,11 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                       horizontalSpacing: 0,
   //                       initCategory: emojipic.Category.RECENT,
   //                       bgColor: Color(0xFFF2F2F2),
-  //                       indicatorColor: mecgreen,
+  //                       indicatorColor: chat360green,
   //                       iconColor: Colors.grey,
-  //                       iconColorSelected: mecgreen,
+  //                       iconColorSelected: chat360green,
   //                       progressIndicatorColor: Colors.blue,
-  //                       backspaceColor: mecgreen,
+  //                       backspaceColor: chat360green,
   //                       showRecentsTab: true,
   //                       recentsLimit: 28,
   //                       noRecentsText: 'No Recents',
@@ -1617,7 +1617,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                       left: 10,
   //                     ),
   //                     decoration: BoxDecoration(
-  //                         color: mecWhite,
+  //                         color: chat360White,
   //                         borderRadius: BorderRadius.all(Radius.circular(30))),
   //                     child: Row(
   //                       children: [
@@ -1626,25 +1626,25 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                           child: Row(
   //                             children: [
   //                               IconButton(
-  //                                   color: mecWhite,
+  //                                   color: chat360White,
   //                                   padding: EdgeInsets.all(0.0),
   //                                   icon: Icon(
   //                                     Icons.gif,
   //                                     size: 40,
-  //                                     color: mecGrey,
+  //                                     color: chat360Grey,
   //                                   ),
   //                                   onPressed: observer
   //                                               .ismediamessagingallowed ==
   //                                           false
   //                                       ? () {
-  //                                           mec.showRationale(
+  //                                           chat360.showRationale(
   //                                               getTranslated(this.context,
   //                                                   'mediamssgnotallowed'));
   //                                         }
   //                                       : () async {
   //                                           GiphyGif? gif =
   //                                               await GiphyGet.getGif(
-  //                                             tabColor: mecgreen,
+  //                                             tabColor: chat360green,
   //                                             context: context,
   //                                             apiKey:
   //                                                 GiphyAPIKey, //YOUR API KEY HERE
@@ -1664,13 +1664,13 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                               IconButton(
   //                                 icon: new Icon(
   //                                   Icons.attachment_outlined,
-  //                                   color: mecGrey,
+  //                                   color: chat360Grey,
   //                                 ),
   //                                 padding: EdgeInsets.all(0.0),
   //                                 onPressed: observer.ismediamessagingallowed ==
   //                                         false
   //                                     ? () {
-  //                                         mec.showRationale(getTranslated(
+  //                                         chat360.showRationale(getTranslated(
   //                                             this.context,
   //                                             'mediamssgnotallowed'));
   //                                       }
@@ -1678,7 +1678,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                                         hidekeyboard(context);
   //                                         shareMedia(context);
   //                                       },
-  //                                 color: mecWhite,
+  //                                 color: chat360White,
   //                               ),
   //                             ],
   //                           ),
@@ -1689,7 +1689,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                             onChanged: (v) {},
   //                             maxLines: null,
   //                             style: TextStyle(
-  //                                 fontSize: 18.0, color: mecBlack),
+  //                                 fontSize: 18.0, color: chat360Black),
   //                             controller: textEditingController,
   //                             decoration: InputDecoration(
   //                               enabledBorder: OutlineInputBorder(
@@ -1728,8 +1728,8 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                   margin: EdgeInsets.only(left: 6, right: 10),
   //                   decoration: BoxDecoration(
   //                       color: DESIGN_TYPE == Themetype.whatsapp
-  //                           ? mecgreen
-  //                           : mecLightGreen,
+  //                           ? chat360green
+  //                           : chat360LightGreen,
   //                       // border: Border.all(
   //                       //   color: Colors.red[500],
   //                       // ),
@@ -1739,11 +1739,11 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                     child: IconButton(
   //                       icon: new Icon(
   //                         Icons.send,
-  //                         color: mecWhite.withOpacity(0.99),
+  //                         color: chat360White.withOpacity(0.99),
   //                       ),
   //                       onPressed: observer.istextmessagingallowed == false
   //                           ? () {
-  //                               mec.showRationale(getTranslated(
+  //                               chat360.showRationale(getTranslated(
   //                                   this.context, 'textmssgnotallowed'));
   //                             }
   //                           : () {
@@ -1754,7 +1754,7 @@ class _GroupChatPageState extends State<GroupChatPage>
   //                                 type: MessageType.text,
   //                               );
   //                             },
-  //                       color: mecWhite,
+  //                       color: chat360White,
   //                     ),
   //                   ),
   //                 ),
@@ -1777,21 +1777,21 @@ class _GroupChatPageState extends State<GroupChatPage>
           height: 80,
           margin: EdgeInsets.only(left: 15, right: 70),
           decoration: BoxDecoration(
-              color: mecWhite,
+              color: chat360White,
               borderRadius: BorderRadius.all(Radius.circular(10))),
           child: Stack(
             children: [
               Container(
                   margin: EdgeInsetsDirectional.all(4),
                   decoration: BoxDecoration(
-                      color: mecGrey.withOpacity(0.1),
+                      color: chat360Grey.withOpacity(0.1),
                       borderRadius: BorderRadius.all(Radius.circular(8))),
                   child: Row(children: [
                     Container(
                       decoration: BoxDecoration(
                         color: replyDoc![Dbkeys.groupmsgSENDBY] ==
                                 widget.currentUserno
-                            ? mecgreen
+                            ? chat360green
                             : Colors.purple,
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(0),
@@ -1823,7 +1823,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                   fontWeight: FontWeight.bold,
                                   color: replyDoc![Dbkeys.groupmsgSENDBY] ==
                                           widget.currentUserno
-                                      ? mecgreen
+                                      ? chat360green
                                       : Colors.purple),
                             ),
                           ),
@@ -1911,7 +1911,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                 placeholder: (context, url) => Container(
                                   child: CircularProgressIndicator(
                                     valueColor: AlwaysStoppedAnimation<Color>(
-                                        mecBlue),
+                                        chat360Blue),
                                   ),
                                   width: replyDoc![Dbkeys.content]
                                           .contains('giphy')
@@ -1979,7 +1979,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                                     CircularProgressIndicator(
                                                   valueColor:
                                                       AlwaysStoppedAnimation<
-                                                          Color>(mecBlue),
+                                                          Color>(chat360Blue),
                                                 ),
                                                 width: 84,
                                                 height: 84,
@@ -2465,7 +2465,7 @@ class _GroupChatPageState extends State<GroupChatPage>
             );
           }).then((value) async {
             if (index >= list.length - 1) {
-              mec.toast(
+              chat360.toast(
                 getTranslated(this.context, 'sent'),
               );
               setStateIfMounted(() {
@@ -2481,7 +2481,7 @@ class _GroupChatPageState extends State<GroupChatPage>
           setStateIfMounted(() {
             isgeneratingSomethingLoader = false;
           });
-          mec.toast('Failed to send');
+          chat360.toast('Failed to send');
         }
       } else {
         try {
@@ -2502,10 +2502,10 @@ class _GroupChatPageState extends State<GroupChatPage>
                 await ChatController.request(
                     widget.currentUserno,
                     list[index][Dbkeys.phone],
-                    mec.getChatId(
+                    chat360.getChatId(
                         widget.currentUserno, list[index][Dbkeys.phone]));
               }
-              var chatId = mec.getChatId(
+              var chatId = chat360.getChatId(
                   widget.currentUserno, list[index][Dbkeys.phone]);
               await FirebaseFirestore.instance
                   .collection(DbPaths.collectionmessages)
@@ -2549,7 +2549,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                     list[index][Dbkeys.phone], timestamp2, messaging);
               }).then((value) async {
                 if (index >= list.length - 1) {
-                  mec.toast(
+                  chat360.toast(
                     getTranslated(this.context, 'sent'),
                   );
                   setStateIfMounted(() {
@@ -2566,13 +2566,13 @@ class _GroupChatPageState extends State<GroupChatPage>
             setStateIfMounted(() {
               isgeneratingSomethingLoader = false;
             });
-            mec.toast('Nothing to send');
+            chat360.toast('Nothing to send');
           }
         } catch (e) {
           setStateIfMounted(() {
             isgeneratingSomethingLoader = false;
           });
-          mec.toast('Failed to Forward message. Error:$e');
+          chat360.toast('Failed to Forward message. Error:$e');
         }
       }
     }
@@ -2664,7 +2664,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                     ? Text(
                         getTranslated(context, 'msgdeleted'),
                         style: TextStyle(
-                            color: mecBlack.withOpacity(0.6),
+                            color: chat360Black.withOpacity(0.6),
                             fontSize: 15,
                             fontStyle: FontStyle.italic),
                       )
@@ -2740,7 +2740,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                               Icon(
                                 FontAwesomeIcons.share,
                                 size: 12,
-                                color: mecGrey.withOpacity(0.5),
+                                color: chat360Grey.withOpacity(0.5),
                               ),
                               SizedBox(
                                 width: 5,
@@ -2748,7 +2748,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                               Text(getTranslated(this.context, 'forwarded'),
                                   maxLines: 1,
                                   style: TextStyle(
-                                      color: mecGrey.withOpacity(0.7),
+                                      color: chat360Grey.withOpacity(0.7),
                                       fontStyle: FontStyle.italic,
                                       overflow: TextOverflow.ellipsis,
                                       fontSize: 13))
@@ -2837,7 +2837,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                             Icon(
                               FontAwesomeIcons.share,
                               size: 12,
-                              color: mecGrey.withOpacity(0.5),
+                              color: chat360Grey.withOpacity(0.5),
                             ),
                             SizedBox(
                               width: 5,
@@ -2845,7 +2845,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                             Text(getTranslated(this.context, 'forwarded'),
                                 maxLines: 1,
                                 style: TextStyle(
-                                    color: mecGrey.withOpacity(0.7),
+                                    color: chat360Grey.withOpacity(0.7),
                                     fontStyle: FontStyle.italic,
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 13))
@@ -2917,7 +2917,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                 Icon(
                                   FontAwesomeIcons.share,
                                   size: 12,
-                                  color: mecGrey.withOpacity(0.5),
+                                  color: chat360Grey.withOpacity(0.5),
                                 ),
                                 SizedBox(
                                   width: 5,
@@ -2925,7 +2925,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                 Text(getTranslated(this.context, 'forwarded'),
                                     maxLines: 1,
                                     style: TextStyle(
-                                        color: mecGrey.withOpacity(0.7),
+                                        color: chat360Grey.withOpacity(0.7),
                                         fontStyle: FontStyle.italic,
                                         overflow: TextOverflow.ellipsis,
                                         fontSize: 13))
@@ -2968,7 +2968,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                           Icon(
                             FontAwesomeIcons.share,
                             size: 12,
-                            color: mecGrey.withOpacity(0.5),
+                            color: chat360Grey.withOpacity(0.5),
                           ),
                           SizedBox(
                             width: 5,
@@ -2976,7 +2976,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                           Text(getTranslated(this.context, 'forwarded'),
                               maxLines: 1,
                               style: TextStyle(
-                                  color: mecGrey.withOpacity(0.7),
+                                  color: chat360Grey.withOpacity(0.7),
                                   fontStyle: FontStyle.italic,
                                   overflow: TextOverflow.ellipsis,
                                   fontSize: 13))
@@ -3028,7 +3028,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                             Icon(
                               FontAwesomeIcons.share,
                               size: 12,
-                              color: mecGrey.withOpacity(0.5),
+                              color: chat360Grey.withOpacity(0.5),
                             ),
                             SizedBox(
                               width: 5,
@@ -3036,7 +3036,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                             Text(getTranslated(this.context, 'forwarded'),
                                 maxLines: 1,
                                 style: TextStyle(
-                                    color: mecGrey.withOpacity(0.7),
+                                    color: chat360Grey.withOpacity(0.7),
                                     fontStyle: FontStyle.italic,
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 13))
@@ -3088,7 +3088,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                             Icon(
                               FontAwesomeIcons.share,
                               size: 12,
-                              color: mecGrey.withOpacity(0.5),
+                              color: chat360Grey.withOpacity(0.5),
                             ),
                             SizedBox(
                               width: 5,
@@ -3096,7 +3096,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                             Text(getTranslated(this.context, 'forwarded'),
                                 maxLines: 1,
                                 style: TextStyle(
-                                    color: mecGrey.withOpacity(0.7),
+                                    color: chat360Grey.withOpacity(0.7),
                                     fontStyle: FontStyle.italic,
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 13))
@@ -3210,7 +3210,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                             Icon(
                               FontAwesomeIcons.share,
                               size: 12,
-                              color: mecGrey.withOpacity(0.5),
+                              color: chat360Grey.withOpacity(0.5),
                             ),
                             SizedBox(
                               width: 5,
@@ -3218,7 +3218,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                             Text(getTranslated(this.context, 'forwarded'),
                                 maxLines: 1,
                                 style: TextStyle(
-                                    color: mecGrey.withOpacity(0.7),
+                                    color: chat360Grey.withOpacity(0.7),
                                     fontStyle: FontStyle.italic,
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 13))
@@ -3312,14 +3312,14 @@ class _GroupChatPageState extends State<GroupChatPage>
                   height: 70,
                   margin: EdgeInsets.only(left: 0, right: 0),
                   decoration: BoxDecoration(
-                      color: mecWhite.withOpacity(0.55),
+                      color: chat360White.withOpacity(0.55),
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: Stack(
                     children: [
                       Container(
                           margin: EdgeInsetsDirectional.all(4),
                           decoration: BoxDecoration(
-                              color: mecGrey.withOpacity(0.1),
+                              color: chat360Grey.withOpacity(0.1),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8))),
                           child: Row(children: [
@@ -3327,7 +3327,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                               decoration: BoxDecoration(
                                 color: doc[Dbkeys.groupmsgSENDBY] ==
                                         widget.currentUserno
-                                    ? mecgreen
+                                    ? chat360green
                                     : Colors.purple,
                                 borderRadius: BorderRadius.only(
                                     topRight: Radius.circular(0),
@@ -3379,7 +3379,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                           fontWeight: FontWeight.bold,
                                           color: doc[Dbkeys.groupmsgSENDBY] ==
                                                   widget.currentUserno
-                                              ? mecgreen
+                                              ? chat360green
                                               : Colors.purple),
                                     ),
                                   ),
@@ -3468,7 +3468,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                           child: CircularProgressIndicator(
                                             valueColor:
                                                 AlwaysStoppedAnimation<Color>(
-                                                    mecBlue),
+                                                    chat360Blue),
                                           ),
                                           width: doc[Dbkeys.content]
                                                   .contains('giphy')
@@ -3542,7 +3542,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                                           valueColor:
                                                               AlwaysStoppedAnimation<
                                                                       Color>(
-                                                                  mecBlue),
+                                                                  chat360Blue),
                                                         ),
                                                         width: 74,
                                                         height: 74,
@@ -3679,7 +3679,7 @@ class _GroupChatPageState extends State<GroupChatPage>
       // Location services are not enabled don't continue
       // accessing the position and request users of the
       // App to enable the location services.
-      mec.toast(
+      chat360.toast(
           'Location permissions are denied. Please go to settings & allow location tracking permission.');
       return Future.error('Location services are disabled.');
     }
@@ -3689,21 +3689,21 @@ class _GroupChatPageState extends State<GroupChatPage>
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.deniedForever) {
         // Permissions are denied forever, handle appropriately.
-        mec.toast(
+        chat360.toast(
             'Location permissions are denied. Please go to settings & allow location tracking permission.');
         return Future.error(
             'Location permissions are permanently denied, we cannot request permissions.');
       }
 
       if (permission == LocationPermission.denied) {
-        mec.toast(
+        chat360.toast(
             'Location permissions are pdenied. Please go to settings & allow location tracking permission.');
         return Future.error('Location permissions are denied');
       }
     }
     if (permission == LocationPermission.always ||
         permission == LocationPermission.whileInUse) {
-      mec.toast(
+      chat360.toast(
         getTranslated(this.context, 'detectingloc'),
       );
     }
@@ -3748,11 +3748,11 @@ class _GroupChatPageState extends State<GroupChatPage>
           ? Container(
               child: Center(
                 child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(mecBlue)),
+                    valueColor: AlwaysStoppedAnimation<Color>(chat360Blue)),
               ),
               color: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecBlack.withOpacity(0.2)
-                  : mecWhite.withOpacity(0.2),
+                  ? chat360Black.withOpacity(0.2)
+                  : chat360White.withOpacity(0.2),
             )
           : Container(),
     );
@@ -3849,7 +3849,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                             File? selectedMedia =
                                 await pickVideoFromgallery(context)
                                     .catchError((err) {
-                              mec.toast(
+                              chat360.toast(
                                   getTranslated(context, "invalidfile"));
                             });
 
@@ -3921,7 +3921,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                             },
                                             file: File(file.path))));
                               } else {
-                                mec.toast(
+                                chat360.toast(
                                     "File type not supported. Please choose a valid .mp4, .mov file. \n\nSelected file was $fileExtension ");
                               }
                             }
@@ -4097,7 +4097,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                   type: MessageType.location,
                                 );
                                 setStateIfMounted(() {});
-                                mec.toast(
+                                chat360.toast(
                                   getTranslated(this.context, 'sent'),
                                 );
                               },
@@ -4215,7 +4215,7 @@ class _GroupChatPageState extends State<GroupChatPage>
 
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(Consumer<List<GroupModel>>(
+        scaffold: chat360.getNTPWrappedWidget(Consumer<List<GroupModel>>(
             builder: (context, groupList, _child) => WillPopScope(
                   onWillPop: isgeneratingSomethingLoader == true
                       ? () async {
@@ -4256,15 +4256,15 @@ class _GroupChatPageState extends State<GroupChatPage>
                                   Icons.arrow_back_ios,
                                   size: 20,
                                   color: DESIGN_TYPE == Themetype.whatsapp
-                                      ? mecWhite
-                                      : mecBlack,
+                                      ? chat360White
+                                      : chat360Black,
                                 ),
                                 onPressed: onWillPop,
                               ),
                             ),
                             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                                ? mecDeepGreen
-                                : mecWhite,
+                                ? chat360DeepGreen
+                                : chat360White,
                             title: InkWell(
                               onTap: () {
                                 Navigator.push(
@@ -4314,8 +4314,8 @@ class _GroupChatPageState extends State<GroupChatPage>
                                             style: TextStyle(
                                                 color: DESIGN_TYPE ==
                                                         Themetype.whatsapp
-                                                    ? mecWhite
-                                                    : mecBlack,
+                                                    ? chat360White
+                                                    : chat360Black,
                                                 fontSize: 17.0,
                                                 fontWeight: FontWeight.w500),
                                           ),
@@ -4328,9 +4328,9 @@ class _GroupChatPageState extends State<GroupChatPage>
                                                     Icons.volume_off,
                                                     color: DESIGN_TYPE ==
                                                             Themetype.whatsapp
-                                                        ? mecWhite
+                                                        ? chat360White
                                                             .withOpacity(0.5)
-                                                        : mecBlack
+                                                        : chat360Black
                                                             .withOpacity(0.5),
                                                     size: 17,
                                                   ),
@@ -4353,8 +4353,8 @@ class _GroupChatPageState extends State<GroupChatPage>
                                           style: TextStyle(
                                               color: DESIGN_TYPE ==
                                                       Themetype.whatsapp
-                                                  ? mecWhite
-                                                  : mecGrey,
+                                                  ? chat360White
+                                                  : chat360Grey,
                                               fontSize: 12,
                                               fontWeight: FontWeight.w400),
                                         ),
@@ -4374,11 +4374,11 @@ class _GroupChatPageState extends State<GroupChatPage>
                                       child: Icon(
                                         Icons.more_vert_outlined,
                                         color: DESIGN_TYPE == Themetype.whatsapp
-                                            ? mecWhite
-                                            : mecBlack,
+                                            ? chat360White
+                                            : chat360Black,
                                       ),
                                     ),
-                                    color: mecWhite,
+                                    color: chat360White,
                                     onSelected: (dynamic val) {
                                       switch (val) {
                                         case 'mute':
@@ -4561,7 +4561,7 @@ class _GroupChatPageState extends State<GroupChatPage>
                                                             ),
                                                             myElevatedButton(
                                                                 color:
-                                                                    mecLightGreen,
+                                                                    chat360LightGreen,
                                                                 child: Padding(
                                                                   padding:
                                                                       const EdgeInsets
@@ -4731,8 +4731,8 @@ class _GroupChatPageState extends State<GroupChatPage>
                             new Container(
                               decoration: new BoxDecoration(
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecChatbackground
-                                    : mecChatbackground,
+                                    ? chat360Chatbackground
+                                    : chat360Chatbackground,
                                 image: new DecorationImage(
                                     image: AssetImage(
                                         "assets/images/background.png"),

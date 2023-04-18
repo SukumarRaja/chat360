@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/helpers/size.dart';
-import 'package:mec/Services/helpers/transition.dart';
-import 'package:mec/Services/helpers/widgets/animated_interactive_viewer.dart';
-import 'package:mec/Services/helpers/widgets/widgets.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/helpers/size.dart';
+import 'package:chat360/Services/helpers/transition.dart';
+import 'package:chat360/Services/helpers/widgets/animated_interactive_viewer.dart';
+import 'package:chat360/Services/helpers/widgets/widgets.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -98,7 +98,7 @@ class _VideoEditorState extends State<VideoEditor> {
                 .catchError((err) {
               _exportText = "Error on export video :( \n\nERROR: $err";
               Navigator.of(context).pop();
-              mec.toast(_exportText);
+              chat360.toast(_exportText);
             });
           } else if (_controller.selectedCoverVal!.timeMs == 0) {
             _controller
@@ -111,7 +111,7 @@ class _VideoEditorState extends State<VideoEditor> {
                 .catchError((err) {
               _exportText = "Error on export video :( \n\nERROR: $err";
               Navigator.of(context).pop();
-              mec.toast(_exportText);
+              chat360.toast(_exportText);
             });
           } else {
             // File thumbnailFile =
@@ -130,7 +130,7 @@ class _VideoEditorState extends State<VideoEditor> {
         } else {
           _exportText = "Error on export video :(";
           Navigator.of(context).pop();
-          mec.toast(_exportText);
+          chat360.toast(_exportText);
         }
       },
     );
@@ -165,7 +165,7 @@ class _VideoEditorState extends State<VideoEditor> {
     DateTime now = DateTime.now();
     if (now.difference(currentBackPressTime!) > Duration(seconds: 3)) {
       currentBackPressTime = now;
-      mec.toast('Double Tap To Close Editor');
+      chat360.toast('Double Tap To Close Editor');
       return Future.value(false);
     } else {
       return Future.value(true);
@@ -395,7 +395,7 @@ class _VideoEditorState extends State<VideoEditor> {
                 child: Icon(
                   Icons.done,
                   color:
-                      _isExporting.value ? Colors.transparent : mecgreen,
+                      _isExporting.value ? Colors.transparent : chat360green,
                 ),
               ),
             ),

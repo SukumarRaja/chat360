@@ -1,5 +1,5 @@
 
-import 'package:mec/Services/Providers/seen_provider.dart';
+import 'package:chat360/Services/Providers/seen_provider.dart';
 import 'package:flutter/material.dart';
 
 class Message {

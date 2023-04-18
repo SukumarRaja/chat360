@@ -1,13 +1,13 @@
 
 import 'dart:async';
 import 'dart:math' as math;
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/Passcode/passcode_screen.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/Passcode/passcode_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -58,7 +58,7 @@ class _AuthenticateState extends State<Authenticate> {
     Widget child;
     if (!passcodeVisible())
       child = Material(
-          color: mecBlack,
+          color: chat360Black,
           child: Center(
               child: Padding(
             padding: const EdgeInsets.all(28.0),
@@ -66,13 +66,13 @@ class _AuthenticateState extends State<Authenticate> {
               getTranslated(this.context, 'trylater'),
               textAlign: TextAlign.center,
               style:
-                  TextStyle(color: mecWhite, fontSize: 18, height: 1.5),
+                  TextStyle(color: chat360White, fontSize: 18, height: 1.5),
             ),
           )));
     else {
       child = Container();
     }
-    return mec.getNTPWrappedWidget(child);
+    return chat360.getNTPWrappedWidget(child);
   }
 
   bool passcodeVisible() {
@@ -90,7 +90,7 @@ class _AuthenticateState extends State<Authenticate> {
   _onPasscodeEntered(String enteredPasscode) {
     if (enteredPasscode.length == 4) {
       bool isValid =
-          mec.getHashedAnswer(enteredPasscode) == widget.passcode;
+          chat360.getHashedAnswer(enteredPasscode) == widget.passcode;
       _verificationNotifier.add(isValid);
       if (isValid) {
         widget.prefs.setInt(Dbkeys.passcodeTries, 0); // reset tries
@@ -101,9 +101,9 @@ class _AuthenticateState extends State<Authenticate> {
         widget.prefs
             .setInt(Dbkeys.lastAttempt, DateTime.now().millisecondsSinceEpoch);
         if (passcodeTries > 3) {
-          mec.toast(
+          chat360.toast(
               'Try after ${math.pow(2, passcodeTries - 3)} minutes');
-          mec.toast(getTranslated(this.context, 'authfailed'));
+          chat360.toast(getTranslated(this.context, 'authfailed'));
           widget.state.pop();
         }
       }
@@ -140,7 +140,7 @@ class _AuthenticateState extends State<Authenticate> {
         if (widget.shouldPop) widget.state.pop();
         widget.onSuccess();
       } else
-        mec.toast(getTranslated(this.context, 'authfailed'));
+        chat360.toast(getTranslated(this.context, 'authfailed'));
     }).catchError((e) {
       return Future.value(null);
     });

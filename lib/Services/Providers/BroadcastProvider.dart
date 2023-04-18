@@ -1,16 +1,16 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/optional_constants.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/optional_constants.dart';
 import 'dart:async';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Screens/chat_screen/utils/aes_encryption.dart';
-import 'package:mec/Services/Providers/FirebaseAPIProvider.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Screens/chat_screen/utils/aes_encryption.dart';
+import 'package:chat360/Services/Providers/FirebaseAPIProvider.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:mec/Models/E2EE/e2ee.dart' as e2ee;
-import 'package:mec/Configs/Enum.dart';
+import 'package:chat360/Models/E2EE/e2ee.dart' as e2ee;
+import 'package:chat360/Configs/Enum.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -82,7 +82,7 @@ class FirebaseBroadcastServices {
             if (encrypted is String) {
               int timestamp2 = DateTime.now().millisecondsSinceEpoch;
               if (content.trim() != '') {
-                var chatId = mec.getChatId(currentUserNo, peer);
+                var chatId = chat360.getChatId(currentUserNo, peer);
                 await FirebaseFirestore.instance
                     .collection(DbPaths.collectionbroadcasts)
                     .doc(broadcastId)
@@ -138,17 +138,17 @@ class FirebaseBroadcastServices {
                 });
               }
             } else {
-              mec.toast('Nothing to send');
+              chat360.toast('Nothing to send');
             }
           } catch (e) {
-            mec.toast('Failed to Send message. Error:$e');
+            chat360.toast('Failed to Send message. Error:$e');
           }
         }).catchError(((e) {
-          mec.toast('Failed to Send message. Error:$e');
+          chat360.toast('Failed to Send message. Error:$e');
         }));
       });
     } else {
-      mec.toast('Nothing to Send !');
+      chat360.toast('Nothing to Send !');
     }
   }
 }

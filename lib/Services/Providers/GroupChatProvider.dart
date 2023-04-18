@@ -1,9 +1,9 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Services/Providers/FirebaseAPIProvider.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Services/Providers/FirebaseAPIProvider.dart';
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';

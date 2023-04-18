@@ -1,20 +1,20 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/Groups/GroupChatPage.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Screens/chat_screen/chat.dart';
-import 'package:mec/Screens/chat_screen/lazyLoadingChat.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/Providers/GroupChatProvider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/Groups/GroupChatPage.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Screens/chat_screen/chat.dart';
+import 'package:chat360/Screens/chat_screen/lazyLoadingChat.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/Providers/GroupChatProvider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
@@ -90,7 +90,7 @@ class _SelectContactToShareState extends State<SelectContactToShare>
       Container(
         child: Center(
             child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(mecBlue),
+          valueColor: AlwaysStoppedAnimation<Color>(chat360Blue),
         )),
       )
     ]);
@@ -104,7 +104,7 @@ class _SelectContactToShareState extends State<SelectContactToShare>
 
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(ScopedModel<DataModel>(
+        scaffold: chat360.getNTPWrappedWidget(ScopedModel<DataModel>(
             model: widget.model,
             child: ScopedModelDescendant<DataModel>(
                 builder: (context, child, model) {
@@ -113,7 +113,7 @@ class _SelectContactToShareState extends State<SelectContactToShare>
                           List<GroupModel>>(
                       builder: (context, groupList, _child) => Scaffold(
                           key: _scaffold,
-                          backgroundColor: mecWhite,
+                          backgroundColor: chat360White,
                           appBar: AppBar(
                             elevation:
                                 DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
@@ -126,13 +126,13 @@ class _SelectContactToShareState extends State<SelectContactToShare>
                                 Icons.arrow_back,
                                 size: 24,
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite
-                                    : mecBlack,
+                                    ? chat360White
+                                    : chat360Black,
                               ),
                             ),
                             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                                ? mecDeepGreen
-                                : mecWhite,
+                                ? chat360DeepGreen
+                                : chat360White,
                             centerTitle: false,
                             // leadingWidth: 40,
                             title: Text(
@@ -141,8 +141,8 @@ class _SelectContactToShareState extends State<SelectContactToShare>
                               style: TextStyle(
                                 fontSize: 18,
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite
-                                    : mecBlack,
+                                    ? chat360White
+                                    : chat360Black,
                               ),
                             ),
                           ),
@@ -174,7 +174,7 @@ class _SelectContactToShareState extends State<SelectContactToShare>
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       fontSize: 18,
-                                                      color: mecGrey)),
+                                                      color: chat360Grey)),
                                             ))
                                       ])
                                     : ListView(
@@ -211,14 +211,14 @@ class _SelectContactToShareState extends State<SelectContactToShare>
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       style: TextStyle(
-                                                        color: mecBlack,
+                                                        color: chat360Black,
                                                         fontSize: 16,
                                                       ),
                                                     ),
                                                     subtitle: Text(
                                                       '${joinedGroupsList[i][Dbkeys.groupMEMBERSLIST].length} ${getTranslated(context, 'participants')}',
                                                       style: TextStyle(
-                                                        color: mecGrey,
+                                                        color: chat360Grey,
                                                         fontSize: 14,
                                                       ),
                                                     ),
@@ -301,12 +301,12 @@ class _SelectContactToShareState extends State<SelectContactToShare>
                                                                         '',
                                                                     style: TextStyle(
                                                                         color:
-                                                                            mecBlack)),
+                                                                            chat360Black)),
                                                                 subtitle: Text(
                                                                     phone,
                                                                     style: TextStyle(
                                                                         color:
-                                                                            mecGrey)),
+                                                                            chat360Grey)),
                                                                 contentPadding:
                                                                     EdgeInsets.symmetric(
                                                                         horizontal:

@@ -1,6 +1,6 @@
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 
@@ -13,14 +13,14 @@ class GalleryDownloader {
       if (success == true) {
         Navigator.of(keyloader.currentContext!, rootNavigator: true).pop();
 
-        mec.toast("$fileName  " + getTranslated(context, "folder"));
+        chat360.toast("$fileName  " + getTranslated(context, "folder"));
       } else {
         Navigator.of(keyloader.currentContext!, rootNavigator: true).pop();
-        mec.toast("Failed to Download !");
+        chat360.toast("Failed to Download !");
       }
     }).catchError((err) {
       Navigator.of(keyloader.currentContext!, rootNavigator: true).pop();
-      mec.toast(err.toString());
+      chat360.toast(err.toString());
     });
   }
 
@@ -34,16 +34,16 @@ class GalleryDownloader {
     GallerySaver.saveImage(path, toDcim: true).then((success) async {
       if (success == true) {
         Navigator.of(keyloader.currentContext!, rootNavigator: true).pop();
-        mec.toast(fileName == ""
+        chat360.toast(fileName == ""
             ? getTranslated(context, "folder")
             : "$fileName  " + getTranslated(context, "folder"));
       } else {
-        mec.toast("Failed to Download !");
+        chat360.toast("Failed to Download !");
         Navigator.of(keyloader.currentContext!, rootNavigator: true).pop();
       }
     }).catchError((err) {
       Navigator.of(keyloader.currentContext!, rootNavigator: true).pop();
-      mec.toast(err.toString());
+      chat360.toast(err.toString());
     });
   }
 }
@@ -72,7 +72,7 @@ class Dialogs {
                               ),
                               CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                    mecBlue),
+                                    chat360Blue),
                               ),
                               SizedBox(
                                 width: 23,

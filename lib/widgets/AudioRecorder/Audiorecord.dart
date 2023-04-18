@@ -1,14 +1,14 @@
 
 import 'dart:async';
 import 'dart:io';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/permissions.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/AudioRecorder/playButton.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/permissions.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/AudioRecorder/playButton.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_sound/flutter_sound.dart';
@@ -79,7 +79,7 @@ class _AudioRecordState extends State<AudioRecord> {
       var status = await Permissions.getMicrophonePermission();
 
       if (status != PermissionStatus.granted) {
-        mec.showRationale(getTranslated(this.context, 'pm'));
+        chat360.showRationale(getTranslated(this.context, 'pm'));
         Navigator.push(context,
             new MaterialPageRoute(builder: (context) => OpenSettings()));
       } else {
@@ -194,7 +194,7 @@ class _AudioRecordState extends State<AudioRecord> {
       return Center(
         child: isLoading == true
             ? CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(mecLightGreen))
+                valueColor: AlwaysStoppedAnimation<Color>(chat360LightGreen))
             : Column(
                 children: [
                   SizedBox(
@@ -231,8 +231,8 @@ class _AudioRecordState extends State<AudioRecord> {
                                 fontSize: 35,
                                 fontWeight: FontWeight.w700,
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite
-                                    : mecBlack,
+                                    ? chat360White
+                                    : chat360Black,
                               ),
                             ),
                             SizedBox(
@@ -283,8 +283,8 @@ class _AudioRecordState extends State<AudioRecord> {
                               style: TextStyle(
                                 fontSize: 16,
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite
-                                    : mecBlack,
+                                    ? chat360White
+                                    : chat360Black,
                               ),
                             ),
                             SizedBox(
@@ -295,7 +295,7 @@ class _AudioRecordState extends State<AudioRecord> {
                               elevation: 2.0,
                               fillColor: _mPlayer!.isPlaying
                                   ? Colors.white
-                                  : mecLightGreen,
+                                  : chat360LightGreen,
                               child: Icon(
                                 _mPlayer!.isPlaying
                                     ? Icons.stop
@@ -323,9 +323,9 @@ class _AudioRecordState extends State<AudioRecord> {
                           : MaterialButton(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0),
-                                  side: BorderSide(color: mecLightGreen)),
+                                  side: BorderSide(color: chat360LightGreen)),
                               elevation: 0.2,
-                              color: mecLightGreen,
+                              color: chat360LightGreen,
                               padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                               onPressed: () {
                                 final observer = Provider.of<Observer>(
@@ -333,13 +333,13 @@ class _AudioRecordState extends State<AudioRecord> {
                                     listen: false);
                                 if (recordedfile!.lengthSync() / 1000000 >
                                     observer.maxFileSizeAllowedInMB) {
-                                  mec.toast(
+                                  chat360.toast(
                                       '${getTranslated(this.context, 'maxfilesize')} ${observer.maxFileSizeAllowedInMB}MB\n\n${getTranslated(this.context, 'selectedfilesize')} ${(recordedfile!.lengthSync() / 1000000).round()}MB');
                                 } else {
                                   setStateIfMounted(() {
                                     isLoading = true;
                                   });
-                                  mec.toast(getTranslated(
+                                  chat360.toast(getTranslated(
                                       this.context, 'sendingrecord'));
                                   widget
                                       .callback(recordedfile)
@@ -363,8 +363,8 @@ class _AudioRecordState extends State<AudioRecord> {
         onWillPop: onWillPopNEw,
         child: Scaffold(
           backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-              ? mecDeepGreen
-              : mecWhite,
+              ? chat360DeepGreen
+              : chat360White,
           appBar: AppBar(
             leading: IconButton(
               onPressed: () {
@@ -374,21 +374,21 @@ class _AudioRecordState extends State<AudioRecord> {
                 Icons.keyboard_arrow_left,
                 size: 30,
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
             centerTitle: true,
             elevation: 0,
             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                ? mecDeepGreen
-                : mecWhite,
+                ? chat360DeepGreen
+                : chat360White,
             title: Text(
               widget.title,
               style: TextStyle(
                 color: DESIGN_TYPE == Themetype.whatsapp
-                    ? mecWhite
-                    : mecBlack,
+                    ? chat360White
+                    : chat360Black,
               ),
             ),
           ),

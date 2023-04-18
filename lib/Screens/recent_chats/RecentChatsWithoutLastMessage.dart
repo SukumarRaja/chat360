@@ -1,38 +1,38 @@
 
 import 'dart:async';
 import 'dart:core';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/Broadcast/AddContactsToBroadcast.dart';
-import 'package:mec/Utils/setStatusBarColor.dart';
-import 'package:mec/main.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/Broadcast/AddContactsToBroadcast.dart';
+import 'package:chat360/Utils/setStatusBarColor.dart';
+import 'package:chat360/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/Broadcast/BroadcastChatPage.dart';
-import 'package:mec/Screens/Groups/AddContactsToGroup.dart';
-import 'package:mec/Screens/Groups/GroupChatPage.dart';
-import 'package:mec/Screens/contact_screens/SmartContactsPage.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/BroadcastProvider.dart';
-import 'package:mec/Services/Providers/GroupChatProvider.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Screens/chat_screen/utils/messagedata.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/chat_screen/chat.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Services/Providers/user_provider.dart';
-import 'package:mec/Utils/alias.dart';
-import 'package:mec/Utils/chat_controller.dart';
-import 'package:mec/Utils/utils.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/Broadcast/BroadcastChatPage.dart';
+import 'package:chat360/Screens/Groups/AddContactsToGroup.dart';
+import 'package:chat360/Screens/Groups/GroupChatPage.dart';
+import 'package:chat360/Screens/contact_screens/SmartContactsPage.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/BroadcastProvider.dart';
+import 'package:chat360/Services/Providers/GroupChatProvider.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Screens/chat_screen/utils/messagedata.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/chat_screen/chat.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Services/Providers/user_provider.dart';
+import 'package:chat360/Utils/alias.dart';
+import 'package:chat360/Utils/chat_controller.dart';
+import 'package:chat360/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:mec/Utils/unawaited.dart';
+import 'package:chat360/Utils/unawaited.dart';
 
 class RecentChatsWithoutLastMessage extends StatefulWidget {
   RecentChatsWithoutLastMessage(
@@ -74,7 +74,7 @@ class RecentChatsWithoutLastMessageState
   @override
   void initState() {
     super.initState();
-    mec.internetLookUp();
+    chat360.internetLookUp();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final observer = Provider.of<Observer>(this.context, listen: false);
       if (IsBannerAdShow == true && observer.isadmobshow == true) {
@@ -147,7 +147,7 @@ class RecentChatsWithoutLastMessageState
                     ElevatedButton(
                       child: Text(
                         getTranslated(context, 'cancel'),
-                        style: TextStyle(color: mecgreen, fontSize: 18),
+                        style: TextStyle(color: chat360green, fontSize: 18),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -160,12 +160,12 @@ class RecentChatsWithoutLastMessageState
                         style: TextStyle(color: Colors.red, fontSize: 18),
                       ),
                       onPressed: () async {
-                        String chatId = mec.getChatId(
+                        String chatId = chat360.getChatId(
                             currentUserNo, targetUser[Dbkeys.phone]);
 
                         if (currentUserNo != null &&
                             targetUser[Dbkeys.phone] != null) {
-                          // mec.toast(
+                          // chat360.toast(
                           //     getTranslated(context, 'plswait'));
                           await FirebaseFirestore.instance
                               .collection(DbPaths.collectionmessages)
@@ -195,7 +195,7 @@ class RecentChatsWithoutLastMessageState
                               // the new route
                               MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    mecWrapper(),
+                                    chat360Wrapper(),
                               ),
 
                               (Route route) => false,
@@ -212,7 +212,7 @@ class RecentChatsWithoutLastMessageState
                             //             ))));
                           });
                         } else {
-                          mec.toast('Error Occured. Could not delete !');
+                          chat360.toast('Error Occured. Could not delete !');
                         }
                       },
                     )
@@ -254,7 +254,7 @@ class RecentChatsWithoutLastMessageState
                   ElevatedButton(
                     child: Text(
                       getTranslated(context, 'cancel'),
-                      style: TextStyle(color: mecgreen, fontSize: 18),
+                      style: TextStyle(color: chat360green, fontSize: 18),
                     ),
                     onPressed: () {
                       Navigator.of(context).pop();
@@ -318,7 +318,7 @@ class RecentChatsWithoutLastMessageState
                     ElevatedButton(
                       child: Text(
                         getTranslated(context, 'cancel'),
-                        style: TextStyle(color: mecgreen, fontSize: 18),
+                        style: TextStyle(color: chat360green, fontSize: 18),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -377,7 +377,7 @@ class RecentChatsWithoutLastMessageState
                     ElevatedButton(
                       child: Text(
                         getTranslated(context, 'cancel'),
-                        style: TextStyle(color: mecgreen, fontSize: 18),
+                        style: TextStyle(color: chat360green, fontSize: 18),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -466,7 +466,7 @@ class RecentChatsWithoutLastMessageState
                                   .delete();
                             } catch (err) {}
                           }).catchError((err) {
-                            // mec.toast(
+                            // chat360.toast(
                             //     getTranslated(context,
                             //         'unabletoleavegrp'));
                           });
@@ -502,7 +502,7 @@ class RecentChatsWithoutLastMessageState
               : 0;
           return Theme(
               data: ThemeData(
-                  splashColor: mecGrey.withOpacity(0.2),
+                  splashColor: chat360Grey.withOpacity(0.2),
                   highlightColor: Colors.transparent),
               child: Column(
                 children: [
@@ -514,11 +514,11 @@ class RecentChatsWithoutLastMessageState
                       leading:
                           customCircleAvatar(url: user['photoUrl'], radius: 22),
                       title: Text(
-                        mec.getNickname(user)!,
+                        chat360.getNickname(user)!,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          color: mecBlack,
+                          color: chat360Black,
                           fontSize: 16,
                         ),
                       ),
@@ -549,7 +549,7 @@ class RecentChatsWithoutLastMessageState
                                 getTranslated(context, 'auth_neededchat'),
                                 state: state,
                                 shouldPop: false,
-                                type: mec.getAuthenticationType(
+                                type: chat360.getAuthenticationType(
                                     biometricEnabled, _cachedModel),
                                 prefs: widget.prefs, onSuccess: () {
                               state.pushReplacement(new MaterialPageRoute(
@@ -613,7 +613,7 @@ class RecentChatsWithoutLastMessageState
   }
 
   Stream<MessageData> getUnread(Map<String, dynamic> user) {
-    String chatId = mec.getChatId(currentUserNo, user[Dbkeys.phone]);
+    String chatId = chat360.getChatId(currentUserNo, user[Dbkeys.phone]);
     var controller = StreamController<MessageData>.broadcast();
     unreadSubscriptions.add(FirebaseFirestore.instance
         .collection(DbPaths.collectionmessages)
@@ -736,7 +736,7 @@ class RecentChatsWithoutLastMessageState
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontSize: 18,
-                                                      color: mecGrey,
+                                                      color: chat360Grey,
                                                     )),
                                               ))
                                         ]);
@@ -778,14 +778,14 @@ class RecentChatsWithoutLastMessageState
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: TextStyle(
-                                                    color: mecBlack,
+                                                    color: chat360Black,
                                                     fontSize: 16,
                                                   ),
                                                 ),
                                                 subtitle: Text(
                                                   '${_streamDocSnap[index][Dbkeys.groupMEMBERSLIST].length} ${getTranslated(context, 'participants')}',
                                                   style: TextStyle(
-                                                    color: mecGrey,
+                                                    color: chat360Grey,
                                                     fontSize: 14,
                                                   ),
                                                 ),
@@ -920,14 +920,14 @@ class RecentChatsWithoutLastMessageState
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: TextStyle(
-                                                    color: mecBlack,
+                                                    color: chat360Black,
                                                     fontSize: 16,
                                                   ),
                                                 ),
                                                 subtitle: Text(
                                                   '${_streamDocSnap[index][Dbkeys.broadcastMEMBERSLIST].length} ${getTranslated(context, 'recipients')}',
                                                   style: TextStyle(
-                                                    color: mecGrey,
+                                                    color: chat360Grey,
                                                     fontSize: 14,
                                                   ),
                                                 ),
@@ -983,7 +983,7 @@ class RecentChatsWithoutLastMessageState
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   height: 1.59,
-                                                  color: mecGrey,
+                                                  color: chat360Grey,
                                                 ))),
                                       ))
                                 ])),
@@ -1018,7 +1018,7 @@ class RecentChatsWithoutLastMessageState
   Widget build(BuildContext context) {
     final observer = Provider.of<Observer>(this.context, listen: false);
     setStatusBarColor();
-    return mec.getNTPWrappedWidget(ScopedModel<DataModel>(
+    return chat360.getNTPWrappedWidget(ScopedModel<DataModel>(
       model: getModel()!,
       child:
           ScopedModelDescendant<DataModel>(builder: (context, child, _model) {
@@ -1036,7 +1036,7 @@ class RecentChatsWithoutLastMessageState
           //     : SizedBox(
           //         height: 0,
           //       ),
-          backgroundColor: mecWhite,
+          backgroundColor: chat360White,
           floatingActionButton: Padding(
             padding: EdgeInsets.only(bottom: 0
                 // bottom: IsBannerAdShow == true && observer.isadmobshow == true
@@ -1045,7 +1045,7 @@ class RecentChatsWithoutLastMessageState
                 ),
             child: FloatingActionButton(
                 heroTag: "sdfweewfwq123sdasfw",
-                backgroundColor: mecLightGreen,
+                backgroundColor: chat360LightGreen,
                 child: Icon(
                   Icons.chat,
                   size: 30.0,
@@ -1058,7 +1058,7 @@ class RecentChatsWithoutLastMessageState
                               onTapCreateBroadcast: () {
                                 if (observer.isAllowCreatingBroadcasts ==
                                     false) {
-                                  mec.showRationale(
+                                  chat360.showRationale(
                                       getTranslated(this.context, 'disabled'));
                                 } else {
                                   Navigator.pushReplacement(
@@ -1078,7 +1078,7 @@ class RecentChatsWithoutLastMessageState
                               },
                               onTapCreateGroup: () {
                                 if (observer.isAllowCreatingGroups == false) {
-                                  mec.showRationale(
+                                  chat360.showRationale(
                                       getTranslated(this.context, 'disabled'));
                                 } else {
                                   Navigator.pushReplacement(

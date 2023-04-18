@@ -2,11 +2,11 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Models/DataModel.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto/crypto.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -14,28 +14,28 @@ import 'package:ntp/ntp.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'dart:convert';
-import 'package:mec/Configs/Enum.dart';
+import 'package:chat360/Configs/Enum.dart';
 import 'package:share/share.dart';
 
-class mec {
+class chat360 {
   static String? getNickname(Map<String, dynamic> user) =>
       user[Dbkeys.aliasName] ?? user[Dbkeys.nickname];
 
   static void toast(String message) {
     Fluttertoast.showToast(
         msg: message,
-        backgroundColor: mecBlack.withOpacity(0.95),
-        textColor: mecWhite);
+        backgroundColor: chat360Black.withOpacity(0.95),
+        textColor: chat360White);
   }
 
   static void internetLookUp() async {
     try {
       await InternetAddress.lookup('google.com').catchError((e) {
-        mec.toast(
+        chat360.toast(
             'No internet connection. Please check your Internet Connection.');
       });
     } catch (err) {
-      mec.toast(
+      chat360.toast(
           'No internet connection. Please check your Internet Connection.');
     }
   }
@@ -69,10 +69,10 @@ class mec {
                     CachedNetworkImageProvider(user[Dbkeys.photoUrl]),
                 radius: radius)
             : CircleAvatar(
-                backgroundColor: mecgreen,
+                backgroundColor: chat360green,
                 foregroundColor: Colors.white,
                 child: Text(predefinedinitials ??
-                    getInitials(mec.getNickname(user)!)),
+                    getInitials(chat360.getNickname(user)!)),
                 radius: radius,
               );
       return CircleAvatar(
@@ -97,14 +97,14 @@ class mec {
             if (snapshot.data! > Duration(minutes: 1).inMilliseconds ||
                 snapshot.data! < -Duration(minutes: 1).inMilliseconds)
               return Material(
-                  color: mecBlack,
+                  color: chat360Black,
                   child: Center(
                       child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 30.0),
                           child: Text(
                             getTranslated(context, 'clocktime'),
                             style:
-                                TextStyle(color: mecWhite, fontSize: 18),
+                                TextStyle(color: chat360White, fontSize: 18),
                           ))));
           }
           return child;
@@ -112,9 +112,9 @@ class mec {
   }
 
   static void showRationale(rationale) async {
-    mec.toast(rationale);
+    chat360.toast(rationale);
     // await Future.delayed(Duration(seconds: 2));
-    // mec.toast(
+    // chat360.toast(
     //     'If you change your mind, you can grant the permission through App Settings > Permissions');
   }
 

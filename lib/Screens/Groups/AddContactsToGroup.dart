@@ -1,18 +1,18 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/auth_screens/login.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/Providers/GroupChatProvider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/MyElevatedButton/MyElevatedButton.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/auth_screens/login.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/Providers/GroupChatProvider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/MyElevatedButton/MyElevatedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -66,7 +66,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
         color: Colors.white,
         child: Center(
             child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(mecBlue),
+          valueColor: AlwaysStoppedAnimation<Color>(chat360Blue),
         )),
       )
     ]);
@@ -79,7 +79,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
 
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(ScopedModel<DataModel>(
+        scaffold: chat360.getNTPWrappedWidget(ScopedModel<DataModel>(
             model: widget.model!,
             child: ScopedModelDescendant<DataModel>(
                 builder: (context, child, model) {
@@ -88,7 +88,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                           List<GroupModel>>(
                       builder: (context, groupList, _child) => Scaffold(
                           key: _scaffold,
-                          backgroundColor: mecWhite,
+                          backgroundColor: chat360White,
                           appBar: AppBar(
                             elevation:
                                 DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
@@ -100,13 +100,13 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                 Icons.arrow_back,
                                 size: 24,
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecWhite
-                                    : mecBlack,
+                                    ? chat360White
+                                    : chat360Black,
                               ),
                             ),
                             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                                ? mecDeepGreen
-                                : mecWhite,
+                                ? chat360DeepGreen
+                                : chat360White,
                             centerTitle: false,
                             // leadingWidth: 40,
                             title: _selectedList.length == 0
@@ -116,8 +116,8 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                     style: TextStyle(
                                       fontSize: 18,
                                       color: DESIGN_TYPE == Themetype.whatsapp
-                                          ? mecWhite
-                                          : mecBlack,
+                                          ? chat360White
+                                          : chat360Black,
                                     ),
                                     textAlign: TextAlign.left,
                                   )
@@ -132,8 +132,8 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                           fontSize: 18,
                                           color:
                                               DESIGN_TYPE == Themetype.whatsapp
-                                                  ? mecWhite
-                                                  : mecBlack,
+                                                  ? chat360White
+                                                  : chat360Black,
                                         ),
                                         textAlign: TextAlign.left,
                                       ),
@@ -149,8 +149,8 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                           fontSize: 12,
                                           color:
                                               DESIGN_TYPE == Themetype.whatsapp
-                                                  ? mecWhite
-                                                  : mecBlack,
+                                                  ? chat360White
+                                                  : chat360Black,
                                         ),
                                         textAlign: TextAlign.left,
                                       ),
@@ -163,8 +163,8 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                       icon: Icon(
                                         Icons.check,
                                         color: DESIGN_TYPE == Themetype.whatsapp
-                                            ? mecWhite
-                                            : mecBlack,
+                                            ? chat360White
+                                            : chat360Black,
                                       ),
                                       onPressed:
                                           widget.isAddingWhileCreatingGroup ==
@@ -329,7 +329,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                                                     ),
                                                                     myElevatedButton(
                                                                         color:
-                                                                            mecLightGreen,
+                                                                            chat360LightGreen,
                                                                         child:
                                                                             Padding(
                                                                           padding: const EdgeInsets.fromLTRB(
@@ -462,7 +462,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                                                                   iscreatinggroup = false;
                                                                                 });
 
-                                                                                mec.toast('Error Creating group. $err');
+                                                                                chat360.toast('Error Creating group. $err');
                                                                                 print('Error Creating group: $err');
                                                                               });
                                                                             });
@@ -577,7 +577,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                                         iscreatinggroup = false;
                                                       });
 
-                                                      mec.toast(getTranslated(
+                                                      chat360.toast(getTranslated(
                                                           this.context,
                                                           'errorcreatinggroup'));
                                                     });
@@ -688,7 +688,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                         fontSize: 18,
-                                                        color: mecGrey)),
+                                                        color: chat360Grey)),
                                               ))
                                         ])
                                       : Padding(
@@ -739,7 +739,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                                                                     padding: const EdgeInsets.only(bottom: 2.5, right: 4),
                                                                                     child: Icon(
                                                                                       Icons.contact_page,
-                                                                                      color: mecLightGreen.withOpacity(0.7),
+                                                                                      color: chat360LightGreen.withOpacity(0.7),
                                                                                       size: 14,
                                                                                     ),
                                                                                   ),
@@ -748,7 +748,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                                                                     text: getTranslated(this.context, 'nosavedcontacts'),
                                                                                     // text:
                                                                                     //     'No Saved Contacts available for this task',
-                                                                                    style: TextStyle(color: mecLightGreen.withOpacity(0.7), height: 1.3, fontSize: 13, fontWeight: FontWeight.w400)),
+                                                                                    style: TextStyle(color: chat360LightGreen.withOpacity(0.7), height: 1.3, fontSize: 13, fontWeight: FontWeight.w400)),
                                                                               ],
                                                                             ),
                                                                           )),
@@ -768,7 +768,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                                                       CircularProgressIndicator(
                                                                     valueColor:
                                                                         AlwaysStoppedAnimation<Color>(
-                                                                            mecBlue),
+                                                                            chat360Blue),
                                                                   )),
                                                             )),
                                               ListView.builder(
@@ -845,7 +845,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                                             //           CircularProgressIndicator(
                                                             //         valueColor:
                                                             //             AlwaysStoppedAnimation<Color>(
-                                                            //                 mecBlue),
+                                                            //                 chat360Blue),
                                                             //       ),
                                                             //     ),
                                                             //   );
@@ -877,7 +877,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             border:
-                                                                                Border.all(color: mecGrey, width: 1),
+                                                                                Border.all(color: chat360Grey, width: 1),
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
                                                                           ),
@@ -885,7 +885,7 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                                                               ? Icon(
                                                                                   Icons.check,
                                                                                   size: 19.0,
-                                                                                  color: mecLightGreen,
+                                                                                  color: chat360LightGreen,
                                                                                 )
                                                                               : Icon(
                                                                                   Icons.check,
@@ -897,11 +897,11 @@ class _AddContactsToGroupState extends State<AddContactsToGroup>
                                                                             user[Dbkeys.nickname] ??
                                                                                 '',
                                                                             style:
-                                                                                TextStyle(color: mecBlack)),
+                                                                                TextStyle(color: chat360Black)),
                                                                         subtitle: Text(
                                                                             phone,
                                                                             style:
-                                                                                TextStyle(color: mecGrey)),
+                                                                                TextStyle(color: chat360Grey)),
                                                                         contentPadding: EdgeInsets.symmetric(
                                                                             horizontal:
                                                                                 10.0,

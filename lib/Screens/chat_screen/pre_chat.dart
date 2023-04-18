@@ -1,17 +1,17 @@
 
 import 'dart:core';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/chat_screen/lazyLoadingChat.dart';
-import 'package:mec/widgets/CountryPicker/CountryCode.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Screens/chat_screen/chat.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/MyElevatedButton/MyElevatedButton.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/chat_screen/lazyLoadingChat.dart';
+import 'package:chat360/widgets/CountryPicker/CountryCode.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Screens/chat_screen/chat.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/MyElevatedButton/MyElevatedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -134,12 +134,12 @@ class _PreChatState extends State<PreChat> {
                               peerNo: peer[Dbkeys.phone])));
             } else {
               Navigator.of(context).pop();
-              mec.toast(
+              chat360.toast(
                   "This User is private. You are not in User Contact List");
             }
           } else {
             Navigator.of(context).pop();
-            mec.toast(
+            chat360.toast(
                 "This User is private. You are not in User Contact List");
           }
         } else {
@@ -212,12 +212,12 @@ class _PreChatState extends State<PreChat> {
                                   peerNo: peer[Dbkeys.phone])));
                 } else {
                   Navigator.of(context).pop();
-                  mec.toast(
+                  chat360.toast(
                       "This User is private. You are not in User Contact List");
                 }
               } else {
                 Navigator.of(context).pop();
-                mec.toast(
+                chat360.toast(
                     "This User is private. You are not in User Contact List");
               }
             } else {
@@ -253,9 +253,9 @@ class _PreChatState extends State<PreChat> {
           ? Container(
               child: Center(
                 child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(mecBlue)),
+                    valueColor: AlwaysStoppedAnimation<Color>(chat360Blue)),
               ),
-              color: mecBlack.withOpacity(0.8),
+              color: chat360Black.withOpacity(0.8),
             )
           : Container(),
     );
@@ -263,7 +263,7 @@ class _PreChatState extends State<PreChat> {
 
   @override
   Widget build(BuildContext context) {
-    return mec.getNTPWrappedWidget(Scaffold(
+    return chat360.getNTPWrappedWidget(Scaffold(
       appBar: AppBar(
           elevation: DESIGN_TYPE == Themetype.messenger ? 0.4 : 1,
           leading: IconButton(
@@ -274,25 +274,25 @@ class _PreChatState extends State<PreChat> {
               Icons.keyboard_arrow_left_rounded,
               size: 30,
               color: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecWhite
-                  : mecBlack,
+                  ? chat360White
+                  : chat360Black,
             ),
           ),
           backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-              ? mecDeepGreen
-              : mecWhite,
+              ? chat360DeepGreen
+              : chat360White,
           title: Text(
             widget.name!,
             style: TextStyle(
               color: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecWhite
-                  : mecBlack,
+                  ? chat360White
+                  : chat360Black,
             ),
           )),
       body: isLoading == true
           ? Center(
               child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(mecBlue),
+              valueColor: AlwaysStoppedAnimation<Color>(chat360Blue),
             ))
           : Stack(children: <Widget>[
               Container(
@@ -310,7 +310,7 @@ class _PreChatState extends State<PreChat> {
                                       "$Appname",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      color: mecBlack,
+                                      color: chat360Black,
                                       fontWeight: FontWeight.w500,
                                       fontSize: 20.0)),
                             ),
@@ -318,18 +318,18 @@ class _PreChatState extends State<PreChat> {
                               height: 20.0,
                             ),
                             myElevatedButton(
-                              color: mecBlue,
+                              color: chat360Blue,
                               child: Padding(
                                 padding:
                                     const EdgeInsets.fromLTRB(10, 3, 10, 3),
                                 child: Text(
                                   getTranslated(context, 'invite') +
                                       ' ${widget.name}',
-                                  style: TextStyle(color: mecWhite),
+                                  style: TextStyle(color: chat360White),
                                 ),
                               ),
                               onPressed: () {
-                                mec.invite(context);
+                                chat360.invite(context);
                               },
                             )
                           ])
@@ -338,7 +338,7 @@ class _PreChatState extends State<PreChat> {
               // Loading
               buildLoading()
             ]),
-      backgroundColor: mecWhite,
+      backgroundColor: chat360White,
     ));
   }
 }

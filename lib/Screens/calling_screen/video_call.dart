@@ -5,17 +5,17 @@ import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Screens/homepage/homepage.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/Providers/call_history_provider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Models/call.dart';
-import 'package:mec/Utils/call_utilities.dart';
-import 'package:mec/Utils/setStatusBarColor.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Screens/homepage/homepage.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/Providers/call_history_provider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Models/call.dart';
+import 'package:chat360/Utils/call_utilities.dart';
+import 'package:chat360/Utils/setStatusBarColor.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart' as audioPlayers;
 import 'package:pip_view/pip_view.dart';
@@ -465,7 +465,7 @@ class _VideoCallState extends State<VideoCall> {
     if (iscallended == true) {
       return Container(
         color:
-            DESIGN_TYPE == Themetype.whatsapp ? mecgreen : mecWhite,
+            DESIGN_TYPE == Themetype.whatsapp ? chat360green : chat360White,
         height: h,
         width: w,
         child: Center(
@@ -473,8 +473,8 @@ class _VideoCallState extends State<VideoCall> {
           Icons.videocam_off,
           size: 120,
           color: DESIGN_TYPE == Themetype.whatsapp
-              ? mecWhite.withOpacity(0.38)
-              : mecBlack.withOpacity(0.38),
+              ? chat360White.withOpacity(0.38)
+              : chat360Black.withOpacity(0.38),
         )),
       );
     } else if (userenlarged == false) {
@@ -615,7 +615,7 @@ class _VideoCallState extends State<VideoCall> {
                         ),
                         decoration: BoxDecoration(
                           color: DESIGN_TYPE == Themetype.whatsapp
-                              ? mecWhite
+                              ? chat360White
                               : Colors.red,
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -626,7 +626,7 @@ class _VideoCallState extends State<VideoCall> {
                               fontSize: 13,
                               color: DESIGN_TYPE == Themetype.whatsapp
                                   ? Colors.red
-                                  : mecWhite),
+                                  : chat360White),
                         )),
                   )
                 : SizedBox(

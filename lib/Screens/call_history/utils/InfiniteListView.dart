@@ -1,8 +1,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Services/Providers/call_history_provider.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Services/Providers/call_history_provider.dart';
 import 'package:flutter/material.dart';
 
 class InfiniteListView extends StatefulWidget {
@@ -93,7 +93,7 @@ class _InfiniteListViewState extends State<InfiniteListView> {
                             child: Center(
                               child: CircularProgressIndicator(
                                   valueColor: AlwaysStoppedAnimation<Color>(
-                                      mecLightGreen)),
+                                      chat360LightGreen)),
                             ),
                           ),
                         ),

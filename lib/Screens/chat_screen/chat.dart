@@ -2,60 +2,60 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'dart:io';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Utils/custom_url_launcher.dart';
-import 'package:mec/Utils/setStatusBarColor.dart';
-import 'package:mec/widgets/AllinOneCameraGalleryImageVideoPicker/AllinOneCameraGalleryImageVideoPicker.dart';
-import 'package:mec/widgets/CameraGalleryImagePicker/camera_image_gallery_picker.dart';
-import 'package:mec/widgets/CameraGalleryImagePicker/multiMediaPicker.dart';
-import 'package:mec/widgets/DownloadManager/download_all_file_type.dart';
-import 'package:mec/widgets/VideoEditor/video_editor.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Utils/custom_url_launcher.dart';
+import 'package:chat360/Utils/setStatusBarColor.dart';
+import 'package:chat360/widgets/AllinOneCameraGalleryImageVideoPicker/AllinOneCameraGalleryImageVideoPicker.dart';
+import 'package:chat360/widgets/CameraGalleryImagePicker/camera_image_gallery_picker.dart';
+import 'package:chat360/widgets/CameraGalleryImagePicker/multiMediaPicker.dart';
+import 'package:chat360/widgets/DownloadManager/download_all_file_type.dart';
+import 'package:chat360/widgets/VideoEditor/video_editor.dart';
 import 'package:path/path.dart' as p;
 import 'package:collection/collection.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/auth_screens/login.dart';
-import 'package:mec/Screens/chat_screen/utils/aes_encryption.dart';
-import 'package:mec/Screens/chat_screen/utils/uploadMediaWithProgress.dart';
-import 'package:mec/Screens/contact_screens/SelectContactsToForward.dart';
-import 'package:mec/Screens/security_screens/security.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Utils/emoji_detect.dart';
-import 'package:mec/Utils/mime_type.dart';
-import 'package:mec/main.dart';
-import 'package:mec/widgets/CountryPicker/CountryCode.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Screens/chat_screen/utils/deleteChatMedia.dart';
-import 'package:mec/Screens/privacypolicy&TnC/PdfViewFromCachedUrl.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/widgets/MultiDocumentPicker/multiDocumentPicker.dart';
-import 'package:mec/widgets/MyElevatedButton/MyElevatedButton.dart';
-import 'package:mec/widgets/SoundPlayer/SoundPlayerPro.dart';
-import 'package:mec/Services/Providers/currentchat_peer.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/chat_screen/utils/audioPlayback.dart';
-import 'package:mec/Screens/chat_screen/utils/message.dart';
-import 'package:mec/Screens/contact_screens/ContactsSelect.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Screens/chat_screen/utils/photo_view.dart';
-import 'package:mec/Screens/profile_settings/profile_view.dart';
-import 'package:mec/Services/Providers/seen_provider.dart';
-import 'package:mec/Services/Providers/seen_state.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Utils/call_utilities.dart';
-import 'package:mec/Utils/permissions.dart';
-import 'package:mec/Utils/chat_controller.dart';
-import 'package:mec/Utils/crc.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/save.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/AudioRecorder/Audiorecord.dart';
-import 'package:mec/widgets/ImagePicker/image_picker.dart';
-import 'package:mec/widgets/VideoPicker/VideoPreview.dart';
-import 'package:mec/Screens/chat_screen/Widget/bubble.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/auth_screens/login.dart';
+import 'package:chat360/Screens/chat_screen/utils/aes_encryption.dart';
+import 'package:chat360/Screens/chat_screen/utils/uploadMediaWithProgress.dart';
+import 'package:chat360/Screens/contact_screens/SelectContactsToForward.dart';
+import 'package:chat360/Screens/security_screens/security.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Utils/emoji_detect.dart';
+import 'package:chat360/Utils/mime_type.dart';
+import 'package:chat360/main.dart';
+import 'package:chat360/widgets/CountryPicker/CountryCode.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Screens/chat_screen/utils/deleteChatMedia.dart';
+import 'package:chat360/Screens/privacypolicy&TnC/PdfViewFromCachedUrl.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/widgets/MultiDocumentPicker/multiDocumentPicker.dart';
+import 'package:chat360/widgets/MyElevatedButton/MyElevatedButton.dart';
+import 'package:chat360/widgets/SoundPlayer/SoundPlayerPro.dart';
+import 'package:chat360/Services/Providers/currentchat_peer.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/chat_screen/utils/audioPlayback.dart';
+import 'package:chat360/Screens/chat_screen/utils/message.dart';
+import 'package:chat360/Screens/contact_screens/ContactsSelect.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Screens/chat_screen/utils/photo_view.dart';
+import 'package:chat360/Screens/profile_settings/profile_view.dart';
+import 'package:chat360/Services/Providers/seen_provider.dart';
+import 'package:chat360/Services/Providers/seen_state.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Utils/call_utilities.dart';
+import 'package:chat360/Utils/permissions.dart';
+import 'package:chat360/Utils/chat_controller.dart';
+import 'package:chat360/Utils/crc.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/save.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/AudioRecorder/Audiorecord.dart';
+import 'package:chat360/widgets/ImagePicker/image_picker.dart';
+import 'package:chat360/widgets/VideoPicker/VideoPreview.dart';
+import 'package:chat360/Screens/chat_screen/Widget/bubble.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -74,8 +74,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mec/Models/E2EE/e2ee.dart' as e2ee;
-import 'package:mec/Utils/unawaited.dart';
+import 'package:chat360/Models/E2EE/e2ee.dart' as e2ee;
+import 'package:chat360/Utils/unawaited.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:flutter/services.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
@@ -83,7 +83,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart' as emojipic;
 import 'package:video_compress/video_compress.dart' as compress;
 import 'package:video_thumbnail/video_thumbnail.dart';
-import 'package:mec/Configs/Enum.dart';
+import 'package:chat360/Configs/Enum.dart';
 import 'package:audioplayers/audioplayers.dart' as audioPlayers;
 import 'package:http/http.dart' as http;
 
@@ -207,7 +207,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     unread = widget.unread;
     // initAudioPlayer();
     // _load();
-    mec.internetLookUp();
+    chat360.internetLookUp();
 
     updateLocalUserData(_cachedModel);
 
@@ -419,7 +419,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
       int crc = CRC32.compute(input);
       return '$encrypted${Dbkeys.crcSeperator}$crc';
     } catch (e) {
-      mec.toast(
+      chat360.toast(
         getTranslated(this.context, 'waitingpeer'),
       );
       return false;
@@ -443,7 +443,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     } catch (e) {
       return '';
     }
-    // mec.toast(getTranslated(this.context, 'msgnotload'));
+    // chat360.toast(getTranslated(this.context, 'msgnotload'));
     return '';
   }
 
@@ -474,7 +474,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   final iv = encrypt.IV.fromLength(8);
 
   readLocal(BuildContext context,) async {
-    // mec.toast("triggered !");
+    // chat360.toast("triggered !");
     try {
       privateKey = await storage.read(key: Dbkeys.privateKey);
       sharedSecret = (await e2ee.X25519().calculateSharedSecret(
@@ -491,7 +491,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     } catch (e) {
       seenState!.value = false;
     }
-    chatId = mec.getChatId(currentUserNo, peerNo);
+    chatId = chat360.getChatId(currentUserNo, peerNo);
     textEditingController.addListener(() {
       if (textEditingController.text.isNotEmpty && typing == false) {
         lastSeen = peerNo;
@@ -660,7 +660,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           }).toString();
         });
       }).catchError((onError) {
-        mec.toast('Sending failed !');
+        chat360.toast('Sending failed !');
         print('ERROR SENDING FILE: $onError');
       });
     } else {
@@ -808,7 +808,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           }).toString();
         });
       }).catchError((onError) {
-        mec.toast('Sending failed !');
+        chat360.toast('Sending failed !');
         print('ERROR SENDING FILE: $onError');
       });
     } else {
@@ -839,7 +839,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
       // Location services are not enabled don't continue
       // accessing the position and request users of the
       // App to enable the location services.
-      mec.toast(
+      chat360.toast(
           'Location permissions are pdenied. Please go to settings & allow location tracking permission.');
       return Future.error('Location services are disabled.');
     }
@@ -849,7 +849,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.deniedForever) {
         // Permissions are denied forever, handle appropriately.
-        mec.toast(
+        chat360.toast(
             'Location permissions are pdenied. Please go to settings & allow location tracking permission.');
         return Future.error(
             'Location permissions are permanently denied, we cannot request permissions.');
@@ -861,14 +861,14 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
         // Android's shouldShowRequestPermissionRationale
         // returned true. According to Android guidelines
         // your App should show an explanatory UI now.
-        mec.toast(
+        chat360.toast(
             'Location permissions are pdenied. Please go to settings & allow location tracking permission.');
         return Future.error('Location permissions are denied');
       }
     }
     if (permission == LocationPermission.always ||
         permission == LocationPermission.whileInUse) {
-      mec.toast(
+      chat360.toast(
         getTranslated(this.context, 'detectingloc'),
       );
     }
@@ -1093,11 +1093,11 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           }
           // _playPopSound();
         } else {
-          mec.toast('Nothing to encrypt');
+          chat360.toast('Nothing to encrypt');
         }
       } on Exception catch (_) {
         // print('Exception caught!');
-        mec.toast("Exception: $_");
+        chat360.toast("Exception: $_");
       }
     }
   }
@@ -1183,7 +1183,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           onTap: () async {
-            mec.toast(getTranslated(contextForDialog, 'deleting'));
+            chat360.toast(getTranslated(contextForDialog, 'deleting'));
             await FirebaseFirestore.instance
                 .collection(DbPaths.collectionmessages)
                 .doc(chatId)
@@ -1192,7 +1192,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 .get()
                 .then((chatDoc) async {
               if (!chatDoc.exists) {
-                mec.toast('Please reload this screen !');
+                chat360.toast('Please reload this screen !');
               } else if (chatDoc.exists) {
                 Map<String, dynamic> realtimeDoc = chatDoc.data()!;
                 if (realtimeDoc[Dbkeys.hasRecipientDeleted] == true) {
@@ -1218,7 +1218,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                       Navigator.maybePop(
                         contextForDialog,
                       );
-                      mec.toast(
+                      chat360.toast(
                         getTranslated(contextForDialog, 'deleted'),
                       );
                       hidekeyboard(
@@ -1230,7 +1230,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     await deleteMsgMedia(realtimeDoc, chatId!)
                         .then((isDeleted) async {
                       if (isDeleted == false || isDeleted == null) {
-                        mec.toast('Could not delete. Please try again!');
+                        chat360.toast('Could not delete. Please try again!');
                       } else {
                         await FirebaseFirestore.instance
                             .collection(DbPaths.collectionmessages)
@@ -1249,7 +1249,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                           Navigator.maybePop(
                             contextForDialog,
                           );
-                          mec.toast(
+                          chat360.toast(
                             getTranslated(contextForDialog, 'deleted'),
                           );
                           hidekeyboard(contextForDialog);
@@ -1283,7 +1283,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
 
                   Future.delayed(const Duration(milliseconds: 300), () {
                     Navigator.maybePop(contextForDialog);
-                    mec.toast(
+                    chat360.toast(
                       getTranslated(contextForDialog, 'deleted'),
                     );
                     hidekeyboard(contextForDialog);
@@ -1322,19 +1322,19 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               });
               Future.delayed(const Duration(milliseconds: 300), () {
                 Navigator.maybePop(contextForDialog);
-                mec.toast(
+                chat360.toast(
                   getTranslated(contextForDialog, 'deleted'),
                 );
                 hidekeyboard(contextForDialog);
               });
             } else {
               // -------Delete message completely for everyone
-              mec.toast(
+              chat360.toast(
                 getTranslated(contextForDialog, 'deleting'),
               );
               await deleteMsgMedia(mssgDoc, chatId!).then((isDeleted) async {
                 if (isDeleted == false || isDeleted == null) {
-                  mec.toast('Could not delete. Please try again!');
+                  chat360.toast('Could not delete. Please try again!');
                 } else {
                   await FirebaseFirestore.instance
                       .collection(DbPaths.collectionmessages)
@@ -1351,7 +1351,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                   });
                   Future.delayed(const Duration(milliseconds: 300), () {
                     Navigator.maybePop(contextForDialog);
-                    mec.toast(
+                    chat360.toast(
                       getTranslated(contextForDialog, 'deleted'),
                     );
                     hidekeyboard(contextForDialog);
@@ -1373,7 +1373,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           onTap: () async {
-            mec.toast(
+            chat360.toast(
               getTranslated(contextForDialog, 'deleting'),
             );
             await FirebaseFirestore.instance
@@ -1384,7 +1384,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 .get()
                 .then((chatDoc) async {
               if (!chatDoc.exists) {
-                mec.toast('Please reload this screen !');
+                chat360.toast('Please reload this screen !');
               } else if (chatDoc.exists) {
                 Map<String, dynamic> realtimeDoc = chatDoc.data()!;
                 if (realtimeDoc[Dbkeys.hasSenderDeleted] == true) {
@@ -1408,7 +1408,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     });
                     Future.delayed(const Duration(milliseconds: 300), () {
                       Navigator.maybePop(contextForDialog);
-                      mec.toast(
+                      chat360.toast(
                         getTranslated(contextForDialog, 'deleted'),
                       );
                       hidekeyboard(contextForDialog);
@@ -1418,7 +1418,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     await deleteMsgMedia(realtimeDoc, chatId!)
                         .then((isDeleted) async {
                       if (isDeleted == false || isDeleted == null) {
-                        mec.toast('Could not delete. Please try again!');
+                        chat360.toast('Could not delete. Please try again!');
                       } else {
                         await FirebaseFirestore.instance
                             .collection(DbPaths.collectionmessages)
@@ -1435,7 +1435,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                         });
                         Future.delayed(const Duration(milliseconds: 300), () {
                           Navigator.maybePop(contextForDialog);
-                          mec.toast(
+                          chat360.toast(
                             getTranslated(contextForDialog, 'deleted'),
                           );
                           hidekeyboard(contextForDialog);
@@ -1469,7 +1469,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                   }
                   Future.delayed(const Duration(milliseconds: 300), () {
                     Navigator.maybePop(contextForDialog);
-                    mec.toast(
+                    chat360.toast(
                       getTranslated(contextForDialog, 'deleted'),
                     );
                     hidekeyboard(contextForDialog);
@@ -1489,7 +1489,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           onTap: () {
-            mec.toast(
+            chat360.toast(
               getTranslated(contextForDialog, 'plswait'),
             );
             Future.delayed(const Duration(milliseconds: 200), () {
@@ -1504,7 +1504,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               }).then((value) {
                 Navigator.pop(contextForDialog);
                 hidekeyboard(contextForDialog);
-                mec.toast(
+                chat360.toast(
                   getTranslated(contextForDialog, 'blockedbroadcast'),
                 );
               }).catchError((error) {
@@ -1548,7 +1548,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
             Clipboard.setData(ClipboardData(text: mssgDoc[Dbkeys.content]));
             Navigator.pop(contextForDialog);
             hidekeyboard(contextForDialog);
-            mec.toast(
+            chat360.toast(
               getTranslated(contextForDialog, 'copied'),
             );
           }));
@@ -1651,7 +1651,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
             );
           }).then((value) async {
             if (index >= list.length - 1) {
-              mec.toast(
+              chat360.toast(
                 getTranslated(this.context, 'sent'),
               );
               setStateIfMounted(() {
@@ -1667,7 +1667,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           setStateIfMounted(() {
             isgeneratingSomethingLoader = false;
           });
-          mec.toast('Failed to send $e');
+          chat360.toast('Failed to send $e');
         }
       } else {
         try {
@@ -1686,7 +1686,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 .now()
                 .millisecondsSinceEpoch;
             var chatId =
-            mec.getChatId(widget.currentUserNo, list[index][Dbkeys.phone]);
+            chat360.getChatId(widget.currentUserNo, list[index][Dbkeys.phone]);
             if (content.trim() != '') {
               Map<String, dynamic>? targetPeer =
               widget.model.userData[list[index][Dbkeys.phone]];
@@ -1694,7 +1694,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 await ChatController.request(
                     currentUserNo,
                     list[index][Dbkeys.phone],
-                    mec.getChatId(
+                    chat360.getChatId(
                         widget.currentUserNo, list[index][Dbkeys.phone]));
               }
 
@@ -1740,7 +1740,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     list[index][Dbkeys.phone], timestamp2, messaging);
               }).then((value) async {
                 if (index >= list.length - 1) {
-                  mec.toast(
+                  chat360.toast(
                     getTranslated(this.context, 'sent'),
                   );
                   setStateIfMounted(() {
@@ -1757,13 +1757,13 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
             setStateIfMounted(() {
               isgeneratingSomethingLoader = false;
             });
-            mec.toast('Nothing to send');
+            chat360.toast('Nothing to send');
           }
         } catch (e) {
           setStateIfMounted(() {
             isgeneratingSomethingLoader = false;
           });
-          mec.toast('Failed to Forward message. Error:$e');
+          chat360.toast('Failed to Forward message. Error:$e');
         }
       }
     }
@@ -1810,7 +1810,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
 
             Future.delayed(const Duration(milliseconds: 300), () {
               Navigator.maybePop(context);
-              mec.toast(
+              chat360.toast(
                 getTranslated(this.context, 'deleted'),
               );
             });
@@ -1828,7 +1828,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           onTap: () {
             Clipboard.setData(ClipboardData(text: doc[Dbkeys.content]));
             Navigator.pop(context);
-            mec.toast(
+            chat360.toast(
               getTranslated(this.context, 'copied'),
             );
           }));
@@ -1843,7 +1843,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           onTap: () {
-            mec.toast(
+            chat360.toast(
               getTranslated(this.context, 'plswait'),
             );
             Future.delayed(const Duration(milliseconds: 500), () {
@@ -1856,13 +1856,13 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 Dbkeys.broadcastBLACKLISTED:
                 FieldValue.arrayUnion([widget.currentUserNo]),
               }).then((value) {
-                mec.toast(
+                chat360.toast(
                   getTranslated(this.context, 'blockedbroadcast'),
                 );
                 hidekeyboard(context);
                 Navigator.pop(context);
               }).catchError((error) {
-                mec.toast(
+                chat360.toast(
                   getTranslated(this.context, 'blockedbroadcast'),
                 );
                 Navigator.pop(context);
@@ -1879,7 +1879,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   }
 
   save(Map<String, dynamic> doc) async {
-    mec.toast(
+    chat360.toast(
       getTranslated(this.context, 'saved'),
     );
     if (!_savedMessageDocs
@@ -2000,7 +2000,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                   Icon(
                     FontAwesomeIcons.share,
                     size: 12,
-                    color: mecGrey.withOpacity(0.5),
+                    color: chat360Grey.withOpacity(0.5),
                   ),
                   SizedBox(
                     width: 5,
@@ -2008,7 +2008,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                   Text(getTranslated(this.context, 'forwarded'),
                       maxLines: 1,
                       style: TextStyle(
-                          color: mecGrey.withOpacity(0.7),
+                          color: chat360Grey.withOpacity(0.7),
                           fontStyle: FontStyle.italic,
                           overflow: TextOverflow.ellipsis,
                           fontSize: 13))
@@ -2060,7 +2060,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                   Icon(
                     FontAwesomeIcons.share,
                     size: 12,
-                    color: mecGrey.withOpacity(0.5),
+                    color: chat360Grey.withOpacity(0.5),
                   ),
                   SizedBox(
                     width: 5,
@@ -2068,7 +2068,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                   Text(getTranslated(this.context, 'forwarded'),
                       maxLines: 1,
                       style: TextStyle(
-                          color: mecGrey.withOpacity(0.7),
+                          color: chat360Grey.withOpacity(0.7),
                           fontStyle: FontStyle.italic,
                           overflow: TextOverflow.ellipsis,
                           fontSize: 13))
@@ -2109,7 +2109,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Icon(
                       FontAwesomeIcons.share,
                       size: 12,
-                      color: mecGrey.withOpacity(0.5),
+                      color: chat360Grey.withOpacity(0.5),
                     ),
                     SizedBox(
                       width: 5,
@@ -2117,7 +2117,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Text(getTranslated(this.context, 'forwarded'),
                         maxLines: 1,
                         style: TextStyle(
-                            color: mecGrey.withOpacity(0.7),
+                            color: chat360Grey.withOpacity(0.7),
                             fontStyle: FontStyle.italic,
                             overflow: TextOverflow.ellipsis,
                             fontSize: 13))
@@ -2163,7 +2163,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Icon(
                       FontAwesomeIcons.share,
                       size: 12,
-                      color: mecGrey.withOpacity(0.5),
+                      color: chat360Grey.withOpacity(0.5),
                     ),
                     SizedBox(
                       width: 5,
@@ -2171,7 +2171,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Text(getTranslated(this.context, 'forwarded'),
                         maxLines: 1,
                         style: TextStyle(
-                            color: mecGrey.withOpacity(0.7),
+                            color: chat360Grey.withOpacity(0.7),
                             fontStyle: FontStyle.italic,
                             overflow: TextOverflow.ellipsis,
                             fontSize: 13))
@@ -2224,7 +2224,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Icon(
                       FontAwesomeIcons.share,
                       size: 12,
-                      color: mecGrey.withOpacity(0.5),
+                      color: chat360Grey.withOpacity(0.5),
                     ),
                     SizedBox(
                       width: 5,
@@ -2232,7 +2232,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Text(getTranslated(this.context, 'forwarded'),
                         maxLines: 1,
                         style: TextStyle(
-                            color: mecGrey.withOpacity(0.7),
+                            color: chat360Grey.withOpacity(0.7),
                             fontStyle: FontStyle.italic,
                             overflow: TextOverflow.ellipsis,
                             fontSize: 13))
@@ -2348,7 +2348,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Icon(
                       FontAwesomeIcons.share,
                       size: 12,
-                      color: mecGrey.withOpacity(0.5),
+                      color: chat360Grey.withOpacity(0.5),
                     ),
                     SizedBox(
                       width: 5,
@@ -2356,7 +2356,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Text(getTranslated(this.context, 'forwarded'),
                         maxLines: 1,
                         style: TextStyle(
-                            color: mecGrey.withOpacity(0.7),
+                            color: chat360Grey.withOpacity(0.7),
                             fontStyle: FontStyle.italic,
                             overflow: TextOverflow.ellipsis,
                             fontSize: 13))
@@ -2479,7 +2479,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Icon(
                       FontAwesomeIcons.share,
                       size: 12,
-                      color: mecGrey.withOpacity(0.5),
+                      color: chat360Grey.withOpacity(0.5),
                     ),
                     SizedBox(
                       width: 5,
@@ -2487,7 +2487,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Text(getTranslated(this.context, 'forwarded'),
                         maxLines: 1,
                         style: TextStyle(
-                            color: mecGrey.withOpacity(0.7),
+                            color: chat360Grey.withOpacity(0.7),
                             fontStyle: FontStyle.italic,
                             overflow: TextOverflow.ellipsis,
                             fontSize: 13))
@@ -2576,7 +2576,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Icon(
                       FontAwesomeIcons.share,
                       size: 12,
-                      color: mecGrey.withOpacity(0.5),
+                      color: chat360Grey.withOpacity(0.5),
                     ),
                     SizedBox(
                       width: 5,
@@ -2584,7 +2584,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     Text(getTranslated(this.context, 'forwarded'),
                         maxLines: 1,
                         style: TextStyle(
-                            color: mecGrey.withOpacity(0.7),
+                            color: chat360Grey.withOpacity(0.7),
                             fontStyle: FontStyle.italic,
                             overflow: TextOverflow.ellipsis,
                             fontSize: 13))
@@ -2738,7 +2738,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
 
                 // ignore: unnecessary_null_comparison
                 if (isUser == null || isUser == false) {
-                  mec.toast(getTranslated(this.context, 'usernotjoined') +
+                  chat360.toast(getTranslated(this.context, 'usernotjoined') +
                       ' $Appname');
                 }
               },
@@ -2870,20 +2870,20 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           height: 70,
           margin: EdgeInsets.only(left: 0, right: 0),
           decoration: BoxDecoration(
-              color: mecWhite.withOpacity(0.55),
+              color: chat360White.withOpacity(0.55),
               borderRadius: BorderRadius.all(Radius.circular(10))),
           child: Stack(
             children: [
               Container(
                   margin: EdgeInsetsDirectional.all(4),
                   decoration: BoxDecoration(
-                      color: mecGrey.withOpacity(0.1),
+                      color: chat360Grey.withOpacity(0.1),
                       borderRadius: BorderRadius.all(Radius.circular(8))),
                   child: Row(children: [
                     Container(
                       decoration: BoxDecoration(
                         color: doc[Dbkeys.from] == currentUserNo
-                            ? mecgreen
+                            ? chat360green
                             : Colors.purple,
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(0),
@@ -2908,12 +2908,12 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                 child: Text(
                                   doc[Dbkeys.from] == currentUserNo
                                       ? getTranslated(this.context, 'you')
-                                      : mec.getNickname(peer!)!,
+                                      : chat360.getNickname(peer!)!,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: doc[Dbkeys.from] == currentUserNo
-                                          ? mecgreen
+                                          ? chat360green
                                           : Colors.purple),
                                 ),
                               ),
@@ -2996,7 +2996,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                           Container(
                             child: CircularProgressIndicator(
                               valueColor:
-                              AlwaysStoppedAnimation<Color>(mecBlue),
+                              AlwaysStoppedAnimation<Color>(chat360Blue),
                             ),
                             width: doc[Dbkeys.content].contains('giphy')
                                 ? 60
@@ -3063,7 +3063,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                         CircularProgressIndicator(
                                           valueColor:
                                           AlwaysStoppedAnimation<
-                                              Color>(mecBlue),
+                                              Color>(chat360Blue),
                                         ),
                                         width: 74,
                                         height: 74,
@@ -3176,20 +3176,20 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           height: 80,
           margin: EdgeInsets.only(left: 15, right: 70),
           decoration: BoxDecoration(
-              color: mecWhite,
+              color: chat360White,
               borderRadius: BorderRadius.all(Radius.circular(10))),
           child: Stack(
             children: [
               Container(
                   margin: EdgeInsetsDirectional.all(4),
                   decoration: BoxDecoration(
-                      color: mecGrey.withOpacity(0.1),
+                      color: chat360Grey.withOpacity(0.1),
                       borderRadius: BorderRadius.all(Radius.circular(8))),
                   child: Row(children: [
                     Container(
                       decoration: BoxDecoration(
                         color: replyDoc![Dbkeys.from] == currentUserNo
-                            ? mecgreen
+                            ? chat360green
                             : Colors.purple,
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(0),
@@ -3214,13 +3214,13 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                 child: Text(
                                   replyDoc![Dbkeys.from] == currentUserNo
                                       ? getTranslated(this.context, 'you')
-                                      : mec.getNickname(peer!)!,
+                                      : chat360.getNickname(peer!)!,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: replyDoc![Dbkeys.from] ==
                                           currentUserNo
-                                          ? mecgreen
+                                          ? chat360green
                                           : Colors.purple),
                                 ),
                               ),
@@ -3313,7 +3313,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                           Container(
                             child: CircularProgressIndicator(
                               valueColor:
-                              AlwaysStoppedAnimation<Color>(mecBlue),
+                              AlwaysStoppedAnimation<Color>(chat360Blue),
                             ),
                             width: replyDoc![Dbkeys.content]
                                 .contains('giphy')
@@ -3382,7 +3382,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                         CircularProgressIndicator(
                                           valueColor:
                                           AlwaysStoppedAnimation<
-                                              Color>(mecBlue),
+                                              Color>(chat360Blue),
                                         ),
                                         width: 84,
                                         height: 84,
@@ -3585,11 +3585,11 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   //         ? Container(
   //             child: Center(
   //               child: CircularProgressIndicator(
-  //                   valueColor: AlwaysStoppedAnimation<Color>(mecBlue)),
+  //                   valueColor: AlwaysStoppedAnimation<Color>(chat360Blue)),
   //             ),
   //             color: DESIGN_TYPE == Themetype.whatsapp
-  //                 ? mecBlack.withOpacity(0.0)
-  //                 : mecWhite.withOpacity(0.0),
+  //                 ? chat360Black.withOpacity(0.0)
+  //                 : chat360White.withOpacity(0.0),
   //           )
   //         : Container(),
   //   );
@@ -3601,11 +3601,11 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           ? Container(
         child: Center(
           child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(mecBlue)),
+              valueColor: AlwaysStoppedAnimation<Color>(chat360Blue)),
         ),
         color: DESIGN_TYPE == Themetype.whatsapp
-            ? mecBlack.withOpacity(0.6)
-            : mecWhite.withOpacity(0.6),
+            ? chat360Black.withOpacity(0.6)
+            : chat360White.withOpacity(0.6),
       )
           : Container(),
     );
@@ -3709,7 +3709,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                             File? selectedMedia =
                             await pickVideoFromgallery(context)
                                 .catchError((err) {
-                              mec.toast(getTranslated(context, "invalidfile"));
+                              chat360.toast(getTranslated(context, "invalidfile"));
                             });
 
                             if (selectedMedia == null) {
@@ -3786,7 +3786,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                             },
                                             file: File(file.path))));
                               } else {
-                                mec.toast(
+                                chat360.toast(
                                     "File type not supported. Please choose a valid .mp4, .mov. \n\nSelected file was $fileExtension ");
                               }
                             }
@@ -3974,7 +3974,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                         .now()
                                         .millisecondsSinceEpoch);
                                 setStateIfMounted(() {});
-                                mec.toast(
+                                chat360.toast(
                                   getTranslated(this.context, 'sent'),
                                 );
                               },
@@ -4162,7 +4162,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           }).toString();
         });
       }).catchError((onError) {
-        mec.toast('Sending failed !');
+        chat360.toast('Sending failed !');
         print('ERROR SENDING FILE: $onError');
       });
     } else {
@@ -4194,7 +4194,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
         elevation: 10.0,
         title: Text(
           getTranslated(this.context, 'accept') + '${peer![Dbkeys.nickname]} ?',
-          style: TextStyle(color: mecBlack),
+          style: TextStyle(color: chat360Black),
         ),
         actions: <Widget>[
           // ignore: deprecated_member_use
@@ -4209,7 +4209,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           // ignore: deprecated_member_use
           ElevatedButton(
               child: Text(getTranslated(this.context, 'acpt'),
-                  style: TextStyle(color: mecgreen)),
+                  style: TextStyle(color: chat360green)),
               onPressed: () {
                 ChatController.accept(currentUserNo, peerNo);
                 setStateIfMounted(() {
@@ -4238,7 +4238,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                       left: 10,
                     ),
                     decoration: BoxDecoration(
-                        color: mecWhite,
+                        color: chat360White,
                         borderRadius: BorderRadius.all(Radius.circular(30))),
                     child: Row(
                       children: [
@@ -4253,7 +4253,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                             icon: Icon(
                               Icons.emoji_emotions,
                               size: 23,
-                              color: mecGrey,
+                              color: chat360Grey,
                             ),
                           ),
                         ),
@@ -4271,7 +4271,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                             //   print(string);
 
                             //   if (string.substring(string.length - 1) == '/') {
-                            //     mec.toast(string);
+                            //     chat360.toast(string);
                             //   }
                             //   //  setStateIfMounted(() {});
                             // },
@@ -4279,7 +4279,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                             focusNode: keyboardFocusNode,
                             maxLines: null,
                             textCapitalization: TextCapitalization.sentences,
-                            style: TextStyle(fontSize: 16.0, color: mecBlack),
+                            style: TextStyle(fontSize: 16.0, color: chat360Black),
                             controller: textEditingController,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
@@ -4323,7 +4323,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                   child: IconButton(
                                     icon: new Icon(
                                       Icons.attachment_outlined,
-                                      color: mecGrey,
+                                      color: chat360Grey,
                                     ),
                                     padding: EdgeInsets.all(0.0),
                                     onPressed: isMessageLoading == true
@@ -4331,7 +4331,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                         : observer.ismediamessagingallowed ==
                                         false
                                         ? () {
-                                      mec.showRationale(
+                                      chat360.showRationale(
                                           getTranslated(
                                               this.context,
                                               'mediamssgnotallowed'));
@@ -4340,7 +4340,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                         ChatStatus
                                             .blocked.index
                                         ? () {
-                                      mec.toast(
+                                      chat360.toast(
                                           getTranslated(
                                               this.context,
                                               'unlck'));
@@ -4349,7 +4349,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                       hidekeyboard(context);
                                       shareMedia(context);
                                     },
-                                    color: mecWhite,
+                                    color: chat360White,
                                   ),
                                 ),
                                 textEditingController.text.isNotEmpty
@@ -4360,7 +4360,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                     icon: new Icon(
                                       Icons.camera_alt_rounded,
                                       size: 20,
-                                      color: mecGrey,
+                                      color: chat360Grey,
                                     ),
                                     padding: EdgeInsets.all(0.0),
                                     onPressed: isMessageLoading == true
@@ -4368,7 +4368,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                         : observer.ismediamessagingallowed ==
                                         false
                                         ? () {
-                                      mec.showRationale(
+                                      chat360.showRationale(
                                           getTranslated(
                                               this.context,
                                               'mediamssgnotallowed'));
@@ -4377,7 +4377,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                         ChatStatus
                                             .blocked.index
                                         ? () {
-                                      mec.toast(
+                                      chat360.toast(
                                           getTranslated(
                                               this.context,
                                               'unlck'));
@@ -4445,7 +4445,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                 },
                                               )));
                                     },
-                                    color: mecWhite,
+                                    color: chat360White,
                                   ),
                                 ),
                                 textEditingController.text.length != 0 ||
@@ -4459,19 +4459,19 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                   alignment: Alignment.topLeft,
                                   width: 40,
                                   child: IconButton(
-                                      color: mecWhite,
+                                      color: chat360White,
                                       padding: EdgeInsets.all(0.0),
                                       icon: Icon(
                                         Icons.gif_rounded,
                                         size: 40,
-                                        color: mecGrey,
+                                        color: chat360Grey,
                                       ),
                                       onPressed: isMessageLoading == true
                                           ? null
                                           : observer.ismediamessagingallowed ==
                                           false
                                           ? () {
-                                        mec.showRationale(
+                                        chat360.showRationale(
                                             getTranslated(
                                                 this.context,
                                                 'mediamssgnotallowed'));
@@ -4480,7 +4480,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                         GiphyGif? gif =
                                         await GiphyGet
                                             .getGif(
-                                          tabColor: mecgreen,
+                                          tabColor: chat360green,
 
                                           context: context,
                                           apiKey:
@@ -4520,8 +4520,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                   margin: EdgeInsets.only(left: 6, right: 10),
                   decoration: BoxDecoration(
                       color: DESIGN_TYPE == Themetype.whatsapp
-                          ? mecgreen
-                          : mecLightGreen,
+                          ? chat360green
+                          : chat360LightGreen,
                       // border: Border.all(
                       //   color: Colors.red[500],
                       // ),
@@ -4533,7 +4533,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                         textEditingController.text.length == 0
                             ? Icons.mic
                             : Icons.send,
-                        color: mecWhite.withOpacity(0.99),
+                        color: chat360White.withOpacity(0.99),
                       ),
                       onPressed: isMessageLoading == true
                           ? null
@@ -4564,7 +4564,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                       }
                           : observer.istextmessagingallowed == false
                           ? () {
-                        mec.showRationale(getTranslated(
+                        chat360.showRationale(getTranslated(
                             this.context,
                             'textmssgnotallowed'));
                       }
@@ -4579,10 +4579,10 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                   .now()
                                   .millisecondsSinceEpoch)
                           : () {
-                        mec.showRationale(getTranslated(
+                        chat360.showRationale(getTranslated(
                             this.context, 'mediamssgnotallowed'));
                       },
-                      color: mecWhite,
+                      color: chat360White,
                     ),
                   ),
                 ),
@@ -4613,11 +4613,11 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                       horizontalSpacing: 0,
                       initCategory: emojipic.Category.RECENT,
                       bgColor: Color(0xFFF2F2F2),
-                      indicatorColor: mecgreen,
+                      indicatorColor: chat360green,
                       iconColor: Colors.grey,
-                      iconColorSelected: mecgreen,
+                      iconColorSelected: chat360green,
                       progressIndicatorColor: Colors.blue,
-                      backspaceColor: mecgreen,
+                      backspaceColor: chat360green,
                       showRecentsTab: true,
                       recentsLimit: 28,
                       categoryIcons: CategoryIcons(),
@@ -4638,7 +4638,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   //       elevation: 10.0,
   //       title: Text(
   //         getTranslated(this.context, 'accept') + '${peer![Dbkeys.nickname]} ?',
-  //         style: TextStyle(color: mecBlack),
+  //         style: TextStyle(color: chat360Black),
   //       ),
   //       actions: <Widget>[
   //         // ignore: deprecated_member_use
@@ -4653,7 +4653,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   //         // ignore: deprecated_member_use
   //         ElevatedButton(
   //             child: Text(getTranslated(this.context, 'acpt'),
-  //                 style: TextStyle(color: mecgreen)),
+  //                 style: TextStyle(color: chat360green)),
   //             onPressed: () {
   //               ChatController.accept(currentUserNo, peerNo);
   //               setStateIfMounted(() {
@@ -4673,7 +4673,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   //               left: 10,
   //             ),
   //             decoration: BoxDecoration(
-  //                 color: mecWhite,
+  //                 color: chat360White,
   //                 // border: Border.all(
   //                 //   color: Colors.red[500],
   //                 // ),
@@ -4685,21 +4685,21 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   //                   child: Row(
   //                     children: [
   //                       IconButton(
-  //                           color: mecWhite,
+  //                           color: chat360White,
   //                           padding: EdgeInsets.all(0.0),
   //                           icon: Icon(
   //                             Icons.gif,
   //                             size: 40,
-  //                             color: mecGrey,
+  //                             color: chat360Grey,
   //                           ),
   //                           onPressed: observer.ismediamessagingallowed == false
   //                               ? () {
-  //                                   mec.showRationale(getTranslated(
+  //                                   chat360.showRationale(getTranslated(
   //                                       this.context, 'mediamssgnotallowed'));
   //                                 }
   //                               : () async {
   //                                   GiphyGif? gif = await GiphyGet.getGif(
-  //                                     tabColor: mecgreen,
+  //                                     tabColor: chat360green,
   //                                     context: context,
   //                                     apiKey: GiphyAPIKey, //YOUR API KEY HERE
   //                                     lang: GiphyLanguage.english,
@@ -4718,24 +4718,24 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   //                       IconButton(
   //                         icon: new Icon(
   //                           Icons.attachment_outlined,
-  //                           color: mecGrey,
+  //                           color: chat360Grey,
   //                         ),
   //                         padding: EdgeInsets.all(0.0),
   //                         onPressed: observer.ismediamessagingallowed == false
   //                             ? () {
-  //                                 mec.showRationale(getTranslated(
+  //                                 chat360.showRationale(getTranslated(
   //                                     this.context, 'mediamssgnotallowed'));
   //                               }
   //                             : chatStatus == ChatStatus.blocked.index
   //                                 ? () {
-  //                                     mec.toast(
+  //                                     chat360.toast(
   //                                         getTranslated(this.context, 'unlck'));
   //                                   }
   //                                 : () {
   //                                     hidekeyboard(context);
   //                                     shareMedia(context);
   //                                   },
-  //                         color: mecWhite,
+  //                         color: chat360White,
   //                       ),
   //                     ],
   //                   ),
@@ -4744,7 +4744,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   //                   child: TextField(
   //                     textCapitalization: TextCapitalization.sentences,
   //                     maxLines: null,
-  //                     style: TextStyle(fontSize: 18.0, color: mecBlack),
+  //                     style: TextStyle(fontSize: 18.0, color: chat360Black),
   //                     controller: textEditingController,
   //                     decoration: InputDecoration(
   //                       enabledBorder: OutlineInputBorder(
@@ -4781,8 +4781,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   //           margin: EdgeInsets.only(left: 6, right: 10),
   //           decoration: BoxDecoration(
   //               color: DESIGN_TYPE == Themetype.whatsapp
-  //                   ? mecgreen
-  //                   : mecLightGreen,
+  //                   ? chat360green
+  //                   : chat360LightGreen,
   //               // border: Border.all(
   //               //   color: Colors.red[500],
   //               // ),
@@ -4795,7 +4795,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   //                         isMessageLoading == true
   //                     ? Icons.mic
   //                     : Icons.send,
-  //                 color: mecWhite.withOpacity(0.99),
+  //                 color: chat360White.withOpacity(0.99),
   //               ),
   //               onPressed: observer.ismediamessagingallowed == true
   //                   ? textEditingController.text.length == 0 ||
@@ -4824,7 +4824,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   //                         }
   //                       : observer.istextmessagingallowed == false
   //                           ? () {
-  //                               mec.showRationale(getTranslated(
+  //                               chat360.showRationale(getTranslated(
   //                                   this.context, 'textmssgnotallowed'));
   //                             }
   //                           : chatStatus == ChatStatus.blocked.index
@@ -4835,10 +4835,10 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   //                                   MessageType.text,
   //                                   DateTime.now().millisecondsSinceEpoch)
   //                   : () {
-  //                       mec.showRationale(
+  //                       chat360.showRationale(
   //                           getTranslated(this.context, 'mediamssgnotallowed'));
   //                     },
-  //               color: mecWhite,
+  //               color: chat360White,
   //             ),
   //           ),
   //         ),
@@ -5435,14 +5435,14 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                     ? Center(
                   child: CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(
-                          mecLightGreen)),
+                          chat360LightGreen)),
                 )
                     : Text(getTranslated(this.context, 'sayhi'),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: DESIGN_TYPE == Themetype.whatsapp
-                            ? mecWhite
-                            : mecGrey,
+                            ? chat360White
+                            : chat360Grey,
                         fontSize: 18))),
           ],
           controller: realtime,
@@ -5622,13 +5622,13 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                               onTap: observer.iscallsallowed == false
                                   ? () {
                                 Navigator.of(this.context).pop();
-                                mec.showRationale(getTranslated(
+                                chat360.showRationale(getTranslated(
                                     this.context, 'callnotallowed'));
                               }
                                   : hasPeerBlockedMe == true
                                   ? () {
                                 Navigator.of(this.context).pop();
-                                mec.toast(
+                                chat360.toast(
                                   getTranslated(
                                       context, 'userhasblocked'),
                                 );
@@ -5648,7 +5648,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                     call(this.context, false);
                                   } else {
                                     Navigator.of(this.context).pop();
-                                    mec.showRationale(getTranslated(
+                                    chat360.showRationale(getTranslated(
                                         this.context, 'pmc'));
                                     Navigator.push(
                                         context,
@@ -5657,7 +5657,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                 OpenSettings()));
                                   }
                                 }).catchError((onError) {
-                                  mec.showRationale(
+                                  chat360.showRationale(
                                       getTranslated(this.context, 'pmc'));
                                   Navigator.push(
                                       context,
@@ -5678,7 +5678,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                     Icon(
                                       Icons.local_phone,
                                       size: 35,
-                                      color: mecLightGreen,
+                                      color: chat360LightGreen,
                                     ),
                                     SizedBox(height: 13),
                                     Text(
@@ -5687,7 +5687,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                       style: TextStyle(
                                           fontWeight: FontWeight.normal,
                                           fontSize: 14,
-                                          color: mecBlack),
+                                          color: chat360Black),
                                     ),
                                   ],
                                 ),
@@ -5697,13 +5697,13 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                 onTap: observer.iscallsallowed == false
                                     ? () {
                                   Navigator.of(this.context).pop();
-                                  mec.showRationale(getTranslated(
+                                  chat360.showRationale(getTranslated(
                                       this.context, 'callnotallowed'));
                                 }
                                     : hasPeerBlockedMe == true
                                     ? () {
                                   Navigator.of(this.context).pop();
-                                  mec.toast(
+                                  chat360.toast(
                                     getTranslated(
                                         context, 'userhasblocked'),
                                   );
@@ -5724,7 +5724,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                       call(this.context, true);
                                     } else {
                                       Navigator.of(this.context).pop();
-                                      mec.showRationale(getTranslated(
+                                      chat360.showRationale(getTranslated(
                                           this.context, 'pmc'));
                                       Navigator.push(
                                           context,
@@ -5733,7 +5733,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                   OpenSettings()));
                                     }
                                   }).catchError((onError) {
-                                    mec.showRationale(getTranslated(
+                                    chat360.showRationale(getTranslated(
                                         this.context, 'pmc'));
                                     Navigator.push(
                                         context,
@@ -5755,7 +5755,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                       Icon(
                                         Icons.videocam,
                                         size: 39,
-                                        color: mecLightGreen,
+                                        color: chat360LightGreen,
                                       ),
                                       SizedBox(height: 13),
                                       Text(
@@ -5764,7 +5764,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                         style: TextStyle(
                                             fontWeight: FontWeight.normal,
                                             fontSize: 14,
-                                            color: mecBlack),
+                                            color: chat360Black),
                                       ),
                                     ],
                                   ),
@@ -5785,7 +5785,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     }
     return PickupLayout(
       prefs: widget.prefs,
-      scaffold: mec.getNTPWrappedWidget(WillPopScope(
+      scaffold: chat360.getNTPWrappedWidget(WillPopScope(
           onWillPop: isgeneratingSomethingLoader == true
               ? () async {
             return Future.value(false);
@@ -5839,8 +5839,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                     Icons.arrow_back_ios,
                                     size: 20,
                                     color: DESIGN_TYPE == Themetype.whatsapp
-                                        ? mecWhite
-                                        : mecBlack,
+                                        ? chat360White
+                                        : chat360Black,
                                   ),
                                   onPressed: () {
                                     if (isDeletedDoc == true) {
@@ -5848,7 +5848,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                           .pushAndRemoveUntil(
                                         MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              mecWrapper(),
+                                              chat360Wrapper(),
                                         ),
                                             (Route route) => false,
                                       );
@@ -5860,8 +5860,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                               ),
                               backgroundColor:
                               DESIGN_TYPE == Themetype.whatsapp
-                                  ? mecDeepGreen
-                                  : mecWhite,
+                                  ? chat360DeepGreen
+                                  : chat360White,
                               title: InkWell(
                                 onTap: () {
                                   Navigator.push(
@@ -5904,15 +5904,15 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                   if (snapshot.hasData &&
                                                       snapshot.data !=
                                                           null) {
-                                                    return mec.avatar(peer,
+                                                    return chat360.avatar(peer,
                                                         radius: 20,
                                                         predefinedinitials:
-                                                        mec.getInitials(
+                                                        chat360.getInitials(
                                                             snapshot.data![
                                                             Dbkeys
                                                                 .nickname]));
                                                   }
-                                                  return mec.avatar(peer,
+                                                  return chat360.avatar(peer,
                                                       radius: 20);
                                                 }),
                                           )
@@ -5920,7 +5920,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                             padding:
                                             const EdgeInsets.fromLTRB(
                                                 0, 7, 0, 7),
-                                            child: mec.avatar(peer,
+                                            child: chat360.avatar(peer,
                                                 radius: 20),
                                           ),
                                           SizedBox(
@@ -5973,8 +5973,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                                   color: DESIGN_TYPE ==
                                                                       Themetype
                                                                           .whatsapp
-                                                                      ? mecWhite
-                                                                      : mecBlack,
+                                                                      ? chat360White
+                                                                      : chat360Black,
                                                                   fontSize:
                                                                   17.0,
                                                                   fontWeight:
@@ -5983,7 +5983,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                             );
                                                           }
                                                           return Text(
-                                                            mec.getNickname(
+                                                            chat360.getNickname(
                                                                 peer!)!,
                                                             overflow:
                                                             TextOverflow
@@ -5993,8 +5993,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                                 color: DESIGN_TYPE ==
                                                                     Themetype
                                                                         .whatsapp
-                                                                    ? mecWhite
-                                                                    : mecBlack,
+                                                                    ? chat360White
+                                                                    : chat360Black,
                                                                 fontSize:
                                                                 17.0,
                                                                 fontWeight:
@@ -6003,7 +6003,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                           );
                                                         })
                                                         : Text(
-                                                      mec.getNickname(
+                                                      chat360.getNickname(
                                                           peer!)!,
                                                       overflow: TextOverflow
                                                           .ellipsis,
@@ -6012,8 +6012,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                           color: DESIGN_TYPE ==
                                                               Themetype
                                                                   .whatsapp
-                                                              ? mecWhite
-                                                              : mecBlack,
+                                                              ? chat360White
+                                                              : chat360Black,
                                                           fontSize: 17.0,
                                                           fontWeight:
                                                           FontWeight
@@ -6030,10 +6030,10 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                         color: DESIGN_TYPE ==
                                                             Themetype
                                                                 .whatsapp
-                                                            ? mecWhite
+                                                            ? chat360White
                                                             .withOpacity(
                                                             0.5)
-                                                            : mecBlack
+                                                            : chat360Black
                                                             .withOpacity(
                                                             0.5),
                                                         size: 17,
@@ -6054,8 +6054,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                     color: DESIGN_TYPE ==
                                                         Themetype
                                                             .whatsapp
-                                                        ? mecWhite
-                                                        : mecGrey,
+                                                        ? chat360White
+                                                        : chat360Grey,
                                                     fontSize: 12,
                                                     fontWeight:
                                                     FontWeight.w400),
@@ -6067,8 +6067,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                     color: DESIGN_TYPE ==
                                                         Themetype
                                                             .whatsapp
-                                                        ? mecWhite
-                                                        : mecGrey,
+                                                        ? chat360White
+                                                        : chat360Grey,
                                                     fontSize: 12,
                                                     fontWeight:
                                                     FontWeight.w400),
@@ -6090,21 +6090,21 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                         Icons.add_call,
                                         color: DESIGN_TYPE ==
                                             Themetype.whatsapp
-                                            ? mecWhite
-                                            : mecgreen,
+                                            ? chat360White
+                                            : chat360green,
                                       ),
                                       onPressed:
                                       observer.iscallsallowed ==
                                           false
                                           ? () {
-                                        mec.showRationale(
+                                        chat360.showRationale(
                                             getTranslated(
                                                 this.context,
                                                 'callnotallowed'));
                                       }
                                           : hasPeerBlockedMe == true
                                           ? () {
-                                        mec.toast(
+                                        chat360.toast(
                                           getTranslated(
                                               context,
                                               'userhasblocked'),
@@ -6129,11 +6129,11 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                           Icons.more_vert_outlined,
                                           color: DESIGN_TYPE ==
                                               Themetype.whatsapp
-                                              ? mecWhite
-                                              : mecBlack,
+                                              ? chat360White
+                                              : chat360Black,
                                         ),
                                       ),
-                                      color: mecWhite,
+                                      color: chat360White,
                                       onSelected: (dynamic val) {
                                         switch (val) {
                                           case 'report':
@@ -6257,7 +6257,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                               ),
                                                               myElevatedButton(
                                                                   color:
-                                                                  mecLightGreen,
+                                                                  chat360LightGreen,
                                                                   child:
                                                                   Padding(
                                                                     padding: const EdgeInsets
@@ -6308,7 +6308,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                                       'time':
                                                                       time
                                                                           .millisecondsSinceEpoch,
-                                                                      'id': mec
+                                                                      'id': chat360
                                                                           .getChatId(
                                                                           currentUserNo,
                                                                           peerNo),
@@ -6445,7 +6445,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                             FirebaseFirestore.instance
                                                 .collection(DbPaths
                                                 .collectionmessages)
-                                                .doc(mec.getChatId(
+                                                .doc(chat360.getChatId(
                                                 currentUserNo, peerNo))
                                                 .update({
                                               "$currentUserNo-muted":
@@ -6461,7 +6461,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                             FirebaseFirestore.instance
                                                 .collection(DbPaths
                                                 .collectionmessages)
-                                                .doc(mec.getChatId(
+                                                .doc(chat360.getChatId(
                                                 currentUserNo, peerNo))
                                                 .update({
                                               "$currentUserNo-muted":
@@ -6518,7 +6518,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                             break;
                                           case 'block':
                                           // if (hasPeerBlockedMe == true) {
-                                          //   mec.toast(
+                                          //   chat360.toast(
                                           //     getTranslated(context,
                                           //         'userhasblocked'),
                                           //   );
@@ -6529,27 +6529,27 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                             break;
                                           case 'unblock':
                                           // if (hasPeerBlockedMe == true) {
-                                          //   mec.toast(
+                                          //   chat360.toast(
                                           //     getTranslated(context,
                                           //         'userhasblocked'),
                                           //   );
                                           // } else {
                                             ChatController.accept(
                                                 currentUserNo, peerNo);
-                                            mec.toast(getTranslated(
+                                            chat360.toast(getTranslated(
                                                 this.context, 'unblocked'));
                                             // }
 
                                             break;
                                           case 'tutorial':
-                                            mec.toast(getTranslated(
+                                            chat360.toast(getTranslated(
                                                 this.context, 'vsmsg'));
 
                                             break;
                                           case 'remove_wallpaper':
                                             _cachedModel
                                                 .removeWallpaper(peerNo!);
-                                            // mec.toast('Wallpaper removed.');
+                                            // chat360.toast('Wallpaper removed.');
                                             break;
                                           case 'set_wallpaper':
                                             Navigator.push(
@@ -6644,8 +6644,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                 new Container(
                                   decoration: new BoxDecoration(
                                     color: DESIGN_TYPE == Themetype.whatsapp
-                                        ? mecChatbackground
-                                        : mecChatbackground,
+                                        ? chat360Chatbackground
+                                        : chat360Chatbackground,
                                     image: new DecorationImage(
                                         image: peer![Dbkeys.wallpaper] == null
                                             ? AssetImage(
@@ -6669,7 +6669,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                             getTranslated(this.context,
                                                 'chatdeleted'),
                                             style: TextStyle(
-                                                color: mecGrey)),
+                                                color: chat360Grey)),
                                       ),
                                     )
                                         : Column(
@@ -6689,18 +6689,18 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                 'unblock') +
                                                 ' ${peer![Dbkeys.nickname]}?',
                                             style: TextStyle(
-                                                color: mecBlack),
+                                                color: chat360Black),
                                           ),
                                           actions: <Widget>[
                                             myElevatedButton(
-                                                color: mecWhite,
+                                                color: chat360White,
                                                 child: Text(
                                                   getTranslated(
                                                       this.context,
                                                       'cancel'),
                                                   style: TextStyle(
                                                       color:
-                                                      mecBlack),
+                                                      chat360Black),
                                                 ),
                                                 onPressed: () {
                                                   Navigator.pop(
@@ -6708,14 +6708,14 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                 }),
                                             myElevatedButton(
                                                 color:
-                                                mecLightGreen,
+                                                chat360LightGreen,
                                                 child: Text(
                                                   getTranslated(
                                                       this.context,
                                                       'unblock'),
                                                   style: TextStyle(
                                                       color:
-                                                      mecWhite),
+                                                      chat360White),
                                                 ),
                                                 onPressed: () {
                                                   ChatController

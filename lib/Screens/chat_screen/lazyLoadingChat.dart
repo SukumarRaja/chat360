@@ -1,42 +1,42 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Configs/optional_constants.dart';
-import 'package:mec/Screens/auth_screens/login.dart';
-import 'package:mec/Screens/calling_screen/pickup_layout.dart';
-import 'package:mec/Screens/chat_screen/Widget/bubble.dart';
-import 'package:mec/Screens/chat_screen/chat.dart';
-import 'package:mec/Screens/chat_screen/utils/aes_encryption.dart';
-import 'package:mec/Screens/chat_screen/utils/audioPlayback.dart';
-import 'package:mec/Screens/chat_screen/utils/deleteChatMedia.dart';
-import 'package:mec/Screens/chat_screen/utils/photo_view.dart';
-import 'package:mec/Screens/chat_screen/utils/uploadMediaWithProgress.dart';
-import 'package:mec/Screens/contact_screens/SelectContactsToForward.dart';
-import 'package:mec/Screens/profile_settings/profile_view.dart';
-import 'package:mec/Screens/security_screens/security.dart';
-import 'package:mec/Services/Admob/admob.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/Providers/GroupChatProvider.dart';
-import 'package:mec/Services/Providers/LazyLoadingChatProvider.dart';
-import 'package:mec/Services/Providers/Observer.dart';
-import 'package:mec/Services/Providers/seen_provider.dart';
-import 'package:mec/Services/Providers/seen_state.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/call_utilities.dart';
-import 'package:mec/Utils/chat_controller.dart';
-import 'package:mec/Utils/crc.dart';
-import 'package:mec/Utils/custom_url_launcher.dart';
-import 'package:mec/Utils/open_settings.dart';
-import 'package:mec/Utils/permissions.dart';
-import 'package:mec/Utils/utils.dart';
-import 'package:mec/widgets/CountryPicker/CountryCode.dart';
-import 'package:mec/widgets/DownloadManager/download_all_file_type.dart';
-import 'package:mec/widgets/ImagePicker/image_picker.dart';
-import 'package:mec/widgets/InfiniteList/InfiniteCOLLECTIONListViewWidget.dart';
-import 'package:mec/widgets/MultiDocumentPicker/multiDocumentPicker.dart';
-import 'package:mec/widgets/MultiImagePicker/multiImagePicker.dart';
-import 'package:mec/widgets/MyElevatedButton/MyElevatedButton.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Configs/optional_constants.dart';
+import 'package:chat360/Screens/auth_screens/login.dart';
+import 'package:chat360/Screens/calling_screen/pickup_layout.dart';
+import 'package:chat360/Screens/chat_screen/Widget/bubble.dart';
+import 'package:chat360/Screens/chat_screen/chat.dart';
+import 'package:chat360/Screens/chat_screen/utils/aes_encryption.dart';
+import 'package:chat360/Screens/chat_screen/utils/audioPlayback.dart';
+import 'package:chat360/Screens/chat_screen/utils/deleteChatMedia.dart';
+import 'package:chat360/Screens/chat_screen/utils/photo_view.dart';
+import 'package:chat360/Screens/chat_screen/utils/uploadMediaWithProgress.dart';
+import 'package:chat360/Screens/contact_screens/SelectContactsToForward.dart';
+import 'package:chat360/Screens/profile_settings/profile_view.dart';
+import 'package:chat360/Screens/security_screens/security.dart';
+import 'package:chat360/Services/Admob/admob.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/Providers/GroupChatProvider.dart';
+import 'package:chat360/Services/Providers/LazyLoadingChatProvider.dart';
+import 'package:chat360/Services/Providers/Observer.dart';
+import 'package:chat360/Services/Providers/seen_provider.dart';
+import 'package:chat360/Services/Providers/seen_state.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/call_utilities.dart';
+import 'package:chat360/Utils/chat_controller.dart';
+import 'package:chat360/Utils/crc.dart';
+import 'package:chat360/Utils/custom_url_launcher.dart';
+import 'package:chat360/Utils/open_settings.dart';
+import 'package:chat360/Utils/permissions.dart';
+import 'package:chat360/Utils/utils.dart';
+import 'package:chat360/widgets/CountryPicker/CountryCode.dart';
+import 'package:chat360/widgets/DownloadManager/download_all_file_type.dart';
+import 'package:chat360/widgets/ImagePicker/image_picker.dart';
+import 'package:chat360/widgets/InfiniteList/InfiniteCOLLECTIONListViewWidget.dart';
+import 'package:chat360/widgets/MultiDocumentPicker/multiDocumentPicker.dart';
+import 'package:chat360/widgets/MultiImagePicker/multiImagePicker.dart';
+import 'package:chat360/widgets/MyElevatedButton/MyElevatedButton.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -52,18 +52,18 @@ import 'dart:async';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart' as emojipic;
 import 'dart:convert';
 import 'dart:io';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Screens/privacypolicy&TnC/PdfViewFromCachedUrl.dart';
-import 'package:mec/widgets/SoundPlayer/SoundPlayerPro.dart';
-import 'package:mec/Services/Providers/currentchat_peer.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/contact_screens/ContactsSelect.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Utils/save.dart';
-import 'package:mec/widgets/AudioRecorder/Audiorecord.dart';
-import 'package:mec/widgets/VideoPicker/VideoPicker.dart';
-import 'package:mec/widgets/VideoPicker/VideoPreview.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Screens/privacypolicy&TnC/PdfViewFromCachedUrl.dart';
+import 'package:chat360/widgets/SoundPlayer/SoundPlayerPro.dart';
+import 'package:chat360/Services/Providers/currentchat_peer.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/contact_screens/ContactsSelect.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Utils/save.dart';
+import 'package:chat360/widgets/AudioRecorder/Audiorecord.dart';
+import 'package:chat360/widgets/VideoPicker/VideoPicker.dart';
+import 'package:chat360/widgets/VideoPicker/VideoPreview.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:giphy_get/giphy_get.dart';
@@ -71,9 +71,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Utils/unawaited.dart';
-import 'package:mec/Models/E2EE/e2ee.dart' as e2ee;
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Utils/unawaited.dart';
+import 'package:chat360/Models/E2EE/e2ee.dart' as e2ee;
 import 'package:encrypt/encrypt.dart' as encrypt;
 
 class LazyLoadingChat extends StatefulWidget {
@@ -191,10 +191,10 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
     unread = widget.unread;
     // initAudioPlayer();
     // _load();
-    mec.internetLookUp();
+    chat360.internetLookUp();
     listenToBlock();
     updateLocalUserData(_cachedModel);
-    chatId = mec.getChatId(widget.currentUserNo, widget.peerNo);
+    chatId = chat360.getChatId(widget.currentUserNo, widget.peerNo);
     print('CHAT ID IS $chatId');
     firestoreChatquery = FirebaseFirestore.instance
         .collection(DbPaths.collectionmessages)
@@ -516,7 +516,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
           }
           // _playPopSound();
         } else {
-          mec.toast('Nothing to encrypt');
+          chat360.toast('Nothing to encrypt');
         }
       } on Exception catch (_) {
         print('Exception caught!');
@@ -641,7 +641,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
           }).toString();
         });
       }).catchError((onError) {
-        mec.toast('Sending failed !');
+        chat360.toast('Sending failed !');
         print('ERROR SENDING FILE: $onError');
       });
     } else {
@@ -754,7 +754,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
           }).toString();
         });
       }).catchError((onError) {
-        mec.toast('Sending failed !');
+        chat360.toast('Sending failed !');
         print('ERROR SENDING FILE: $onError');
       });
     } else {
@@ -953,7 +953,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                       left: 10,
                     ),
                     decoration: BoxDecoration(
-                        color: mecWhite,
+                        color: chat360White,
                         borderRadius: BorderRadius.all(Radius.circular(30))),
                     child: Row(
                       children: [
@@ -964,7 +964,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                               refreshThisInput();
                             },
                             icon: Icon(Icons.emoji_emotions,
-                                color: mecGrey, size: 23),
+                                color: chat360Grey, size: 23),
                           ),
                         ),
                         Flexible(
@@ -987,7 +987,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             maxLines: null,
                             textCapitalization: TextCapitalization.sentences,
                             style: TextStyle(
-                                fontSize: 16.0, color: mecBlack),
+                                fontSize: 16.0, color: chat360Black),
                             controller: textEditingController,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
@@ -1031,14 +1031,14 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                         child: IconButton(
                                           icon: new Icon(
                                             Icons.attachment_outlined,
-                                            color: mecGrey,
+                                            color: chat360Grey,
                                           ),
                                           padding: EdgeInsets.all(0.0),
                                           onPressed:
                                               observer.ismediamessagingallowed ==
                                                       false
                                                   ? () {
-                                                      mec.showRationale(
+                                                      chat360.showRationale(
                                                           getTranslated(
                                                               this.context,
                                                               'mediamssgnotallowed'));
@@ -1047,7 +1047,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                                       hidekeyboard(context);
                                                       shareMedia(context);
                                                     },
-                                          color: mecWhite,
+                                          color: chat360White,
                                         ),
                                       ),
                                 textEditingController.text.isNotEmpty
@@ -1058,14 +1058,14 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                           icon: new Icon(
                                             Icons.camera_alt_rounded,
                                             size: 20,
-                                            color: mecGrey,
+                                            color: chat360Grey,
                                           ),
                                           padding: EdgeInsets.all(0.0),
                                           onPressed:
                                               observer.ismediamessagingallowed ==
                                                       false
                                                   ? () {
-                                                      mec.showRationale(
+                                                      chat360.showRationale(
                                                           getTranslated(
                                                               this.context,
                                                               'mediamssgnotallowed'));
@@ -1098,7 +1098,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                                                     },
                                                                   )));
                                                     },
-                                          color: mecWhite,
+                                          color: chat360White,
                                         ),
                                       ),
                                 textEditingController.text.length != 0 ||
@@ -1112,18 +1112,18 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                         alignment: Alignment.topLeft,
                                         width: 40,
                                         child: IconButton(
-                                            color: mecWhite,
+                                            color: chat360White,
                                             padding: EdgeInsets.all(0.0),
                                             icon: Icon(
                                               Icons.gif_rounded,
                                               size: 40,
-                                              color: mecGrey,
+                                              color: chat360Grey,
                                             ),
                                             onPressed: observer
                                                         .ismediamessagingallowed ==
                                                     false
                                                 ? () {
-                                                    mec.showRationale(
+                                                    chat360.showRationale(
                                                         getTranslated(
                                                             this.context,
                                                             'mediamssgnotallowed'));
@@ -1131,7 +1131,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                                 : () async {
                                                     GiphyGif? gif =
                                                         await GiphyGet.getGif(
-                                                      tabColor: mecgreen,
+                                                      tabColor: chat360green,
                                                       context: context,
                                                       apiKey:
                                                           GiphyAPIKey, //YOUR API KEY HERE
@@ -1165,8 +1165,8 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                   margin: EdgeInsets.only(left: 6, right: 10),
                   decoration: BoxDecoration(
                       color: DESIGN_TYPE == Themetype.whatsapp
-                          ? mecgreen
-                          : mecLightGreen,
+                          ? chat360green
+                          : chat360LightGreen,
                       // border: Border.all(
                       //   color: Colors.red[500],
                       // ),
@@ -1179,11 +1179,11 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                         //     ?
                         Icons.send,
                         // : Icons.mic,
-                        color: mecWhite.withOpacity(0.99),
+                        color: chat360White.withOpacity(0.99),
                       ),
                       onPressed: observer.istextmessagingallowed == false
                           ? () {
-                              mec.showRationale(getTranslated(
+                              chat360.showRationale(getTranslated(
                                   this.context, 'textmssgnotallowed'));
                             }
                           : chatStatus == ChatStatus.blocked.index
@@ -1193,7 +1193,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                   textEditingController.text,
                                   MessageType.text,
                                   DateTime.now().millisecondsSinceEpoch),
-                      color: mecWhite,
+                      color: chat360White,
                     ),
                   ),
                 ),
@@ -1224,11 +1224,11 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             horizontalSpacing: 0,
                             initCategory: emojipic.Category.RECENT,
                             bgColor: Color(0xFFF2F2F2),
-                            indicatorColor: mecgreen,
+                            indicatorColor: chat360green,
                             iconColor: Colors.grey,
-                            iconColorSelected: mecgreen,
+                            iconColorSelected: chat360green,
                             progressIndicatorColor: Colors.blue,
-                            backspaceColor: mecgreen,
+                            backspaceColor: chat360green,
                             showRecentsTab: true,
                             recentsLimit: 28,
                           
@@ -1356,7 +1356,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
       int crc = CRC32.compute(input);
       return '$encrypted${Dbkeys.crcSeperator}$crc';
     } catch (e) {
-      mec.toast('Error occured while encrypting !');
+      chat360.toast('Error occured while encrypting !');
       return false;
     }
   }
@@ -1371,7 +1371,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
       // Location services are not enabled don't continue
       // accessing the position and request users of the
       // App to enable the location services.
-      mec.toast(
+      chat360.toast(
           'Location permissions are denied. Please go to settings & allow location tracking permission.');
       return Future.error('Location services are disabled.');
     }
@@ -1381,21 +1381,21 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.deniedForever) {
         // Permissions are denied forever, handle appropriately.
-        mec.toast(
+        chat360.toast(
             'Location permissions are denied. Please go to settings & allow location tracking permission.');
         return Future.error(
             'Location permissions are permanently denied, we cannot request permissions.');
       }
 
       if (permission == LocationPermission.denied) {
-        mec.toast(
+        chat360.toast(
             'Location permissions are pdenied. Please go to settings & allow location tracking permission.');
         return Future.error('Location permissions are denied');
       }
     }
     if (permission == LocationPermission.always ||
         permission == LocationPermission.whileInUse) {
-      mec.toast(
+      chat360.toast(
         getTranslated(this.context, 'detectingloc'),
       );
     }
@@ -1508,7 +1508,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           onTap: () async {
-            mec.toast(getTranslated(contextForDialog, 'deleting'));
+            chat360.toast(getTranslated(contextForDialog, 'deleting'));
             await FirebaseFirestore.instance
                 .collection(DbPaths.collectionmessages)
                 .doc(chatId)
@@ -1517,7 +1517,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                 .get()
                 .then((chatDoc) async {
               if (!chatDoc.exists) {
-                mec.toast('Please reload this screen !');
+                chat360.toast('Please reload this screen !');
               } else if (chatDoc.exists) {
                 Map<String, dynamic> realtimeDoc = chatDoc.data()!;
                 if (realtimeDoc[Dbkeys.hasRecipientDeleted] == true) {
@@ -1538,7 +1538,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                       Navigator.maybePop(
                         contextForDialog,
                       );
-                      mec.toast(
+                      chat360.toast(
                         getTranslated(contextForDialog, 'deleted'),
                       );
                       hidekeyboard(
@@ -1550,7 +1550,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                     await deleteMsgMedia(realtimeDoc, chatId!)
                         .then((isDeleted) async {
                       if (isDeleted == false || isDeleted == null) {
-                        mec.toast('Could not delete. Please try again!');
+                        chat360.toast('Could not delete. Please try again!');
                       } else {
                         await FirebaseFirestore.instance
                             .collection(DbPaths.collectionmessages)
@@ -1564,7 +1564,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                           Navigator.maybePop(
                             contextForDialog,
                           );
-                          mec.toast(
+                          chat360.toast(
                             getTranslated(contextForDialog, 'deleted'),
                           );
                           hidekeyboard(contextForDialog);
@@ -1591,7 +1591,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
 
                   Future.delayed(const Duration(milliseconds: 300), () {
                     Navigator.maybePop(contextForDialog);
-                    mec.toast(
+                    chat360.toast(
                       getTranslated(contextForDialog, 'deleted'),
                     );
                     hidekeyboard(contextForDialog);
@@ -1624,19 +1624,19 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
 
               Future.delayed(const Duration(milliseconds: 300), () {
                 Navigator.maybePop(contextForDialog);
-                mec.toast(
+                chat360.toast(
                   getTranslated(contextForDialog, 'deleted'),
                 );
                 hidekeyboard(contextForDialog);
               });
             } else {
               // -------Delete message completely for everyone
-              mec.toast(
+              chat360.toast(
                 getTranslated(contextForDialog, 'deleting'),
               );
               await deleteMsgMedia(mssgDoc, chatId!).then((isDeleted) async {
                 if (isDeleted == false || isDeleted == null) {
-                  mec.toast('Could not delete. Please try again!');
+                  chat360.toast('Could not delete. Please try again!');
                 } else {
                   await FirebaseFirestore.instance
                       .collection(DbPaths.collectionmessages)
@@ -1648,7 +1648,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
 
                   Future.delayed(const Duration(milliseconds: 300), () {
                     Navigator.maybePop(contextForDialog);
-                    mec.toast(
+                    chat360.toast(
                       getTranslated(contextForDialog, 'deleted'),
                     );
                     hidekeyboard(contextForDialog);
@@ -1670,7 +1670,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           onTap: () async {
-            mec.toast(
+            chat360.toast(
               getTranslated(contextForDialog, 'deleting'),
             );
             await FirebaseFirestore.instance
@@ -1681,7 +1681,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                 .get()
                 .then((chatDoc) async {
               if (!chatDoc.exists) {
-                mec.toast('Please reload this screen !');
+                chat360.toast('Please reload this screen !');
               } else if (chatDoc.exists) {
                 Map<String, dynamic> realtimeDoc = chatDoc.data()!;
                 if (realtimeDoc[Dbkeys.hasSenderDeleted] == true) {
@@ -1700,7 +1700,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
 
                     Future.delayed(const Duration(milliseconds: 300), () {
                       Navigator.maybePop(contextForDialog);
-                      mec.toast(
+                      chat360.toast(
                         getTranslated(contextForDialog, 'deleted'),
                       );
                       hidekeyboard(contextForDialog);
@@ -1710,7 +1710,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                     await deleteMsgMedia(realtimeDoc, chatId!)
                         .then((isDeleted) async {
                       if (isDeleted == false || isDeleted == null) {
-                        mec.toast('Could not delete. Please try again!');
+                        chat360.toast('Could not delete. Please try again!');
                       } else {
                         await FirebaseFirestore.instance
                             .collection(DbPaths.collectionmessages)
@@ -1722,7 +1722,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
 
                         Future.delayed(const Duration(milliseconds: 300), () {
                           Navigator.maybePop(contextForDialog);
-                          mec.toast(
+                          chat360.toast(
                             getTranslated(contextForDialog, 'deleted'),
                           );
                           hidekeyboard(contextForDialog);
@@ -1750,7 +1750,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                   }
                   Future.delayed(const Duration(milliseconds: 300), () {
                     Navigator.maybePop(contextForDialog);
-                    mec.toast(
+                    chat360.toast(
                       getTranslated(contextForDialog, 'deleted'),
                     );
                     hidekeyboard(contextForDialog);
@@ -1770,7 +1770,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           onTap: () {
-            mec.toast(
+            chat360.toast(
               getTranslated(contextForDialog, 'plswait'),
             );
             Future.delayed(const Duration(milliseconds: 200), () {
@@ -1785,7 +1785,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
               }).then((value) {
                 Navigator.pop(contextForDialog);
                 hidekeyboard(contextForDialog);
-                mec.toast(
+                chat360.toast(
                   getTranslated(contextForDialog, 'blockedbroadcast'),
                 );
               }).catchError((error) {
@@ -1810,7 +1810,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
             Clipboard.setData(ClipboardData(text: mssgDoc[Dbkeys.content]));
             Navigator.pop(contextForDialog);
             hidekeyboard(contextForDialog);
-            mec.toast(
+            chat360.toast(
               getTranslated(contextForDialog, 'copied'),
             );
           }));
@@ -1950,7 +1950,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
           }).then((value) {
             if (list.last[Dbkeys.groupID] ==
                 list[tempSendIndex][Dbkeys.groupID]) {
-              mec.toast(
+              chat360.toast(
                 getTranslated(this.context, 'sent'),
               );
               setStateIfMounted(() {
@@ -1966,7 +1966,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
           setStateIfMounted(() {
             isgeneratingSomethingLoader = false;
           });
-          mec.toast('Failed to send');
+          chat360.toast('Failed to send');
         }
       } else {
         try {
@@ -1981,7 +1981,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
           final encrypted = encryptWithCRC(content);
           if (encrypted is String) {
             int timestamp2 = DateTime.now().millisecondsSinceEpoch;
-            var chatId = mec.getChatId(
+            var chatId = chat360.getChatId(
                 widget.currentUserNo, list[tempSendIndex][Dbkeys.phone]);
             if (content.trim() != '') {
               Map<String, dynamic>? targetPeer =
@@ -1990,7 +1990,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                 await ChatController.request(
                     widget.currentUserNo,
                     list[tempSendIndex][Dbkeys.phone],
-                    mec.getChatId(widget.currentUserNo,
+                    chat360.getChatId(widget.currentUserNo,
                         list[tempSendIndex][Dbkeys.phone]));
               }
 
@@ -2036,7 +2036,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
               }).then((value) {
                 if (list.last[Dbkeys.phone] ==
                     list[tempSendIndex][Dbkeys.phone]) {
-                  mec.toast(
+                  chat360.toast(
                     getTranslated(this.context, 'sent'),
                   );
                   setStateIfMounted(() {
@@ -2053,13 +2053,13 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
             setStateIfMounted(() {
               isgeneratingSomethingLoader = false;
             });
-            mec.toast('Nothing to send');
+            chat360.toast('Nothing to send');
           }
         } catch (e) {
           setStateIfMounted(() {
             isgeneratingSomethingLoader = false;
           });
-          mec.toast('Failed to Forward message. Error:$e');
+          chat360.toast('Failed to Forward message. Error:$e');
         }
       }
     }
@@ -2086,7 +2086,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
 
             Future.delayed(const Duration(milliseconds: 300), () {
               Navigator.maybePop(context);
-              mec.toast(
+              chat360.toast(
                 getTranslated(this.context, 'deleted'),
               );
             });
@@ -2104,7 +2104,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
           onTap: () {
             Clipboard.setData(ClipboardData(text: doc[Dbkeys.content]));
             Navigator.pop(context);
-            mec.toast(
+            chat360.toast(
               getTranslated(this.context, 'copied'),
             );
           }));
@@ -2119,7 +2119,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           onTap: () {
-            mec.toast(
+            chat360.toast(
               getTranslated(this.context, 'plswait'),
             );
             Future.delayed(const Duration(milliseconds: 500), () {
@@ -2132,13 +2132,13 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                 Dbkeys.broadcastBLACKLISTED:
                     FieldValue.arrayUnion([widget.currentUserNo]),
               }).then((value) {
-                mec.toast(
+                chat360.toast(
                   getTranslated(this.context, 'blockedbroadcast'),
                 );
                 hidekeyboard(context);
                 Navigator.pop(context);
               }).catchError((error) {
-                mec.toast(
+                chat360.toast(
                   getTranslated(this.context, 'blockedbroadcast'),
                 );
                 Navigator.pop(context);
@@ -2168,10 +2168,10 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
         }
       }
     } on FormatException {
-      mec.toast(getTranslated(this.context, 'msgnotload'));
+      chat360.toast(getTranslated(this.context, 'msgnotload'));
       return '';
     }
-    mec.toast(getTranslated(this.context, 'msgnotload'));
+    chat360.toast(getTranslated(this.context, 'msgnotload'));
     return '';
   }
 
@@ -2259,11 +2259,11 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
           ? Container(
               child: Center(
                 child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(mecBlue)),
+                    valueColor: AlwaysStoppedAnimation<Color>(chat360Blue)),
               ),
               color: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecBlack.withOpacity(0.6)
-                  : mecWhite.withOpacity(0.6),
+                  ? chat360Black.withOpacity(0.6)
+                  : chat360White.withOpacity(0.6),
             )
           : Container(),
     );
@@ -2305,7 +2305,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                 Icon(
                                   FontAwesomeIcons.share,
                                   size: 12,
-                                  color: mecGrey.withOpacity(0.5),
+                                  color: chat360Grey.withOpacity(0.5),
                                 ),
                                 SizedBox(
                                   width: 5,
@@ -2313,7 +2313,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                 Text(getTranslated(this.context, 'forwarded'),
                                     maxLines: 1,
                                     style: TextStyle(
-                                        color: mecGrey.withOpacity(0.7),
+                                        color: chat360Grey.withOpacity(0.7),
                                         fontStyle: FontStyle.italic,
                                         overflow: TextOverflow.ellipsis,
                                         fontSize: 13))
@@ -2354,7 +2354,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                           Icon(
                             FontAwesomeIcons.share,
                             size: 12,
-                            color: mecGrey.withOpacity(0.5),
+                            color: chat360Grey.withOpacity(0.5),
                           ),
                           SizedBox(
                             width: 5,
@@ -2362,7 +2362,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                           Text(getTranslated(this.context, 'forwarded'),
                               maxLines: 1,
                               style: TextStyle(
-                                  color: mecGrey.withOpacity(0.7),
+                                  color: chat360Grey.withOpacity(0.7),
                                   fontStyle: FontStyle.italic,
                                   overflow: TextOverflow.ellipsis,
                                   fontSize: 13))
@@ -2408,7 +2408,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             Icon(
                               FontAwesomeIcons.share,
                               size: 12,
-                              color: mecGrey.withOpacity(0.5),
+                              color: chat360Grey.withOpacity(0.5),
                             ),
                             SizedBox(
                               width: 5,
@@ -2416,7 +2416,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             Text(getTranslated(this.context, 'forwarded'),
                                 maxLines: 1,
                                 style: TextStyle(
-                                    color: mecGrey.withOpacity(0.7),
+                                    color: chat360Grey.withOpacity(0.7),
                                     fontStyle: FontStyle.italic,
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 13))
@@ -2469,7 +2469,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             Icon(
                               FontAwesomeIcons.share,
                               size: 12,
-                              color: mecGrey.withOpacity(0.5),
+                              color: chat360Grey.withOpacity(0.5),
                             ),
                             SizedBox(
                               width: 5,
@@ -2477,7 +2477,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             Text(getTranslated(this.context, 'forwarded'),
                                 maxLines: 1,
                                 style: TextStyle(
-                                    color: mecGrey.withOpacity(0.7),
+                                    color: chat360Grey.withOpacity(0.7),
                                     fontStyle: FontStyle.italic,
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 13))
@@ -2592,7 +2592,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             Icon(
                               FontAwesomeIcons.share,
                               size: 12,
-                              color: mecGrey.withOpacity(0.5),
+                              color: chat360Grey.withOpacity(0.5),
                             ),
                             SizedBox(
                               width: 5,
@@ -2600,7 +2600,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             Text(getTranslated(this.context, 'forwarded'),
                                 maxLines: 1,
                                 style: TextStyle(
-                                    color: mecGrey.withOpacity(0.7),
+                                    color: chat360Grey.withOpacity(0.7),
                                     fontStyle: FontStyle.italic,
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 13))
@@ -2713,7 +2713,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             Icon(
                               FontAwesomeIcons.share,
                               size: 12,
-                              color: mecGrey.withOpacity(0.5),
+                              color: chat360Grey.withOpacity(0.5),
                             ),
                             SizedBox(
                               width: 5,
@@ -2721,7 +2721,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             Text(getTranslated(this.context, 'forwarded'),
                                 maxLines: 1,
                                 style: TextStyle(
-                                    color: mecGrey.withOpacity(0.7),
+                                    color: chat360Grey.withOpacity(0.7),
                                     fontStyle: FontStyle.italic,
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 13))
@@ -2808,7 +2808,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             Icon(
                               FontAwesomeIcons.share,
                               size: 12,
-                              color: mecGrey.withOpacity(0.5),
+                              color: chat360Grey.withOpacity(0.5),
                             ),
                             SizedBox(
                               width: 5,
@@ -2816,7 +2816,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             Text(getTranslated(this.context, 'forwarded'),
                                 maxLines: 1,
                                 style: TextStyle(
-                                    color: mecGrey.withOpacity(0.7),
+                                    color: chat360Grey.withOpacity(0.7),
                                     fontStyle: FontStyle.italic,
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 13))
@@ -2968,7 +2968,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
 
                 // ignore: unnecessary_null_comparison
                 if (isUser == null || isUser == false) {
-                  mec.toast(getTranslated(this.context, 'usernotjoined') +
+                  chat360.toast(getTranslated(this.context, 'usernotjoined') +
                       ' $Appname');
                 }
               },
@@ -2987,20 +2987,20 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
           height: 70,
           margin: EdgeInsets.only(left: 0, right: 0),
           decoration: BoxDecoration(
-              color: mecWhite.withOpacity(0.55),
+              color: chat360White.withOpacity(0.55),
               borderRadius: BorderRadius.all(Radius.circular(10))),
           child: Stack(
             children: [
               Container(
                   margin: EdgeInsetsDirectional.all(4),
                   decoration: BoxDecoration(
-                      color: mecGrey.withOpacity(0.1),
+                      color: chat360Grey.withOpacity(0.1),
                       borderRadius: BorderRadius.all(Radius.circular(8))),
                   child: Row(children: [
                     Container(
                       decoration: BoxDecoration(
                         color: doc[Dbkeys.from] == widget.currentUserNo
-                            ? mecgreen
+                            ? chat360green
                             : Colors.purple,
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(0),
@@ -3025,13 +3025,13 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             child: Text(
                               doc[Dbkeys.from] == widget.currentUserNo
                                   ? getTranslated(this.context, 'you')
-                                  : mec.getNickname(peer!)!,
+                                  : chat360.getNickname(peer!)!,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color:
                                       doc[Dbkeys.from] == widget.currentUserNo
-                                          ? mecgreen
+                                          ? chat360green
                                           : Colors.purple),
                             ),
                           ),
@@ -3112,7 +3112,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                 placeholder: (context, url) => Container(
                                   child: CircularProgressIndicator(
                                     valueColor: AlwaysStoppedAnimation<Color>(
-                                        mecBlue),
+                                        chat360Blue),
                                   ),
                                   width: doc[Dbkeys.content].contains('giphy')
                                       ? 60
@@ -3178,7 +3178,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                                     CircularProgressIndicator(
                                                   valueColor:
                                                       AlwaysStoppedAnimation<
-                                                          Color>(mecBlue),
+                                                          Color>(chat360Blue),
                                                 ),
                                                 width: 74,
                                                 height: 74,
@@ -3293,20 +3293,20 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
           height: 80,
           margin: EdgeInsets.only(left: 15, right: 70),
           decoration: BoxDecoration(
-              color: mecWhite,
+              color: chat360White,
               borderRadius: BorderRadius.all(Radius.circular(10))),
           child: Stack(
             children: [
               Container(
                   margin: EdgeInsetsDirectional.all(4),
                   decoration: BoxDecoration(
-                      color: mecGrey.withOpacity(0.1),
+                      color: chat360Grey.withOpacity(0.1),
                       borderRadius: BorderRadius.all(Radius.circular(8))),
                   child: Row(children: [
                     Container(
                       decoration: BoxDecoration(
                         color: replyDoc![Dbkeys.from] == widget.currentUserNo
-                            ? mecgreen
+                            ? chat360green
                             : Colors.purple,
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(0),
@@ -3331,13 +3331,13 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             child: Text(
                               replyDoc![Dbkeys.from] == widget.currentUserNo
                                   ? getTranslated(this.context, 'you')
-                                  : mec.getNickname(peer!)!,
+                                  : chat360.getNickname(peer!)!,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: replyDoc![Dbkeys.from] ==
                                           widget.currentUserNo
-                                      ? mecgreen
+                                      ? chat360green
                                       : Colors.purple),
                             ),
                           ),
@@ -3426,7 +3426,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                 placeholder: (context, url) => Container(
                                   child: CircularProgressIndicator(
                                     valueColor: AlwaysStoppedAnimation<Color>(
-                                        mecBlue),
+                                        chat360Blue),
                                   ),
                                   width: replyDoc![Dbkeys.content]
                                           .contains('giphy')
@@ -3494,7 +3494,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                                     CircularProgressIndicator(
                                                   valueColor:
                                                       AlwaysStoppedAnimation<
-                                                          Color>(mecBlue),
+                                                          Color>(chat360Blue),
                                                 ),
                                                 width: 84,
                                                 height: 84,
@@ -3689,11 +3689,11 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
           ? Container(
               child: Center(
                 child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(mecBlue)),
+                    valueColor: AlwaysStoppedAnimation<Color>(chat360Blue)),
               ),
               color: DESIGN_TYPE == Themetype.whatsapp
-                  ? mecBlack.withOpacity(0.6)
-                  : mecWhite.withOpacity(0.6),
+                  ? chat360Black.withOpacity(0.6)
+                  : chat360White.withOpacity(0.6),
             )
           : Container(),
     );
@@ -3796,7 +3796,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                           callback: getFileData,
                                         ))).then((url) async {
                               if (url != null) {
-                                mec.toast(
+                                chat360.toast(
                                   getTranslated(this.context, 'plswait'),
                                 );
                                 String thumbnailurl = await getThumbnail(url);
@@ -3809,7 +3809,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                         videometadata,
                                     MessageType.video,
                                     thumnailtimestamp);
-                                mec.toast(
+                                chat360.toast(
                                     getTranslated(this.context, 'sent'));
                               } else {}
                             });
@@ -3973,7 +3973,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                     MessageType.location,
                                     DateTime.now().millisecondsSinceEpoch);
                                 setStateIfMounted(() {});
-                                mec.toast(
+                                chat360.toast(
                                   getTranslated(this.context, 'sent'),
                                 );
                               },
@@ -4095,13 +4095,13 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                           onTap: observer.iscallsallowed == false
                               ? () {
                                   Navigator.of(this.context).pop();
-                                  mec.showRationale(getTranslated(
+                                  chat360.showRationale(getTranslated(
                                       this.context, 'callnotallowed'));
                                 }
                               : hasPeerBlockedMe == true
                                   ? () {
                                       Navigator.of(this.context).pop();
-                                      mec.toast(
+                                      chat360.toast(
                                         getTranslated(
                                             context, 'userhasblocked'),
                                       );
@@ -4121,7 +4121,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                           call(this.context, false);
                                         } else {
                                           Navigator.of(this.context).pop();
-                                          mec.showRationale(getTranslated(
+                                          chat360.showRationale(getTranslated(
                                               this.context, 'pmc'));
                                           Navigator.push(
                                               context,
@@ -4130,7 +4130,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                                       OpenSettings()));
                                         }
                                       }).catchError((onError) {
-                                        mec.showRationale(
+                                        chat360.showRationale(
                                             getTranslated(this.context, 'pmc'));
                                         Navigator.push(
                                             context,
@@ -4148,7 +4148,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                 Icon(
                                   Icons.local_phone,
                                   size: 35,
-                                  color: mecLightGreen,
+                                  color: chat360LightGreen,
                                 ),
                                 SizedBox(height: 13),
                                 Text(
@@ -4157,7 +4157,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                   style: TextStyle(
                                       fontWeight: FontWeight.normal,
                                       fontSize: 14,
-                                      color: mecBlack),
+                                      color: chat360Black),
                                 ),
                               ],
                             ),
@@ -4167,13 +4167,13 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             onTap: observer.iscallsallowed == false
                                 ? () {
                                     Navigator.of(this.context).pop();
-                                    mec.showRationale(getTranslated(
+                                    chat360.showRationale(getTranslated(
                                         this.context, 'callnotallowed'));
                                   }
                                 : hasPeerBlockedMe == true
                                     ? () {
                                         Navigator.of(this.context).pop();
-                                        mec.toast(
+                                        chat360.toast(
                                           getTranslated(
                                               context, 'userhasblocked'),
                                         );
@@ -4194,7 +4194,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                             call(this.context, true);
                                           } else {
                                             Navigator.of(this.context).pop();
-                                            mec.showRationale(
+                                            chat360.showRationale(
                                                 getTranslated(
                                                     this.context, 'pmc'));
                                             Navigator.push(
@@ -4204,7 +4204,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                                         OpenSettings()));
                                           }
                                         }).catchError((onError) {
-                                          mec.showRationale(getTranslated(
+                                          chat360.showRationale(getTranslated(
                                               this.context, 'pmc'));
                                           Navigator.push(
                                               context,
@@ -4222,7 +4222,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                   Icon(
                                     Icons.videocam,
                                     size: 39,
-                                    color: mecLightGreen,
+                                    color: chat360LightGreen,
                                   ),
                                   SizedBox(height: 13),
                                   Text(
@@ -4231,7 +4231,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                     style: TextStyle(
                                         fontWeight: FontWeight.normal,
                                         fontSize: 14,
-                                        color: mecBlack),
+                                        color: chat360Black),
                                   ),
                                 ],
                               ),
@@ -4316,7 +4316,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
     final observer = Provider.of<Observer>(context, listen: true);
     return PickupLayout(
         prefs: widget.prefs,
-        scaffold: mec.getNTPWrappedWidget(Consumer<List<GroupModel>>(
+        scaffold: chat360.getNTPWrappedWidget(Consumer<List<GroupModel>>(
             builder: (context, groupList, _child) => WillPopScope(
                   onWillPop: isgeneratingSomethingLoader == true
                       ? () async {
@@ -4358,8 +4358,8 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                   Icons.arrow_back_ios,
                                   size: 20,
                                   color: DESIGN_TYPE == Themetype.whatsapp
-                                      ? mecWhite
-                                      : mecBlack,
+                                      ? chat360White
+                                      : chat360Black,
                                 ),
                                 onPressed: () {
                                   Navigator.pop(context);
@@ -4367,8 +4367,8 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                               ),
                             ),
                             backgroundColor: DESIGN_TYPE == Themetype.whatsapp
-                                ? mecDeepGreen
-                                : mecWhite,
+                                ? chat360DeepGreen
+                                : chat360White,
                             title: InkWell(
                               onTap: () {
                                 Navigator.push(
@@ -4388,7 +4388,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                   Padding(
                                     padding:
                                         const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                                    child: mec.avatar(peer, radius: 20),
+                                    child: chat360.avatar(peer, radius: 20),
                                   ),
                                   SizedBox(
                                     width: 7,
@@ -4403,13 +4403,13 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                                 .width /
                                             2.3,
                                         child: Text(
-                                          mec.getNickname(peer!)!,
+                                          chat360.getNickname(peer!)!,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
                                               color: DESIGN_TYPE ==
                                                       Themetype.whatsapp
-                                                  ? mecWhite
-                                                  : mecBlack,
+                                                  ? chat360White
+                                                  : chat360Black,
                                               fontSize: 17.0,
                                               fontWeight: FontWeight.w500),
                                         ),
@@ -4424,8 +4424,8 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                               style: TextStyle(
                                                   color: DESIGN_TYPE ==
                                                           Themetype.whatsapp
-                                                      ? mecWhite
-                                                      : mecGrey,
+                                                      ? chat360White
+                                                      : chat360Grey,
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w400),
                                             )
@@ -4435,8 +4435,8 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                               style: TextStyle(
                                                   color: DESIGN_TYPE ==
                                                           Themetype.whatsapp
-                                                      ? mecWhite
-                                                      : mecGrey,
+                                                      ? chat360White
+                                                      : chat360Grey,
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w400),
                                             ),
@@ -4455,20 +4455,20 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                             Icons.add_call,
                                             color: DESIGN_TYPE ==
                                                     Themetype.whatsapp
-                                                ? mecWhite
-                                                : mecgreen,
+                                                ? chat360White
+                                                : chat360green,
                                           ),
                                           onPressed:
                                               observer.iscallsallowed == false
                                                   ? () {
-                                                      mec.showRationale(
+                                                      chat360.showRationale(
                                                           getTranslated(
                                                               this.context,
                                                               'callnotallowed'));
                                                     }
                                                   : hasPeerBlockedMe == true
                                                       ? () {
-                                                          mec.toast(
+                                                          chat360.toast(
                                                             getTranslated(
                                                                 context,
                                                                 'userhasblocked'),
@@ -4490,11 +4490,11 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                       child: Icon(
                                         Icons.more_vert_outlined,
                                         color: DESIGN_TYPE == Themetype.whatsapp
-                                            ? mecWhite
-                                            : mecBlack,
+                                            ? chat360White
+                                            : chat360Black,
                                       ),
                                     ),
-                                    color: mecWhite,
+                                    color: chat360White,
                                     onSelected: (dynamic val) {
                                       switch (val) {
                                         case 'report':
@@ -4605,7 +4605,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                                             ),
                                                             myElevatedButton(
                                                                 color:
-                                                                    mecLightGreen,
+                                                                    chat360LightGreen,
                                                                 child: Padding(
                                                                   padding:
                                                                       const EdgeInsets
@@ -4650,7 +4650,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                                                         'Individual Chat',
                                                                     'time': time
                                                                         .millisecondsSinceEpoch,
-                                                                    'id': mec.getChatId(
+                                                                    'id': chat360.getChatId(
                                                                         widget
                                                                             .currentUserNo,
                                                                         widget
@@ -4803,7 +4803,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                           break;
                                         case 'block':
                                           // if (hasPeerBlockedMe == true) {
-                                          //   mec.toast(
+                                          //   chat360.toast(
                                           //     getTranslated(context,
                                           //         'userhasblocked'),
                                           //   );
@@ -4815,7 +4815,7 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                           break;
                                         case 'unblock':
                                           // if (hasPeerBlockedMe == true) {
-                                          //   mec.toast(
+                                          //   chat360.toast(
                                           //     getTranslated(context,
                                           //         'userhasblocked'),
                                           //   );
@@ -4823,20 +4823,20 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                                           ChatController.accept(
                                               widget.currentUserNo,
                                               widget.peerNo);
-                                          mec.toast(getTranslated(
+                                          chat360.toast(getTranslated(
                                               this.context, 'unblocked'));
                                           // }
 
                                           break;
                                         case 'tutorial':
-                                          mec.toast(getTranslated(
+                                          chat360.toast(getTranslated(
                                               this.context, 'vsmsg'));
 
                                           break;
                                         case 'remove_wallpaper':
                                           _cachedModel
                                               .removeWallpaper(widget.peerNo!);
-                                          // mec.toast('Wallpaper removed.');
+                                          // chat360.toast('Wallpaper removed.');
                                           break;
                                         case 'set_wallpaper':
                                           Navigator.push(
@@ -4898,8 +4898,8 @@ class _LazyLoadingChatState extends State<LazyLoadingChat>
                             new Container(
                               decoration: new BoxDecoration(
                                 color: DESIGN_TYPE == Themetype.whatsapp
-                                    ? mecChatbackground
-                                    : mecWhite,
+                                    ? chat360Chatbackground
+                                    : chat360White,
                                 image: new DecorationImage(
                                     image: AssetImage(
                                         "assets/images/background.png"),

@@ -1,18 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mec/Configs/Dbkeys.dart';
-import 'package:mec/Configs/Dbpaths.dart';
-import 'package:mec/Configs/Enum.dart';
-import 'package:mec/Configs/app_constants.dart';
-import 'package:mec/Models/DataModel.dart';
-import 'package:mec/Screens/Groups/GroupChatPage.dart';
-import 'package:mec/Screens/call_history/callhistory.dart';
-import 'package:mec/Screens/recent_chats/RecentsChats.dart';
-import 'package:mec/Screens/recent_chats/widgets/getLastMessageTime.dart';
-import 'package:mec/Screens/recent_chats/widgets/getMediaMessage.dart';
-import 'package:mec/Services/Providers/AvailableContactsProvider.dart';
-import 'package:mec/Services/localization/language_constants.dart';
-import 'package:mec/Utils/unawaited.dart';
-import 'package:mec/Utils/late_load.dart';
+import 'package:chat360/Configs/Dbkeys.dart';
+import 'package:chat360/Configs/Dbpaths.dart';
+import 'package:chat360/Configs/Enum.dart';
+import 'package:chat360/Configs/app_constants.dart';
+import 'package:chat360/Models/DataModel.dart';
+import 'package:chat360/Screens/Groups/GroupChatPage.dart';
+import 'package:chat360/Screens/call_history/callhistory.dart';
+import 'package:chat360/Screens/recent_chats/RecentsChats.dart';
+import 'package:chat360/Screens/recent_chats/widgets/getLastMessageTime.dart';
+import 'package:chat360/Screens/recent_chats/widgets/getMediaMessage.dart';
+import 'package:chat360/Services/Providers/AvailableContactsProvider.dart';
+import 'package:chat360/Services/localization/language_constants.dart';
+import 'package:chat360/Utils/unawaited.dart';
+import 'package:chat360/Utils/late_load.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -99,7 +99,7 @@ Widget groupMessageTile(
                     ElevatedButton(
                       child: Text(
                         getTranslated(context, 'cancel'),
-                        style: TextStyle(color: mecgreen, fontSize: 18),
+                        style: TextStyle(color: chat360green, fontSize: 18),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -159,7 +159,7 @@ Widget groupMessageTile(
                     ElevatedButton(
                       child: Text(
                         getTranslated(context, 'cancel'),
-                        style: TextStyle(color: mecgreen, fontSize: 18),
+                        style: TextStyle(color: chat360green, fontSize: 18),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -247,7 +247,7 @@ Widget groupMessageTile(
                                   .delete();
                             } catch (err) {}
                           }).catchError((err) {
-                            // mec.toast(
+                            // chat360.toast(
                             //     getTranslated(context,
                             //         'unabletoleavegrp'));
                           });
@@ -306,7 +306,7 @@ Widget groupMessageTile(
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: mecBlack,
+                    color: chat360Black,
                     fontWeight: FontWeight.w600,
                     fontSize: 16.4,
                   ),
@@ -378,7 +378,7 @@ Widget groupMessageTile(
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      color: mecBlack,
+                      color: chat360Black,
                       fontWeight: FontWeight.w600,
                       fontSize: 16.4,
                     ),

@@ -1,5 +1,5 @@
 
-import 'package:mec/Configs/app_constants.dart';
+import 'package:chat360/Configs/app_constants.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -44,7 +44,7 @@ openUploadDialog(
           subtitle: Text(
             subtitle,
             textAlign: TextAlign.left,
-            style: TextStyle(height: 2.2, color: mecGrey),
+            style: TextStyle(height: 2.2, color: chat360Grey),
           ),
         ),
       ),
