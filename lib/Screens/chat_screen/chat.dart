@@ -881,7 +881,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
       {required toMobileNumber, required bodyMsg, required name}) async {
     print("values is $toMobileNumber, $bodyMsg, $name");
     var serverKey =
-        "AAAAgzbnOQ4:APA91bEWAOtn-knnFbusVg9h5LRN8O7--_RqhMvT9gl5Gw4lZuhgszpUxulZczrDO4R_BAe0sxbprDE4vdkRM2c2BzSFJXmicyr6F1Z1vkVtUpa2xHNnGSMbPD2o2BbQ0B1eQXk7cQz4";
+        "AAAASO10z2I:APA91bFAngJrBaGEA9yRA8fkhOgAKSJEHrputinoY1ckQicnMxAhNrU9E5Cz1nODqUvLqQhN470P0cP-YoA-cBtJszREBYNE7RdFscViDQOpeuUjElvIjPUtrDFqtSc0_6UQlUB5Uc7o";
     var url = "https://fcm.googleapis.com/fcm/send";
     var token = "";
     try {
@@ -5505,7 +5505,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     var name = "${peer!['nickname']}";
     print("values is $toMobileNumber, $name");
     var serverKey =
-        "AAAAgzbnOQ4:APA91bEWAOtn-knnFbusVg9h5LRN8O7--_RqhMvT9gl5Gw4lZuhgszpUxulZczrDO4R_BAe0sxbprDE4vdkRM2c2BzSFJXmicyr6F1Z1vkVtUpa2xHNnGSMbPD2o2BbQ0B1eQXk7cQz4";
+        "AAAASO10z2I:APA91bFAngJrBaGEA9yRA8fkhOgAKSJEHrputinoY1ckQicnMxAhNrU9E5Cz1nODqUvLqQhN470P0cP-YoA-cBtJszREBYNE7RdFscViDQOpeuUjElvIjPUtrDFqtSc0_6UQlUB5Uc7o";
     var url = "https://fcm.googleapis.com/fcm/send";
     var token = "";
     try {
